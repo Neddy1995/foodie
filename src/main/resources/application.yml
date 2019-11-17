@@ -1,0 +1,33 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 86400s
+
+ 
+spring:
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+  thymeleaf:
+    cache: false
+
+  #配置数据源
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      #charaterEncoding设置编码格式
+      #serverTimezone设置时区
+      url: jdbc:mysql://localhost:3306/foodie?useUnicode=true&characterEncoding=UTF-8
+      username: root
+      password: 123456
+
+
+mybatis:
+    #mybatis扫描配置
+    mapper-locations: classpath:mapper/*.xml
+    #开启sql日志
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
