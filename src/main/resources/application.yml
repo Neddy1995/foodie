@@ -16,10 +16,10 @@ spring:
 
   #配置数据源
   datasource:
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
       #charaterEncoding设置编码格式
       #serverTimezone设置时区
-      url: jdbc:mysql://localhost:3306/foodie?useUnicode=true&characterEncoding=UTF-8
+      url: jdbc:mysql://localhost:3306/foodie?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       username: root
       password: 123456
 
@@ -30,4 +30,5 @@ mybatis:
     #开启sql日志
     configuration:
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
 
