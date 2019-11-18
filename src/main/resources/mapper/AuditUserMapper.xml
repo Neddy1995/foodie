@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.foodie.dao.AuditUserMapper" >
+  <resultMap id="BaseResultMap" type="com.example.foodie.bean.AuditUser" >
+    <id column="audit_user_id" property="auditUserId" jdbcType="INTEGER" />
+    <result column="audited_user_id" property="auditedUserId" jdbcType="INTEGER" />
+    <result column="audit_text" property="auditText" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    audit_user_id, audited_user_id, audit_text, user_id, audit_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from audit_user
+    where audit_user_id = #{auditUserId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from audit_user
+    where audit_user_id = #{auditUserId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.foodie.bean.AuditUser" >
+    insert into audit_user (audit_user_id, audited_user_id, audit_text, 
+      user_id, audit_time)
+    values (#{auditUserId,jdbcType=INTEGER}, #{auditedUserId,jdbcType=INTEGER}, #{auditText,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{auditTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.foodie.bean.AuditUser" >
+    insert into audit_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="auditUserId != null" >
+        audit_user_id,
+      </if>
+      <if test="auditedUserId != null" >
+        audited_user_id,
+      </if>
+      <if test="auditText != null" >
+        audit_text,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="auditTime != null" >
+        audit_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="auditUserId != null" >
+        #{auditUserId,jdbcType=INTEGER},
+      </if>
+      <if test="auditedUserId != null" >
+        #{auditedUserId,jdbcType=INTEGER},
+      </if>
+      <if test="auditText != null" >
+        #{auditText,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.foodie.bean.AuditUser" >
+    update audit_user
+    <set >
+      <if test="auditedUserId != null" >
+        audited_user_id = #{auditedUserId,jdbcType=INTEGER},
+      </if>
+      <if test="auditText != null" >
+        audit_text = #{auditText,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where audit_user_id = #{auditUserId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.AuditUser" >
+    update audit_user
+    set audited_user_id = #{auditedUserId,jdbcType=INTEGER},
+      audit_text = #{auditText,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP}
+    where audit_user_id = #{auditUserId,jdbcType=INTEGER}
+  </update>
+</mapper>

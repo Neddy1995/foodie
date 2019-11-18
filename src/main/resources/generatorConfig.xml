@@ -54,115 +54,77 @@
         </javaClientGenerator>
         <!-- 指定数据库表 -->
 
-        <table tableName="user" domainObjectName="User"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        <!--<table tableName="goods_type" domainObjectName="GoodsType"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>-->
-        <!--<table tableName="good_grand_info" domainObjectName="GoodBrandInfo"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>-->
-
-        <!--<table tableName="mobile_phone" domainObjectName="MobilePhone"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>-->
-
-        <!--<table tableName="computer" domainObjectName="Computer"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>-->
-
-        <!--<table tableName="goods_type" domainObjectName="GoodType"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>-->
-
-      <!--  <table tableName="brand_info" domainObjectName="BrandInfo"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>-->
-
-        <!--<table tableName="good_base_info" domainObjectName="GoodBaseInfo"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>-->
-
-        <!--<table tableName="favorite" domainObjectName="Favorite"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-            &lt;!&ndash;<generatedKey  column="cart_id"  sqlStatement="select uuid_short()"   identity="false"/>&ndash;&gt;
-        </table>-->
-
-        <!--<table tableName="address" domainObjectName="Address"
-               enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false">
-        </table>
-        <table tableName="business" domainObjectName="Business"
+        <table tableName="address_city" domainObjectName="AddressCity"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="computer" domainObjectName="Computer"
+        <table tableName="address_street" domainObjectName="AddressStreet"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="favorite" domainObjectName="Favorite"
+        <table tableName="article" domainObjectName="Article"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="good" domainObjectName="Good"
+        <table tableName="article_picture" domainObjectName="ArticlePicture"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="order" domainObjectName="Order"
+        <table tableName="article_type" domainObjectName="ArticleType"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="order_details" domainObjectName="OrderDetails"
+        <table tableName="audit_article" domainObjectName="AuditArticle"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
-        <table tableName="shopping_cart" domainObjectName="ShoppingCart"
+
+        <table tableName="audit_user" domainObjectName="AuditUser"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
         </table>
-        <table tableName="type" domainObjectName="Type"
+
+        <table tableName="comment" domainObjectName="Comment"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <generatedKey  column="type_id"  sqlStatement="select uuid_short()"   identity="false"/>
         </table>
-        <table tableName="user" domainObjectName="User"
+
+        <table tableName="follow" domainObjectName="Follow"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <generatedKey  column="user_id"  sqlStatement="select uuid_short()"   identity="false"/>
+        </table>
+
+        <table tableName="like" domainObjectName="Like"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+        <table tableName="picture" domainObjectName="Picture"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+
+        <!--<table tableName="user" domainObjectName="User"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
         </table>-->
 
     </context>

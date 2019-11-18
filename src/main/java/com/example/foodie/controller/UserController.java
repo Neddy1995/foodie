@@ -1,4 +1,4 @@
-package com.example.foodie.collector;
+package com.example.foodie.controller;
 
 import com.example.foodie.bean.User;
 import com.example.foodie.dao.UserMapper;

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.foodie.dao.ArticleMapper" >
+  <resultMap id="BaseResultMap" type="com.example.foodie.bean.Article" >
+    <id column="article_id" property="articleId" jdbcType="INTEGER" />
+    <result column="article_title" property="articleTitle" jdbcType="VARCHAR" />
+    <result column=" article_text" property="articleText" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="tagging" property="tagging" jdbcType="VARCHAR" />
+    <result column="article_place" property="articlePlace" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    article_id, article_title, " article_text", author, create_time, tagging, article_place, 
+    state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from article
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.foodie.bean.Article" >
+    insert into article (article_id, article_title, " article_text", 
+      author, create_time, tagging, 
+      article_place, state)
+    values (#{articleId,jdbcType=INTEGER}, #{articleTitle,jdbcType=VARCHAR}, #{articleText,jdbcType=VARCHAR}, 
+      #{author,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{tagging,jdbcType=VARCHAR}, 
+      #{articlePlace,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.foodie.bean.Article" >
+    insert into article
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        article_id,
+      </if>
+      <if test="articleTitle != null" >
+        article_title,
+      </if>
+      <if test="articleText != null" >
+        " article_text",
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="tagging != null" >
+        tagging,
+      </if>
+      <if test="articlePlace != null" >
+        article_place,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="articleId != null" >
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="articleTitle != null" >
+        #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleText != null" >
+        #{articleText,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tagging != null" >
+        #{tagging,jdbcType=VARCHAR},
+      </if>
+      <if test="articlePlace != null" >
+        #{articlePlace,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.foodie.bean.Article" >
+    update article
+    <set >
+      <if test="articleTitle != null" >
+        article_title = #{articleTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="articleText != null" >
+        " article_text" = #{articleText,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tagging != null" >
+        tagging = #{tagging,jdbcType=VARCHAR},
+      </if>
+      <if test="articlePlace != null" >
+        article_place = #{articlePlace,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+    </set>
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.Article" >
+    update article
+    set article_title = #{articleTitle,jdbcType=VARCHAR},
+      " article_text" = #{articleText,jdbcType=VARCHAR},
+      author = #{author,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      tagging = #{tagging,jdbcType=VARCHAR},
+      article_place = #{articlePlace,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
+    where article_id = #{articleId,jdbcType=INTEGER}
+  </update>
+</mapper>

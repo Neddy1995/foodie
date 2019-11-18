@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.foodie.dao.LikeMapper" >
+  <resultMap id="BaseResultMap" type="com.example.foodie.bean.Like" >
+    <id column="like_id" property="likeId" jdbcType="INTEGER" />
+    <result column="article_id" property="articleId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="like_time" property="likeTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    like_id, article_id, user_id, like_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from like
+    where like_id = #{likeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from like
+    where like_id = #{likeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.foodie.bean.Like" >
+    insert into like (like_id, article_id, user_id, 
+      like_time)
+    values (#{likeId,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{likeTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.foodie.bean.Like" >
+    insert into like
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="likeId != null" >
+        like_id,
+      </if>
+      <if test="articleId != null" >
+        article_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="likeTime != null" >
+        like_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="likeId != null" >
+        #{likeId,jdbcType=INTEGER},
+      </if>
+      <if test="articleId != null" >
+        #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="likeTime != null" >
+        #{likeTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.foodie.bean.Like" >
+    update like
+    <set >
+      <if test="articleId != null" >
+        article_id = #{articleId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="likeTime != null" >
+        like_time = #{likeTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where like_id = #{likeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.Like" >
+    update like
+    set article_id = #{articleId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      like_time = #{likeTime,jdbcType=TIMESTAMP}
+    where like_id = #{likeId,jdbcType=INTEGER}
+  </update>
+</mapper>
