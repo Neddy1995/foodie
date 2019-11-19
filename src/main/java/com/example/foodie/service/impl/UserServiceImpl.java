@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 //        密码加密
 
         User user = new User(userName,password);
-        System.out.println("username:"+userName+",password:"+password);
+//        System.out.println("username:"+userName+",password:"+password);
         User userResult=userMapper.login(user);
         if(userResult!=null){
             return userResult;
@@ -28,7 +28,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user) {
+//        密码加密
 
+//        处理地址
+
+//        插入一条用户
+        userMapper.insert(user);
     }
 
 

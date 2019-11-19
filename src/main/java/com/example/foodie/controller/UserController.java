@@ -90,13 +90,18 @@ public class UserController {
 
 
     @PostMapping(value = "/register.do")
-    public ControllerResult register(HttpServletRequest request,
-                                     @RequestBody User user){
+    public ControllerResult register(@RequestBody User user){
         ControllerResult controllerResult = new ControllerResult();
-        HttpSession session = request.getSession();
-
-
+//        查询是否存在该用户名
+        User userResult = userMapper.selectByUserName(user.getUserName());
+        if(userResult !=null){
+            userService.register(user);
+            controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
+            controllerResult.setMessage("注册成功");
+            return controllerResult;
+        }
+        controllerResult.setResultCode(ControllerResult.RESULT_CODE_FAIL);
+        controllerResult.setMessage("注册失败：已存在该用户");
         return controllerResult;
-
     }
 }

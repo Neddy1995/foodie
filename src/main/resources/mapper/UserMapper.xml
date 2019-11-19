@@ -147,4 +147,11 @@
     where user_name = #{userName,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
   </select>
 
+  <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    <include refid="Base_Column_List"></include>
+    from user
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+
 </mapper>
