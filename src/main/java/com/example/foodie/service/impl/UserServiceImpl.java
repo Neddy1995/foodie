@@ -8,21 +8,28 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
-    public User login(String userName, String password) {
+    public User login(String userName,String password) {
+//        密码加密
+
+        User user = new User(userName,password);
+        System.out.println("username:"+userName+",password:"+password);
+        User userResult=userMapper.login(user);
+        if(userResult!=null){
+            return userResult;
+        }
         return null;
     }
 
-//    @Autowired
-//    private UserMapper userMapper;
-//
-//    @Override
-//    public User login(String userName,String password) {
-//        User user=userMapper.login(userName);
-//        if(user.getPassword().equals(password)){
-//            return user;
-//        }
-//        return null;
-//    }
+    @Override
+    public void register(User user) {
+
+    }
+
 
 }

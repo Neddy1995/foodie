@@ -21,6 +21,15 @@ public class User {
 
     private String userProfile;
 
+    public User() {
+
+    }
+
+    public User(String userName, String password) {
+        this.userName=userName;
+        this.password=password;
+    }
+
     public Integer getUserId() {
         return userId;
     }
@@ -91,5 +100,20 @@ public class User {
 
     public void setUserProfile(String userProfile) {
         this.userProfile = userProfile == null ? null : userProfile.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", sex=" + sex +
+                ", userCity=" + userCity +
+                ", birthday=" + birthday +
+                ", profilePicture=" + profilePicture +
+                ", userPower=" + userPower +
+                ", userProfile='" + userProfile + '\'' +
+                '}';
     }
 }

@@ -13,7 +13,7 @@
     <result column="user_profile" property="userProfile" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_id, user_name, password, sex, user_city, birthday, profile_picture, user_power, 
+    user_id, user_name, sex, user_city, birthday, profile_picture, user_power,
     user_profile
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -140,10 +140,11 @@
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
 
-<!--  <select id="login" parameterType="java.lang.String" resultMap="BaseResultMap" >-->
-<!--    select-->
-<!--    <include refid="Base_Column_List"/>-->
-<!--    from user-->
-<!--    where user_name = #{userName,jdbcType=VARCHAR}-->
-<!--  </select>-->
+  <select id="login" resultMap="BaseResultMap" parameterType="com.example.foodie.bean.User">
+    select
+    <include refid="Base_Column_List"/>
+    from user
+    where user_name = #{userName,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+  </select>
+
 </mapper>
