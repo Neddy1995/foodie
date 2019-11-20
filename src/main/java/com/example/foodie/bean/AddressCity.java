@@ -1,18 +1,18 @@
 package com.example.foodie.bean;
 
 public class AddressCity {
-    private Integer cityId;
+    private String cityId;
 
     private String province;
 
     private String city;
 
-    public Integer getCityId() {
+    public String getCityId() {
         return cityId;
     }
 
-    public void setCityId(Integer cityId) {
-        this.cityId = cityId;
+    public void setCityId(String cityId) {
+        this.cityId = cityId == null ? null : cityId.trim();
     }
 
     public String getProvince() {

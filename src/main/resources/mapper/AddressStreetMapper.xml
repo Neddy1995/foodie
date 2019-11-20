@@ -3,14 +3,27 @@
 <mapper namespace="com.example.foodie.dao.AddressStreetMapper" >
   <resultMap id="BaseResultMap" type="com.example.foodie.bean.AddressStreet" >
     <id column="street_id" property="streetId" jdbcType="VARCHAR" />
+    <result column="city_id" property="cityId" jdbcType="VARCHAR" />
+    <result column="stree_name" property="streeName" jdbcType="VARCHAR" />
   </resultMap>
+  <sql id="Base_Column_List" >
+    street_id, city_id, stree_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from address_street
+    where street_id = #{streetId,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from address_street
     where street_id = #{streetId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.AddressStreet" >
-    insert into address_street (street_id)
-    values (#{streetId,jdbcType=VARCHAR})
+    insert into address_street (street_id, city_id, stree_name
+      )
+    values (#{streetId,jdbcType=VARCHAR}, #{cityId,jdbcType=VARCHAR}, #{streeName,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.AddressStreet" >
     insert into address_street
@@ -18,11 +31,41 @@
       <if test="streetId != null" >
         street_id,
       </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="streeName != null" >
+        stree_name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="streetId != null" >
         #{streetId,jdbcType=VARCHAR},
       </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="streeName != null" >
+        #{streeName,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.foodie.bean.AddressStreet" >
+    update address_street
+    <set >
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="streeName != null" >
+        stree_name = #{streeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where street_id = #{streetId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.AddressStreet" >
+    update address_street
+    set city_id = #{cityId,jdbcType=VARCHAR},
+      stree_name = #{streeName,jdbcType=VARCHAR}
+    where street_id = #{streetId,jdbcType=VARCHAR}
+  </update>
 </mapper>

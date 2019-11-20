@@ -8,4 +8,10 @@ public interface AddressStreetMapper {
     int insert(AddressStreet record);
 
     int insertSelective(AddressStreet record);
+
+    AddressStreet selectByPrimaryKey(String streetId);
+
+    int updateByPrimaryKeySelective(AddressStreet record);
+
+    int updateByPrimaryKey(AddressStreet record);
 }
