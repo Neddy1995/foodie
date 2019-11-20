@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 @RestController
 public class UserController {
@@ -21,7 +22,24 @@ public class UserController {
     @Autowired
     private UserMapper userMapper;
 
-
+    private static boolean like(User user1,User user2){
+        if(!user1.getUserName().equals(user2.getUserName())){
+            return true;
+        }
+        else if(!user1.getBirthday().equals(user2.getBirthday())){
+            return true;
+        }
+        else if(!user1.getUserCity().equals(user2.getUserCity())){
+            return true;
+        }
+        else if(!user1.getProfilePicture().equals(user2.getProfilePicture())){
+            return true;
+        }
+        else if(!user1.getUserProfile().equals(user2.getUserProfile())){
+            return true;
+        }
+        return false;
+    }
 
     /**
      * 测试
@@ -99,7 +117,7 @@ public class UserController {
         ControllerResult controllerResult = new ControllerResult();
 //        查询是否存在该用户名
         User userResult = userMapper.selectByUserName(user.getUserName());
-        if(userResult !=null){
+        if(userResult ==null){
             userService.register(user);
             controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
             controllerResult.setMessage("注册成功");
@@ -140,7 +158,17 @@ public class UserController {
         ControllerResult controllerResult = new ControllerResult();
         HttpSession session = request.getSession();
 
+//      对比数据是否相同
+        User oldUser = (User) session.getAttribute(SessionKeyValue.USER_KEY);
+//        if(!like(user,oldUser)){
+//            controllerResult.setResultCode(ControllerResult.RESULT_CODE_FAIL);
+//            controllerResult.setMessage("未修改数据");
+//            return controllerResult;
+//        }
+
+//        修改
         userService.updateUser(user);
+
 //        重新加载用户数据
         User userResult = userService.selectById(user.getUserId());
         session.setAttribute(SessionKeyValue.USER_KEY,userResult);
