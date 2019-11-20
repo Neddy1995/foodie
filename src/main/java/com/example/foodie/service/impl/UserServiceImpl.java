@@ -30,7 +30,12 @@ public class UserServiceImpl implements UserService {
     public void register(User user) {
 //        密码加密
 
-//        处理地址
+
+//        设置用户类别
+        user.setUserPower(1);
+
+//        设置头像(根据性别设置默认头像)
+
 
 //        插入一条用户
         userMapper.insert(user);

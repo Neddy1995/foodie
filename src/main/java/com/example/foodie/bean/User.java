@@ -3,7 +3,7 @@ package com.example.foodie.bean;
 import java.util.Date;
 
 public class User {
-    private Integer userId;
+    private String userId;
 
     private String userName;
 
@@ -30,11 +30,17 @@ public class User {
         this.password=password;
     }
 
-    public Integer getUserId() {
+    public User(String userName, String password, int sex) {
+        this(userName,password);
+        this.sex=sex;
+
+    }
+
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
