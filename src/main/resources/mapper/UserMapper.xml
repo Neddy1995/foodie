@@ -109,9 +109,6 @@
       <if test="userName != null" >
         user_name = #{userName,jdbcType=VARCHAR},
       </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
       <if test="sex != null" >
         sex = #{sex,jdbcType=INTEGER},
       </if>
@@ -146,6 +143,7 @@
     where user_id = #{userId,jdbcType=VARCHAR}
   </update>
 
+<!--  登陆 -->
   <select id="login" resultMap="BaseResultMap" parameterType="com.example.foodie.bean.User">
     select
     <include refid="Base_Column_List"/>
@@ -153,6 +151,7 @@
     where user_name = #{userName,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
   </select>
 
+<!--  查询是否存在该用户名-->
   <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String">
     select
     <include refid="Base_Column_List"></include>
@@ -160,4 +159,18 @@
     where user_name = #{userName,jdbcType=VARCHAR}
   </select>
 
+<!--  查询密码是否正确-->
+  <select id="selectPassword" resultType="java.lang.Integer" parameterType="com.example.foodie.bean.User">
+    select
+    count(user_id) as number
+    from user
+    where user_id = #{userId,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+  </select>
+
+<!--  修改密码-->
+  <select id="updatePassword" parameterType="com.example.foodie.bean.User">
+    update user
+    set password = #{password,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
 </mapper>

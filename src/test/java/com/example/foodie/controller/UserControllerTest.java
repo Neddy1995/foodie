@@ -66,8 +66,28 @@ class UserControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JSONObject.toJSONString(user))
         ).andReturn();
-
         System.out.println("返回的json" + mvcResult.getResponse().getContentAsString());
 
+    }
+
+    @Test
+    @DisplayName("测试UserController的selectUser方法")
+    void selectUser() {
+
+    }
+
+    @Test
+    @DisplayName("测试UserController的updateUser方法")
+    void updateUser() {
+    }
+
+    @Test
+    @DisplayName("测试UserController的updatePassword方法")
+    void updatePassword() {
+    }
+
+    @Test
+    @DisplayName("测试UserController的logout方法")
+    void logout() {
     }
 }

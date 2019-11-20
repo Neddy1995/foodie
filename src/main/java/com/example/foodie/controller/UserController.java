@@ -29,7 +29,7 @@ public class UserController {
      */
     @RequestMapping("/user")
     public String userTest(){
-        User user = userMapper.selectByPrimaryKey(12);
+        User user = userMapper.selectByPrimaryKey("12");
         return "" + user.toString();
     }
 
@@ -88,7 +88,12 @@ public class UserController {
         }
     }
 
-
+    /**
+     * 注册
+     * 一、查询是否存在该用户名，二、将数据发送到service端处理
+     * @param user
+     * @return
+     */
     @PostMapping(value = "/register.do")
     public ControllerResult register(@RequestBody User user){
         ControllerResult controllerResult = new ControllerResult();
@@ -104,4 +109,101 @@ public class UserController {
         controllerResult.setMessage("注册失败：已存在该用户");
         return controllerResult;
     }
+
+    /**
+     * 根据id查询用户信息
+     * @param request
+     * @return
+     */
+    @GetMapping(value = "/selectUser.do")
+    public ControllerResult selectUser(HttpServletRequest request){
+        ControllerResult controllerResult = new ControllerResult();
+        HttpSession session = request.getSession();
+        User user = userService.selectById((String) session.getAttribute(SessionKeyValue.USER_ID));
+
+        controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
+        controllerResult.setMessage("查询成功");
+        controllerResult.setData(user);
+        return controllerResult;
+    }
+
+    /**
+     * 修改用户信息
+     * 修
+     * @param request
+     * @param user
+     * @return
+     */
+    @PostMapping(value = "updateUser.do")
+    public ControllerResult updateUser(HttpServletRequest request,
+                                       @RequestBody User user){
+        ControllerResult controllerResult = new ControllerResult();
+        HttpSession session = request.getSession();
+
+        userService.updateUser(user);
+//        重新加载用户数据
+        User userResult = userService.selectById(user.getUserId());
+        session.setAttribute(SessionKeyValue.USER_KEY,userResult);
+        session.setAttribute(SessionKeyValue.USER_ID,userResult.getUserId());
+
+        controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
+        controllerResult.setMessage("修改成功");
+        controllerResult.setData(userResult);
+        return controllerResult;
+    }
+
+    /**
+     * 修改密码
+     * 一、查询密码是否正确，二、修改密码，三、退出登陆（清空缓存）
+     * @param request
+     * @param response
+     * @param password
+     * @return
+     */
+    @PostMapping
+    public ControllerResult updatePassword(HttpServletRequest request,
+                                           HttpServletResponse response,
+                                           @RequestParam("password")String password,
+                                           @RequestParam("passwordNow")String passwordNow){
+        ControllerResult controllerResult = new ControllerResult();
+        HttpSession session = request.getSession();
+
+//        查询原始密码是否正确
+        boolean i = userService.selectPassword((String) session.getAttribute(SessionKeyValue.USER_ID),password);
+        if(!i){
+            controllerResult.setResultCode(ControllerResult.RESULT_CODE_FAIL);
+            controllerResult.setMessage("密码错误");
+            return controllerResult;
+        }
+
+//        修改密码
+        userService.updatePassword((String) session.getAttribute(SessionKeyValue.USER_ID),passwordNow);
+
+//        清空缓存
+        session.removeAttribute(SessionKeyValue.USER_ID);
+        session.removeAttribute(SessionKeyValue.USER_KEY);
+
+        controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
+        controllerResult.setMessage("修改密码成功");
+        return controllerResult;
+    }
+
+    /**
+     * 退出登陆（清空缓存）
+     * @param request
+     * @param response
+     * @return
+     */
+    @GetMapping
+    public ControllerResult logout(HttpServletRequest request,
+                                   HttpServletResponse response){
+        ControllerResult controllerResult = new ControllerResult();
+        HttpSession session = request.getSession();
+        session.removeAttribute(SessionKeyValue.USER_KEY);
+        session.removeAttribute(SessionKeyValue.USER_ID);
+        controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
+        controllerResult.setMessage("退出成功");
+        return controllerResult;
+    }
+
 }
