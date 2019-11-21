@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 @RestController
 public class UserController {
@@ -66,43 +65,33 @@ public class UserController {
                                   @RequestParam("userName")String userName,
                                   @RequestParam("password") String password,
                                   @RequestParam("paramCode") String paramCode){
-        ControllerResult controllerResult = new ControllerResult();
         HttpSession session = request.getSession();
 
         /*
         使用拦截器拦截
          */
 //        验证是否登陆
-//        if(session.getAttribute(SessionKeyValue.USER_KEY)!=null){
-//            controllerResult.setResultCode(ControllerResult.RESULT_CODE_ERROR);
-//            controllerResult.setMessage("登陆失败：你已登陆");
-//        }
+        if(session.getAttribute(SessionKeyValue.USER_KEY)!=null){
+            return ControllerResult.createFail("登陆失败：你已登陆");
+        }
 
 //        验证验证码
-//        String sessionCode = session.getAttribute("code").toString();
-//        if (!sessionCode.equals(paramCode)){
-//            controllerResult.setResultCode(ControllerResult.RESULT_CODE_FAIL);
-//            controllerResult.setMessage("登陆失败：验证码输入错误");
-//            return controllerResult;
-//        }
+        String sessionCode = session.getAttribute("code").toString();
+        if (!sessionCode.equals(paramCode)){
+            return ControllerResult.createFail("登陆失败：验证码输入错误");
+        }
 
 //        验证用户名密码
         User user = userService.login(userName,password);
         if(user != null){
 
-            controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
-            controllerResult.setMessage("登陆成功");
-            controllerResult.setData(user);
-
 //            将用户信息放入session中
             session.setAttribute(SessionKeyValue.USER_KEY,user);
             session.setAttribute(SessionKeyValue.USER_ID,user.getUserId());
 
-            return controllerResult;
+            return ControllerResult.createSuccess("登陆成功",user);
         }else{
-            controllerResult.setResultCode(ControllerResult.RESULT_CODE_FAIL);
-            controllerResult.setMessage("登录失败：用户名或密码错误");
-            return controllerResult;
+            return ControllerResult.createFail("登录失败：用户名或密码错误");
         }
     }
 
@@ -114,18 +103,13 @@ public class UserController {
      */
     @PostMapping(value = "/register.do")
     public ControllerResult register(@RequestBody User user){
-        ControllerResult controllerResult = new ControllerResult();
 //        查询是否存在该用户名
         User userResult = userMapper.selectByUserName(user.getUserName());
         if(userResult ==null){
             userService.register(user);
-            controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
-            controllerResult.setMessage("注册成功");
-            return controllerResult;
+            return ControllerResult.createSuccess("注册成功");
         }
-        controllerResult.setResultCode(ControllerResult.RESULT_CODE_FAIL);
-        controllerResult.setMessage("注册失败：已存在该用户");
-        return controllerResult;
+        return ControllerResult.createFail("注册失败：已存在该用户");
     }
 
     /**
@@ -135,14 +119,10 @@ public class UserController {
      */
     @GetMapping(value = "/selectUser.do")
     public ControllerResult selectUser(HttpServletRequest request){
-        ControllerResult controllerResult = new ControllerResult();
         HttpSession session = request.getSession();
         User user = userService.selectById((String) session.getAttribute(SessionKeyValue.USER_ID));
 
-        controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
-        controllerResult.setMessage("查询成功");
-        controllerResult.setData(user);
-        return controllerResult;
+        return ControllerResult.createSuccess("查询成功",user);
     }
 
     /**
@@ -155,16 +135,13 @@ public class UserController {
     @PostMapping(value = "updateUser.do")
     public ControllerResult updateUser(HttpServletRequest request,
                                        @RequestBody User user){
-        ControllerResult controllerResult = new ControllerResult();
         HttpSession session = request.getSession();
 
 //      对比数据是否相同
         User oldUser = (User) session.getAttribute(SessionKeyValue.USER_KEY);
-//        if(!like(user,oldUser)){
-//            controllerResult.setResultCode(ControllerResult.RESULT_CODE_FAIL);
-//            controllerResult.setMessage("未修改数据");
-//            return controllerResult;
-//        }
+        if(!like(user,oldUser)){
+            return ControllerResult.createFail("未修改数据");
+        }
 
 //        修改
         userService.updateUser(user);
@@ -174,10 +151,7 @@ public class UserController {
         session.setAttribute(SessionKeyValue.USER_KEY,userResult);
         session.setAttribute(SessionKeyValue.USER_ID,userResult.getUserId());
 
-        controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
-        controllerResult.setMessage("修改成功");
-        controllerResult.setData(userResult);
-        return controllerResult;
+        return ControllerResult.createSuccess("修改成功",userResult);
     }
 
     /**
@@ -193,15 +167,12 @@ public class UserController {
                                            HttpServletResponse response,
                                            @RequestParam("password")String password,
                                            @RequestParam("passwordNow")String passwordNow){
-        ControllerResult controllerResult = new ControllerResult();
         HttpSession session = request.getSession();
 
 //        查询原始密码是否正确
         boolean i = userService.selectPassword((String) session.getAttribute(SessionKeyValue.USER_ID),password);
         if(!i){
-            controllerResult.setResultCode(ControllerResult.RESULT_CODE_FAIL);
-            controllerResult.setMessage("密码错误");
-            return controllerResult;
+            return ControllerResult.createFail("密码错误");
         }
 
 //        修改密码
@@ -211,9 +182,7 @@ public class UserController {
         session.removeAttribute(SessionKeyValue.USER_ID);
         session.removeAttribute(SessionKeyValue.USER_KEY);
 
-        controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
-        controllerResult.setMessage("修改密码成功");
-        return controllerResult;
+        return ControllerResult.createSuccess("修改密码成功");
     }
 
     /**
@@ -225,13 +194,10 @@ public class UserController {
     @GetMapping
     public ControllerResult logout(HttpServletRequest request,
                                    HttpServletResponse response){
-        ControllerResult controllerResult = new ControllerResult();
         HttpSession session = request.getSession();
         session.removeAttribute(SessionKeyValue.USER_KEY);
         session.removeAttribute(SessionKeyValue.USER_ID);
-        controllerResult.setResultCode(ControllerResult.RESULT_CODE_SUCCESS);
-        controllerResult.setMessage("退出成功");
-        return controllerResult;
+        return ControllerResult.createSuccess("退出成功");
     }
 
 }

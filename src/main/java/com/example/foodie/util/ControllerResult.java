@@ -48,6 +48,35 @@ public class ControllerResult {
         this.data = data;
     }
 
+    public static ControllerResult createSuccess(String message,Object data){
+        ControllerResult controllerResult = new ControllerResult();
+        controllerResult.setResultCode(RESULT_CODE_SUCCESS);
+        controllerResult.setMessage(message);
+        controllerResult.setData(data);
+        return controllerResult;
+    }
+
+    public static ControllerResult createSuccess(String message){
+        ControllerResult controllerResult = new ControllerResult();
+        controllerResult.setResultCode(RESULT_CODE_SUCCESS);
+        controllerResult.setMessage(message);
+        return controllerResult;
+    }
+
+    public static ControllerResult createFail(String message){
+        ControllerResult controllerResult = new ControllerResult();
+        controllerResult.setResultCode(RESULT_CODE_FAIL);
+        controllerResult.setMessage(message);
+        return controllerResult;
+    }
+
+    public static ControllerResult createError(String message){
+        ControllerResult controllerResult = new ControllerResult();
+        controllerResult.setResultCode(RESULT_CODE_ERROR);
+        controllerResult.setMessage(message);
+        return controllerResult;
+    }
+
     @Override
     public String toString() {
         return "ControllerResult{" +
