@@ -3,38 +3,38 @@ package com.example.foodie.bean;
 import java.util.Date;
 
 public class Comment {
-    private Integer commentId;
+    private String commentId;
 
-    private Integer articleId;
+    private String articleId;
 
-    private Integer userId;
+    private String userId;
 
     private String commentText;
 
     private Date commentTime;
 
-    public Integer getCommentId() {
+    public String getCommentId() {
         return commentId;
     }
 
-    public void setCommentId(Integer commentId) {
-        this.commentId = commentId;
+    public void setCommentId(String commentId) {
+        this.commentId = commentId == null ? null : commentId.trim();
     }
 
-    public Integer getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
+    public void setArticleId(String articleId) {
+        this.articleId = articleId == null ? null : articleId.trim();
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public String getCommentText() {

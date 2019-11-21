@@ -2,27 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.foodie.dao.ArticlePictureMapper" >
   <resultMap id="BaseResultMap" type="com.example.foodie.bean.ArticlePicture" >
-    <id column="article_picture_id" property="articlePictureId" jdbcType="INTEGER" />
-    <result column="article_id" property="articleId" jdbcType="INTEGER" />
-    <result column="picture_id" property="pictureId" jdbcType="INTEGER" />
+    <id column="article_picture_id" property="articlePictureId" jdbcType="VARCHAR" />
+    <result column="article_id" property="articleId" jdbcType="VARCHAR" />
+    <result column="picture_id" property="pictureId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     article_picture_id, article_id, picture_id
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from article_picture
-    where article_picture_id = #{articlePictureId,jdbcType=INTEGER}
+    where article_picture_id = #{articlePictureId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from article_picture
-    where article_picture_id = #{articlePictureId,jdbcType=INTEGER}
+    where article_picture_id = #{articlePictureId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.ArticlePicture" >
     insert into article_picture (article_picture_id, article_id, picture_id
       )
-    values (#{articlePictureId,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER}, #{pictureId,jdbcType=INTEGER}
+    values (#{articlePictureId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{pictureId,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.ArticlePicture" >
@@ -40,13 +40,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="articlePictureId != null" >
-        #{articlePictureId,jdbcType=INTEGER},
+        #{articlePictureId,jdbcType=VARCHAR},
       </if>
       <if test="articleId != null" >
-        #{articleId,jdbcType=INTEGER},
+        #{articleId,jdbcType=VARCHAR},
       </if>
       <if test="pictureId != null" >
-        #{pictureId,jdbcType=INTEGER},
+        #{pictureId,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -54,18 +54,18 @@
     update article_picture
     <set >
       <if test="articleId != null" >
-        article_id = #{articleId,jdbcType=INTEGER},
+        article_id = #{articleId,jdbcType=VARCHAR},
       </if>
       <if test="pictureId != null" >
-        picture_id = #{pictureId,jdbcType=INTEGER},
+        picture_id = #{pictureId,jdbcType=VARCHAR},
       </if>
     </set>
-    where article_picture_id = #{articlePictureId,jdbcType=INTEGER}
+    where article_picture_id = #{articlePictureId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.ArticlePicture" >
     update article_picture
-    set article_id = #{articleId,jdbcType=INTEGER},
-      picture_id = #{pictureId,jdbcType=INTEGER}
-    where article_picture_id = #{articlePictureId,jdbcType=INTEGER}
+    set article_id = #{articleId,jdbcType=VARCHAR},
+      picture_id = #{pictureId,jdbcType=VARCHAR}
+    where article_picture_id = #{articlePictureId,jdbcType=VARCHAR}
   </update>
 </mapper>

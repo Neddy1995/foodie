@@ -2,28 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.foodie.dao.LikeMapper" >
   <resultMap id="BaseResultMap" type="com.example.foodie.bean.Like" >
-    <id column="like_id" property="likeId" jdbcType="INTEGER" />
-    <result column="article_id" property="articleId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="like_id" property="likeId" jdbcType="VARCHAR" />
+    <result column="article_id" property="articleId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="like_time" property="likeTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     like_id, article_id, user_id, like_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from like
-    where like_id = #{likeId,jdbcType=INTEGER}
+    where like_id = #{likeId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from like
-    where like_id = #{likeId,jdbcType=INTEGER}
+    where like_id = #{likeId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.Like" >
     insert into like (like_id, article_id, user_id, 
       like_time)
-    values (#{likeId,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+    values (#{likeId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
       #{likeTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.Like" >
@@ -44,13 +44,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="likeId != null" >
-        #{likeId,jdbcType=INTEGER},
+        #{likeId,jdbcType=VARCHAR},
       </if>
       <if test="articleId != null" >
-        #{articleId,jdbcType=INTEGER},
+        #{articleId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="likeTime != null" >
         #{likeTime,jdbcType=TIMESTAMP},
@@ -61,22 +61,22 @@
     update like
     <set >
       <if test="articleId != null" >
-        article_id = #{articleId,jdbcType=INTEGER},
+        article_id = #{articleId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="likeTime != null" >
         like_time = #{likeTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where like_id = #{likeId,jdbcType=INTEGER}
+    where like_id = #{likeId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.Like" >
     update like
-    set article_id = #{articleId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
+    set article_id = #{articleId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
       like_time = #{likeTime,jdbcType=TIMESTAMP}
-    where like_id = #{likeId,jdbcType=INTEGER}
+    where like_id = #{likeId,jdbcType=VARCHAR}
   </update>
 </mapper>

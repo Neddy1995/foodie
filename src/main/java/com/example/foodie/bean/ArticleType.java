@@ -1,18 +1,18 @@
 package com.example.foodie.bean;
 
 public class ArticleType {
-    private Integer typeId;
+    private String typeId;
 
     private String type1;
 
     private String type2;
 
-    public Integer getTypeId() {
+    public String getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setTypeId(String typeId) {
+        this.typeId = typeId == null ? null : typeId.trim();
     }
 
     public String getType1() {

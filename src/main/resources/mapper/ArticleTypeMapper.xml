@@ -2,27 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.foodie.dao.ArticleTypeMapper" >
   <resultMap id="BaseResultMap" type="com.example.foodie.bean.ArticleType" >
-    <id column="type_id" property="typeId" jdbcType="INTEGER" />
+    <id column="type_id" property="typeId" jdbcType="VARCHAR" />
     <result column="type1" property="type1" jdbcType="VARCHAR" />
     <result column="type2" property="type2" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     type_id, type1, type2
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from article_type
-    where type_id = #{typeId,jdbcType=INTEGER}
+    where type_id = #{typeId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from article_type
-    where type_id = #{typeId,jdbcType=INTEGER}
+    where type_id = #{typeId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.ArticleType" >
     insert into article_type (type_id, type1, type2
       )
-    values (#{typeId,jdbcType=INTEGER}, #{type1,jdbcType=VARCHAR}, #{type2,jdbcType=VARCHAR}
+    values (#{typeId,jdbcType=VARCHAR}, #{type1,jdbcType=VARCHAR}, #{type2,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.ArticleType" >
@@ -40,7 +40,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="typeId != null" >
-        #{typeId,jdbcType=INTEGER},
+        #{typeId,jdbcType=VARCHAR},
       </if>
       <if test="type1 != null" >
         #{type1,jdbcType=VARCHAR},
@@ -60,12 +60,12 @@
         type2 = #{type2,jdbcType=VARCHAR},
       </if>
     </set>
-    where type_id = #{typeId,jdbcType=INTEGER}
+    where type_id = #{typeId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.ArticleType" >
     update article_type
     set type1 = #{type1,jdbcType=VARCHAR},
       type2 = #{type2,jdbcType=VARCHAR}
-    where type_id = #{typeId,jdbcType=INTEGER}
+    where type_id = #{typeId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -3,28 +3,28 @@ package com.example.foodie.bean;
 import java.util.Date;
 
 public class Article {
-    private Integer articleId;
+    private String articleId;
 
     private String articleTitle;
 
     private String articleText;
 
-    private Integer author;
+    private String author;
 
     private Date createTime;
 
     private String tagging;
 
-    private Integer articlePlace;
+    private String articlePlace;
 
     private Integer state;
 
-    public Integer getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
+    public void setArticleId(String articleId) {
+        this.articleId = articleId == null ? null : articleId.trim();
     }
 
     public String getArticleTitle() {
@@ -43,12 +43,12 @@ public class Article {
         this.articleText = articleText == null ? null : articleText.trim();
     }
 
-    public Integer getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(Integer author) {
-        this.author = author;
+    public void setAuthor(String author) {
+        this.author = author == null ? null : author.trim();
     }
 
     public Date getCreateTime() {
@@ -67,12 +67,12 @@ public class Article {
         this.tagging = tagging == null ? null : tagging.trim();
     }
 
-    public Integer getArticlePlace() {
+    public String getArticlePlace() {
         return articlePlace;
     }
 
-    public void setArticlePlace(Integer articlePlace) {
-        this.articlePlace = articlePlace;
+    public void setArticlePlace(String articlePlace) {
+        this.articlePlace = articlePlace == null ? null : articlePlace.trim();
     }
 
     public Integer getState() {

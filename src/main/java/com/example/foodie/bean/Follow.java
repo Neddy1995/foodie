@@ -3,36 +3,36 @@ package com.example.foodie.bean;
 import java.util.Date;
 
 public class Follow {
-    private Integer followId;
+    private String followId;
 
-    private Integer articleId;
+    private String articleId;
 
-    private Integer userId;
+    private String userId;
 
     private Date followTime;
 
-    public Integer getFollowId() {
+    public String getFollowId() {
         return followId;
     }
 
-    public void setFollowId(Integer followId) {
-        this.followId = followId;
+    public void setFollowId(String followId) {
+        this.followId = followId == null ? null : followId.trim();
     }
 
-    public Integer getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
+    public void setArticleId(String articleId) {
+        this.articleId = articleId == null ? null : articleId.trim();
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public Date getFollowTime() {

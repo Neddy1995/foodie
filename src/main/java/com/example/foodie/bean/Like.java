@@ -3,36 +3,36 @@ package com.example.foodie.bean;
 import java.util.Date;
 
 public class Like {
-    private Integer likeId;
+    private String likeId;
 
-    private Integer articleId;
+    private String articleId;
 
-    private Integer userId;
+    private String userId;
 
     private Date likeTime;
 
-    public Integer getLikeId() {
+    public String getLikeId() {
         return likeId;
     }
 
-    public void setLikeId(Integer likeId) {
-        this.likeId = likeId;
+    public void setLikeId(String likeId) {
+        this.likeId = likeId == null ? null : likeId.trim();
     }
 
-    public Integer getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
+    public void setArticleId(String articleId) {
+        this.articleId = articleId == null ? null : articleId.trim();
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public Date getLikeTime() {

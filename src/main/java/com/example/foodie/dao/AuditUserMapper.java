@@ -3,13 +3,13 @@ package com.example.foodie.dao;
 import com.example.foodie.bean.AuditUser;
 
 public interface AuditUserMapper {
-    int deleteByPrimaryKey(Integer auditUserId);
+    int deleteByPrimaryKey(String auditUserId);
 
     int insert(AuditUser record);
 
     int insertSelective(AuditUser record);
 
-    AuditUser selectByPrimaryKey(Integer auditUserId);
+    AuditUser selectByPrimaryKey(String auditUserId);
 
     int updateByPrimaryKeySelective(AuditUser record);
 

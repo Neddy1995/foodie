@@ -1,33 +1,33 @@
 package com.example.foodie.bean;
 
 public class ArticlePicture {
-    private Integer articlePictureId;
+    private String articlePictureId;
 
-    private Integer articleId;
+    private String articleId;
 
-    private Integer pictureId;
+    private String pictureId;
 
-    public Integer getArticlePictureId() {
+    public String getArticlePictureId() {
         return articlePictureId;
     }
 
-    public void setArticlePictureId(Integer articlePictureId) {
-        this.articlePictureId = articlePictureId;
+    public void setArticlePictureId(String articlePictureId) {
+        this.articlePictureId = articlePictureId == null ? null : articlePictureId.trim();
     }
 
-    public Integer getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
+    public void setArticleId(String articleId) {
+        this.articleId = articleId == null ? null : articleId.trim();
     }
 
-    public Integer getPictureId() {
+    public String getPictureId() {
         return pictureId;
     }
 
-    public void setPictureId(Integer pictureId) {
-        this.pictureId = pictureId;
+    public void setPictureId(String pictureId) {
+        this.pictureId = pictureId == null ? null : pictureId.trim();
     }
 }

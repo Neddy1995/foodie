@@ -3,13 +3,13 @@ package com.example.foodie.dao;
 import com.example.foodie.bean.ArticleType;
 
 public interface ArticleTypeMapper {
-    int deleteByPrimaryKey(Integer typeId);
+    int deleteByPrimaryKey(String typeId);
 
     int insert(ArticleType record);
 
     int insertSelective(ArticleType record);
 
-    ArticleType selectByPrimaryKey(Integer typeId);
+    ArticleType selectByPrimaryKey(String typeId);
 
     int updateByPrimaryKeySelective(ArticleType record);
 

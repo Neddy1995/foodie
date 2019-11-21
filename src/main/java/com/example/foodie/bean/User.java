@@ -11,11 +11,11 @@ public class User {
 
     private Integer sex;
 
-    private Integer userCity;
+    private String userCity;
 
     private Date birthday;
 
-    private Integer profilePicture;
+    private String profilePicture;
 
     private Integer userPower;
 
@@ -68,11 +68,11 @@ public class User {
         this.sex = sex;
     }
 
-    public Integer getUserCity() {
+    public String getUserCity() {
         return userCity;
     }
 
-    public void setUserCity(Integer userCity) {
+    public void setUserCity(String userCity) {
         this.userCity = userCity;
     }
 
@@ -84,11 +84,11 @@ public class User {
         this.birthday = birthday;
     }
 
-    public Integer getProfilePicture() {
+    public String getProfilePicture() {
         return profilePicture;
     }
 
-    public void setProfilePicture(Integer profilePicture) {
+    public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
 

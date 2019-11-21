@@ -2,30 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.foodie.dao.AuditUserMapper" >
   <resultMap id="BaseResultMap" type="com.example.foodie.bean.AuditUser" >
-    <id column="audit_user_id" property="auditUserId" jdbcType="INTEGER" />
-    <result column="audited_user_id" property="auditedUserId" jdbcType="INTEGER" />
+    <id column="audit_user_id" property="auditUserId" jdbcType="VARCHAR" />
+    <result column="audited_user_id" property="auditedUserId" jdbcType="VARCHAR" />
     <result column="audit_text" property="auditText" jdbcType="VARCHAR" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     audit_user_id, audited_user_id, audit_text, user_id, audit_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from audit_user
-    where audit_user_id = #{auditUserId,jdbcType=INTEGER}
+    where audit_user_id = #{auditUserId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from audit_user
-    where audit_user_id = #{auditUserId,jdbcType=INTEGER}
+    where audit_user_id = #{auditUserId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.AuditUser" >
     insert into audit_user (audit_user_id, audited_user_id, audit_text, 
       user_id, audit_time)
-    values (#{auditUserId,jdbcType=INTEGER}, #{auditedUserId,jdbcType=INTEGER}, #{auditText,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=INTEGER}, #{auditTime,jdbcType=TIMESTAMP})
+    values (#{auditUserId,jdbcType=VARCHAR}, #{auditedUserId,jdbcType=VARCHAR}, #{auditText,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.AuditUser" >
     insert into audit_user
@@ -48,16 +48,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="auditUserId != null" >
-        #{auditUserId,jdbcType=INTEGER},
+        #{auditUserId,jdbcType=VARCHAR},
       </if>
       <if test="auditedUserId != null" >
-        #{auditedUserId,jdbcType=INTEGER},
+        #{auditedUserId,jdbcType=VARCHAR},
       </if>
       <if test="auditText != null" >
         #{auditText,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="auditTime != null" >
         #{auditTime,jdbcType=TIMESTAMP},
@@ -68,26 +68,26 @@
     update audit_user
     <set >
       <if test="auditedUserId != null" >
-        audited_user_id = #{auditedUserId,jdbcType=INTEGER},
+        audited_user_id = #{auditedUserId,jdbcType=VARCHAR},
       </if>
       <if test="auditText != null" >
         audit_text = #{auditText,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="auditTime != null" >
         audit_time = #{auditTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where audit_user_id = #{auditUserId,jdbcType=INTEGER}
+    where audit_user_id = #{auditUserId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.AuditUser" >
     update audit_user
-    set audited_user_id = #{auditedUserId,jdbcType=INTEGER},
+    set audited_user_id = #{auditedUserId,jdbcType=VARCHAR},
       audit_text = #{auditText,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=VARCHAR},
       audit_time = #{auditTime,jdbcType=TIMESTAMP}
-    where audit_user_id = #{auditUserId,jdbcType=INTEGER}
+    where audit_user_id = #{auditUserId,jdbcType=VARCHAR}
   </update>
 </mapper>

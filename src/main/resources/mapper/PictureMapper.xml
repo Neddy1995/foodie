@@ -2,29 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.foodie.dao.PictureMapper" >
   <resultMap id="BaseResultMap" type="com.example.foodie.bean.Picture" >
-    <id column="img_id" property="imgId" jdbcType="INTEGER" />
+    <id column="img_id" property="imgId" jdbcType="VARCHAR" />
     <result column="img_path" property="imgPath" jdbcType="VARCHAR" />
     <result column="img_name" property="imgName" jdbcType="VARCHAR" />
-    <result column="img_user" property="imgUser" jdbcType="INTEGER" />
+    <result column="img_user" property="imgUser" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     img_id, img_path, img_name, img_user
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from picture
-    where img_id = #{imgId,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from picture
-    where img_id = #{imgId,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.Picture" >
     insert into picture (img_id, img_path, img_name, 
       img_user)
-    values (#{imgId,jdbcType=INTEGER}, #{imgPath,jdbcType=VARCHAR}, #{imgName,jdbcType=VARCHAR}, 
-      #{imgUser,jdbcType=INTEGER})
+    values (#{imgId,jdbcType=VARCHAR}, #{imgPath,jdbcType=VARCHAR}, #{imgName,jdbcType=VARCHAR}, 
+      #{imgUser,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.Picture" >
     insert into picture
@@ -44,7 +44,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="imgId != null" >
-        #{imgId,jdbcType=INTEGER},
+        #{imgId,jdbcType=VARCHAR},
       </if>
       <if test="imgPath != null" >
         #{imgPath,jdbcType=VARCHAR},
@@ -53,7 +53,7 @@
         #{imgName,jdbcType=VARCHAR},
       </if>
       <if test="imgUser != null" >
-        #{imgUser,jdbcType=INTEGER},
+        #{imgUser,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -67,16 +67,16 @@
         img_name = #{imgName,jdbcType=VARCHAR},
       </if>
       <if test="imgUser != null" >
-        img_user = #{imgUser,jdbcType=INTEGER},
+        img_user = #{imgUser,jdbcType=VARCHAR},
       </if>
     </set>
-    where img_id = #{imgId,jdbcType=INTEGER}
+    where img_id = #{imgId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.Picture" >
     update picture
     set img_path = #{imgPath,jdbcType=VARCHAR},
       img_name = #{imgName,jdbcType=VARCHAR},
-      img_user = #{imgUser,jdbcType=INTEGER}
-    where img_id = #{imgId,jdbcType=INTEGER}
+      img_user = #{imgUser,jdbcType=VARCHAR}
+    where img_id = #{imgId,jdbcType=VARCHAR}
   </update>
 </mapper>

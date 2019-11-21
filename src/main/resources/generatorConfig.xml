@@ -5,8 +5,8 @@
 <generatorConfiguration>
 
     <!--mysql 连接数据库jar 这里选择自己本地位置-->
-    <classPathEntry location="E:\apache-maven-3.5.3\repo1\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar" />
-    <!--<classPathEntry location="D:\mavenrespository\repository\repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar" />-->
+<!--    <classPathEntry location="E:\apache-maven-3.5.3\repo1\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar" />-->
+    <classPathEntry location="D:\maven-repository\mysql\mysql-connector-java\5.1.30\mysql-connector-java-5.1.30.jar" />
     <context id="context1" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
@@ -15,7 +15,7 @@
 
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/foodie?serverTimezone=UTC" userId="root"
+                        connectionURL="jdbc:mysql://118.122.117.57:3306/foodie?serverTimezone=UTC" userId="root"
                         password="123456">
         </jdbcConnection>
 
@@ -28,7 +28,7 @@
 
         <!-- targetProject:生成PO类的位置 -->
         <javaModelGenerator targetPackage="com.example.foodie.bean"
-                            targetProject="E:\IDEA\IDEAworkspace\foodie\src\main\java">
+                            targetProject="D:\IDEAWorkspace\foodie\src\main\java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -40,7 +40,7 @@
         若果maven工程是分模块的工程，targetProject="所属模块的名称"，例如：
         targetProject="ecps-manager-mapper"，下同-->
         <sqlMapGenerator targetPackage="mapper"
-                         targetProject="E:\IDEA\IDEAworkspace\foodie\src\main\resources">
+                         targetProject="D:\IDEAWorkspace\foodie\src\main\resources">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
@@ -48,7 +48,7 @@
         <!-- targetPackage：mapper接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.example.foodie.dao"
-                             targetProject="E:\IDEA\IDEAworkspace\foodie\src\main\java">
+                             targetProject="D:\IDEAWorkspace\foodie\src\main\java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>

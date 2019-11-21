@@ -2,28 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.foodie.dao.FollowMapper" >
   <resultMap id="BaseResultMap" type="com.example.foodie.bean.Follow" >
-    <id column="follow_id" property="followId" jdbcType="INTEGER" />
-    <result column="article_id" property="articleId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="follow_id" property="followId" jdbcType="VARCHAR" />
+    <result column="article_id" property="articleId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="follow_time" property="followTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     follow_id, article_id, user_id, follow_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from follow
-    where follow_id = #{followId,jdbcType=INTEGER}
+    where follow_id = #{followId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from follow
-    where follow_id = #{followId,jdbcType=INTEGER}
+    where follow_id = #{followId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.Follow" >
     insert into follow (follow_id, article_id, user_id, 
       follow_time)
-    values (#{followId,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+    values (#{followId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
       #{followTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.Follow" >
@@ -44,13 +44,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="followId != null" >
-        #{followId,jdbcType=INTEGER},
+        #{followId,jdbcType=VARCHAR},
       </if>
       <if test="articleId != null" >
-        #{articleId,jdbcType=INTEGER},
+        #{articleId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="followTime != null" >
         #{followTime,jdbcType=TIMESTAMP},
@@ -61,22 +61,22 @@
     update follow
     <set >
       <if test="articleId != null" >
-        article_id = #{articleId,jdbcType=INTEGER},
+        article_id = #{articleId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="followTime != null" >
         follow_time = #{followTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where follow_id = #{followId,jdbcType=INTEGER}
+    where follow_id = #{followId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.Follow" >
     update follow
-    set article_id = #{articleId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
+    set article_id = #{articleId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
       follow_time = #{followTime,jdbcType=TIMESTAMP}
-    where follow_id = #{followId,jdbcType=INTEGER}
+    where follow_id = #{followId,jdbcType=VARCHAR}
   </update>
 </mapper>

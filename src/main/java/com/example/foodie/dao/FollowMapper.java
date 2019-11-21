@@ -3,13 +3,13 @@ package com.example.foodie.dao;
 import com.example.foodie.bean.Follow;
 
 public interface FollowMapper {
-    int deleteByPrimaryKey(Integer followId);
+    int deleteByPrimaryKey(String followId);
 
     int insert(Follow record);
 
     int insertSelective(Follow record);
 
-    Follow selectByPrimaryKey(Integer followId);
+    Follow selectByPrimaryKey(String followId);
 
     int updateByPrimaryKeySelective(Follow record);
 

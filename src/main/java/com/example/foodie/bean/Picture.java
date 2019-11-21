@@ -1,20 +1,20 @@
 package com.example.foodie.bean;
 
 public class Picture {
-    private Integer imgId;
+    private String imgId;
 
     private String imgPath;
 
     private String imgName;
 
-    private Integer imgUser;
+    private String imgUser;
 
-    public Integer getImgId() {
+    public String getImgId() {
         return imgId;
     }
 
-    public void setImgId(Integer imgId) {
-        this.imgId = imgId;
+    public void setImgId(String imgId) {
+        this.imgId = imgId == null ? null : imgId.trim();
     }
 
     public String getImgPath() {
@@ -33,11 +33,11 @@ public class Picture {
         this.imgName = imgName == null ? null : imgName.trim();
     }
 
-    public Integer getImgUser() {
+    public String getImgUser() {
         return imgUser;
     }
 
-    public void setImgUser(Integer imgUser) {
-        this.imgUser = imgUser;
+    public void setImgUser(String imgUser) {
+        this.imgUser = imgUser == null ? null : imgUser.trim();
     }
 }

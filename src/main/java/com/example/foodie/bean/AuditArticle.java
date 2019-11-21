@@ -3,30 +3,30 @@ package com.example.foodie.bean;
 import java.util.Date;
 
 public class AuditArticle {
-    private Integer auditArticleId;
+    private String auditArticleId;
 
-    private Integer articleId;
+    private String articleId;
 
     private String auditText;
 
-    private Integer userId;
+    private String userId;
 
     private Date auditTime;
 
-    public Integer getAuditArticleId() {
+    public String getAuditArticleId() {
         return auditArticleId;
     }
 
-    public void setAuditArticleId(Integer auditArticleId) {
-        this.auditArticleId = auditArticleId;
+    public void setAuditArticleId(String auditArticleId) {
+        this.auditArticleId = auditArticleId == null ? null : auditArticleId.trim();
     }
 
-    public Integer getArticleId() {
+    public String getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Integer articleId) {
-        this.articleId = articleId;
+    public void setArticleId(String articleId) {
+        this.articleId = articleId == null ? null : articleId.trim();
     }
 
     public String getAuditText() {
@@ -37,12 +37,12 @@ public class AuditArticle {
         this.auditText = auditText == null ? null : auditText.trim();
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public Date getAuditTime() {

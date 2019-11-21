@@ -2,29 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.foodie.dao.CommentMapper" >
   <resultMap id="BaseResultMap" type="com.example.foodie.bean.Comment" >
-    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
-    <result column="article_id" property="articleId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
+    <result column="article_id" property="articleId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="comment_text" property="commentText" jdbcType="VARCHAR" />
     <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     comment_id, article_id, user_id, comment_text, comment_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from comment
-    where comment_id = #{commentId,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from comment
-    where comment_id = #{commentId,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.Comment" >
     insert into comment (comment_id, article_id, user_id, 
       comment_text, comment_time)
-    values (#{commentId,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+    values (#{commentId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
       #{commentText,jdbcType=VARCHAR}, #{commentTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.Comment" >
@@ -48,13 +48,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="commentId != null" >
-        #{commentId,jdbcType=INTEGER},
+        #{commentId,jdbcType=VARCHAR},
       </if>
       <if test="articleId != null" >
-        #{articleId,jdbcType=INTEGER},
+        #{articleId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="commentText != null" >
         #{commentText,jdbcType=VARCHAR},
@@ -68,10 +68,10 @@
     update comment
     <set >
       <if test="articleId != null" >
-        article_id = #{articleId,jdbcType=INTEGER},
+        article_id = #{articleId,jdbcType=VARCHAR},
       </if>
       <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="commentText != null" >
         comment_text = #{commentText,jdbcType=VARCHAR},
@@ -80,14 +80,14 @@
         comment_time = #{commentTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where comment_id = #{commentId,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.Comment" >
     update comment
-    set article_id = #{articleId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
+    set article_id = #{articleId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
       comment_text = #{commentText,jdbcType=VARCHAR},
       comment_time = #{commentTime,jdbcType=TIMESTAMP}
-    where comment_id = #{commentId,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=VARCHAR}
   </update>
 </mapper>
