@@ -2,7 +2,10 @@ package com.example.foodie.dao;
 
 import com.example.foodie.bean.Article;
 
+import java.util.List;
+
 public interface ArticleMapper {
+
     int deleteByPrimaryKey(String articleId);
 
     int insert(Article record);
@@ -14,4 +17,10 @@ public interface ArticleMapper {
     int updateByPrimaryKeySelective(Article record);
 
     int updateByPrimaryKey(Article record);
+
+    List<Article> selectByStreetId(String streetId);
+
+    List<Article> selectByTypeId(String typeId);
+
+    List<Article> selectByText(String text);
 }

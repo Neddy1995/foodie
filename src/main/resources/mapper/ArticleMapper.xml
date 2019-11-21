@@ -4,15 +4,19 @@
   <resultMap id="BaseResultMap" type="com.example.foodie.bean.Article" >
     <id column="article_id" property="articleId" jdbcType="VARCHAR" />
     <result column="article_title" property="articleTitle" jdbcType="VARCHAR" />
-    <result column=" article_text" property="articleText" jdbcType="VARCHAR" />
+    <result column="article_text" property="articleText" jdbcType="VARCHAR" />
     <result column="author" property="author" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="tagging" property="tagging" jdbcType="VARCHAR" />
     <result column="article_place" property="articlePlace" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="TitleMap" type="com.example.foodie.bean.Article">
+    <id column="article_id" property="articleId" jdbcType="VARCHAR" />
+    <result column="article_title" property="articleTitle" jdbcType="VARCHAR" />
+  </resultMap>
   <sql id="Base_Column_List" >
-    article_id, article_title, " article_text", author, create_time, tagging, article_place, 
+    article_id, article_title,article_text, author, create_time, tagging, article_place,
     state
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
@@ -126,4 +130,39 @@
       state = #{state,jdbcType=INTEGER}
     where article_id = #{articleId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByStreetId" parameterType="java.lang.String" resultMap="TitleMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from article
+    where street_id = #{streetId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByTypeId" parameterType="java.lang.String" resultMap="TitleMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from article
+    where type_id = #{typeId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByText" parameterType="java.lang.String" resultMap="TitleMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    (select
+    <include refid="Base_Column_List"></include>
+    from article
+    where article_title like concat('%',#{text,jdbcType=VARCHAR},'%')
+    union all
+    select
+    <include refid="Base_Column_List"></include>
+    from article
+    where article_text like concat('%',#{text,jdbcType=VARCHAR},'%')
+    union all
+    select
+    <include refid="Base_Column_List"></include>
+    from article
+    where tagging like concat('%',#{text,jdbcType=VARCHAR},'%')) a
+    group by <include refid="Base_Column_List"></include>
+  </select>
 </mapper>
