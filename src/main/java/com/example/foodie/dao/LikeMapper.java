@@ -2,6 +2,8 @@ package com.example.foodie.dao;
 
 import com.example.foodie.bean.Like;
 
+import java.util.List;
+
 public interface LikeMapper {
     int deleteByPrimaryKey(String likeId);
 
@@ -14,4 +16,6 @@ public interface LikeMapper {
     int updateByPrimaryKeySelective(Like record);
 
     int updateByPrimaryKey(Like record);
+
+    List<String> selectByUserId(String userId);
 }

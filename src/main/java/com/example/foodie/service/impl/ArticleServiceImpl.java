@@ -46,6 +46,14 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
+    public List<TitleAndPictureVo> selectByArticleList(List<String> articleIdList) {
+        List<Article> articleList = articleMapper.selectByComment(articleIdList);
+        List<TitleAndPictureVo> list = getTitleAndPictureVos(articleList);
+        return list;
+    }
+
+
+    @Override
     public ArticleVo selectById(String articleId) {
         ArticleVo articleVo = new ArticleVo();
 

@@ -22,4 +22,6 @@ public interface ArticleMapper {
     List<Article> selectByTypeId(String typeId);
 
     List<Article> selectByText(String text);
+
+    List<Article> selectByComment(List<String> listComment);
 }

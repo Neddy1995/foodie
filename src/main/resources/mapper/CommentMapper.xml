@@ -8,6 +8,14 @@
     <result column="comment_text" property="commentText" jdbcType="VARCHAR" />
     <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <resultMap id="CommentIdMap" type="com.example.foodie.bean.Comment">
+    <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Comment_id_List">
+    comment_id
+  </sql>
   <sql id="Base_Column_List" >
     comment_id, article_id, user_id, comment_text, comment_time
   </sql>
@@ -90,4 +98,11 @@
       comment_time = #{commentTime,jdbcType=TIMESTAMP}
     where comment_id = #{commentId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByUserId" parameterType="java.lang.String" resultMap="CommentIdMap">
+    select
+    <include refid="Comment_id_List"></include>
+    from comment
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
 </mapper>

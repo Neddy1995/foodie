@@ -17,9 +17,14 @@
     <id column="article_id" property="articleId" jdbcType="VARCHAR" />
     <result column="article_title" property="articleTitle" jdbcType="VARCHAR" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     article_id, article_title, article_text, author, create_time, tagging, article_place, 
     state, type_id
+  </sql>
+
+  <sql id="Title_Colum_List">
+    article_id, article_title
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -180,5 +185,15 @@
     from article
     where tagging like concat('%',#{text,jdbcType=VARCHAR},'%')) a
     group by <include refid="Base_Column_List"></include>
+  </select>
+
+  <select id="selectByComment" parameterType="java.util.List" resultMap="TitleMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from article
+    where article_id in
+    <foreach collection="list" item="item" open="(" close=")" separator=",">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
   </select>
 </mapper>

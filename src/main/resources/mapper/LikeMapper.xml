@@ -7,8 +7,15 @@
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="like_time" property="likeTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <resultMap id="LikeResultMap" type="com.example.foodie.bean.Like">
+    <id column="like_id" property="likeId" jdbcType="VARCHAR" />
+  </resultMap>
   <sql id="Base_Column_List" >
     like_id, article_id, user_id, like_time
+  </sql>
+  <sql id="Like_List">
+    like_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -79,4 +86,11 @@
       like_time = #{likeTime,jdbcType=TIMESTAMP}
     where like_id = #{likeId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByUserId" parameterType="java.lang.String" resultMap="LikeResultMap">
+    select
+    <include refid="Like_List"></include>
+    from like
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
 </mapper>
