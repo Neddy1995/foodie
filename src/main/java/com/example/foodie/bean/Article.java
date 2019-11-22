@@ -92,4 +92,19 @@ public class Article {
     public void setTypeId(String typeId) {
         this.typeId = typeId == null ? null : typeId.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "articleId='" + articleId + '\'' +
+                ", articleTitle='" + articleTitle + '\'' +
+                ", articleText='" + articleText + '\'' +
+                ", author='" + author + '\'' +
+                ", createTime=" + createTime +
+                ", tagging='" + tagging + '\'' +
+                ", articlePlace='" + articlePlace + '\'' +
+                ", state=" + state +
+                ", typeId='" + typeId + '\'' +
+                '}';
+    }
 }

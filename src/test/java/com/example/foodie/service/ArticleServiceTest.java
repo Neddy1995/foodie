@@ -31,9 +31,13 @@ class ArticleServiceTest {
 
     @Test
     void selectByText() {
+        String text = "1";
+        System.out.println("返回的对象"+articleService.selectByText(text).toString());
     }
 
     @Test
     void selectById() {
+        String articleId = "1";
+        System.out.println("返回的对象"+articleService.selectById(articleId).toString());
     }
 }

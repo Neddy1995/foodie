@@ -41,7 +41,8 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public List<TitleAndPictureVo> selectByText(String text) {
         List<Article> articleList = articleMapper.selectByText(text);
-        return null;
+        List<TitleAndPictureVo> list = getTitleAndPictureVos(articleList);
+        return list;
     }
 
     @Override

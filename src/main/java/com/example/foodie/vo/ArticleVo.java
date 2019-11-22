@@ -16,4 +16,11 @@ public class ArticleVo extends Article {
         this.list = list;
     }
 
+    @Override
+    public String toString() {
+        return "ArticleVo{" +
+                super.toString()+
+                ", list=" + list +
+                '}';
+    }
 }
