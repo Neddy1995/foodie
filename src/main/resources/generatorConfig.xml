@@ -54,17 +54,17 @@
         </javaClientGenerator>
         <!-- 指定数据库表 -->
 
-        <table tableName="address_city" domainObjectName="AddressCity"
+        <!--<table tableName="address_city" domainObjectName="AddressCity"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
 
-        <table tableName="address_street" domainObjectName="AddressStreet"
+        <!--<table tableName="address_street" domainObjectName="AddressStreet"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
 
         <table tableName="article" domainObjectName="Article"
                enableCountByExample="false" enableUpdateByExample="false"
@@ -72,53 +72,53 @@
                selectByExampleQueryId="false">
         </table>
 
-        <table tableName="article_picture" domainObjectName="ArticlePicture"
+        <!--<table tableName="article_picture" domainObjectName="ArticlePicture"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
 
-        <table tableName="article_type" domainObjectName="ArticleType"
+        <!--<table tableName="article_type" domainObjectName="ArticleType"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
 
-        <table tableName="audit_article" domainObjectName="AuditArticle"
+        <!--<table tableName="audit_article" domainObjectName="AuditArticle"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
 
-        <table tableName="audit_user" domainObjectName="AuditUser"
+        <!--<table tableName="audit_user" domainObjectName="AuditUser"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
 
-        <table tableName="comment" domainObjectName="Comment"
+        <!--<table tableName="comment" domainObjectName="Comment"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
 
-        <table tableName="follow" domainObjectName="Follow"
+        <!--<table tableName="follow" domainObjectName="Follow"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
 
-        <table tableName="like" domainObjectName="Like"
+        <!--<table tableName="like" domainObjectName="Like"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
 
-        <table tableName="picture" domainObjectName="Picture"
+<!--        <table tableName="picture" domainObjectName="Picture"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-        </table>
+        </table>-->
 
 
         <!--<table tableName="user" domainObjectName="User"

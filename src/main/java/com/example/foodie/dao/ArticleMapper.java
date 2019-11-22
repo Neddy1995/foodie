@@ -5,7 +5,6 @@ import com.example.foodie.bean.Article;
 import java.util.List;
 
 public interface ArticleMapper {
-
     int deleteByPrimaryKey(String articleId);
 
     int insert(Article record);

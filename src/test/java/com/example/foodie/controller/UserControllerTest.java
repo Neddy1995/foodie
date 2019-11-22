@@ -1,7 +1,7 @@
 package com.example.foodie.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.foodie.FoodieApplicationTests;
+import com.example.foodie.FoodieApplicationTest;
 import com.example.foodie.bean.User;
 import org.junit.Before;
 import org.junit.jupiter.api.DisplayName;
@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK,classes = FoodieApplicationTests.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK,classes = FoodieApplicationTest.class)
 @AutoConfigureMockMvc
 class UserControllerTest {
 

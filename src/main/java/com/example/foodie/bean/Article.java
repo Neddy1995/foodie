@@ -19,6 +19,8 @@ public class Article {
 
     private Integer state;
 
+    private String typeId;
+
     public String getArticleId() {
         return articleId;
     }
@@ -81,5 +83,13 @@ public class Article {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public String getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId == null ? null : typeId.trim();
     }
 }

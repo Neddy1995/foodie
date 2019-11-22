@@ -40,4 +40,14 @@ public class Picture {
     public void setImgUser(String imgUser) {
         this.imgUser = imgUser == null ? null : imgUser.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Picture{" +
+                "imgId='" + imgId + '\'' +
+                ", imgPath='" + imgPath + '\'' +
+                ", imgName='" + imgName + '\'' +
+                ", imgUser='" + imgUser + '\'' +
+                '}';
+    }
 }

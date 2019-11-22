@@ -10,14 +10,16 @@
     <result column="tagging" property="tagging" jdbcType="VARCHAR" />
     <result column="article_place" property="articlePlace" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="type_id" property="typeId" jdbcType="VARCHAR" />
   </resultMap>
+
   <resultMap id="TitleMap" type="com.example.foodie.bean.Article">
     <id column="article_id" property="articleId" jdbcType="VARCHAR" />
     <result column="article_title" property="articleTitle" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    article_id, article_title,article_text, author, create_time, tagging, article_place,
-    state
+    article_id, article_title, article_text, author, create_time, tagging, article_place, 
+    state, type_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -30,12 +32,14 @@
     where article_id = #{articleId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.Article" >
-    insert into article (article_id, article_title, " article_text", 
+    insert into article (article_id, article_title, article_text, 
       author, create_time, tagging, 
-      article_place, state)
+      article_place, state, type_id
+      )
     values (#{articleId,jdbcType=VARCHAR}, #{articleTitle,jdbcType=VARCHAR}, #{articleText,jdbcType=VARCHAR}, 
       #{author,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{tagging,jdbcType=VARCHAR}, 
-      #{articlePlace,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
+      #{articlePlace,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{typeId,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.Article" >
     insert into article
@@ -47,7 +51,7 @@
         article_title,
       </if>
       <if test="articleText != null" >
-        " article_text",
+        article_text,
       </if>
       <if test="author != null" >
         author,
@@ -63,6 +67,9 @@
       </if>
       <if test="state != null" >
         state,
+      </if>
+      <if test="typeId != null" >
+        type_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -90,6 +97,9 @@
       <if test="state != null" >
         #{state,jdbcType=INTEGER},
       </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.example.foodie.bean.Article" >
@@ -99,7 +109,7 @@
         article_title = #{articleTitle,jdbcType=VARCHAR},
       </if>
       <if test="articleText != null" >
-        " article_text" = #{articleText,jdbcType=VARCHAR},
+        article_text = #{articleText,jdbcType=VARCHAR},
       </if>
       <if test="author != null" >
         author = #{author,jdbcType=VARCHAR},
@@ -116,29 +126,35 @@
       <if test="state != null" >
         state = #{state,jdbcType=INTEGER},
       </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=VARCHAR},
+      </if>
     </set>
     where article_id = #{articleId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.Article" >
     update article
     set article_title = #{articleTitle,jdbcType=VARCHAR},
-      " article_text" = #{articleText,jdbcType=VARCHAR},
+      article_text = #{articleText,jdbcType=VARCHAR},
       author = #{author,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       tagging = #{tagging,jdbcType=VARCHAR},
       article_place = #{articlePlace,jdbcType=VARCHAR},
-      state = #{state,jdbcType=INTEGER}
+      state = #{state,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=VARCHAR}
     where article_id = #{articleId,jdbcType=VARCHAR}
   </update>
 
-  <select id="selectByStreetId" parameterType="java.lang.String" resultMap="TitleMap">
+  <select id="selectByStreetId" parameterType="java.lang.String" resultMap="TitleMap"
+          resultType="com.example.foodie.bean.Article">
     select
     <include refid="Base_Column_List"></include>
     from article
-    where street_id = #{streetId,jdbcType=VARCHAR}
+    where article_place = #{streetId,jdbcType=VARCHAR}
   </select>
 
-  <select id="selectByTypeId" parameterType="java.lang.String" resultMap="TitleMap">
+  <select id="selectByTypeId" parameterType="java.lang.String" resultMap="TitleMap"
+          resultType="com.example.foodie.bean.Article">
     select
     <include refid="Base_Column_List"></include>
     from article

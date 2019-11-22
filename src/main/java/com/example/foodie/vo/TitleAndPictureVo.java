@@ -50,6 +50,17 @@ public class TitleAndPictureVo {
         this.imgName = imgName;
     }
 
+    @Override
+    public String toString() {
+        return "TitleAndPictureVo{" +
+                "articleId='" + articleId + '\'' +
+                ", articleTitle='" + articleTitle + '\'' +
+                ", imgId='" + imgId + '\'' +
+                ", imgPath='" + imgPath + '\'' +
+                ", imgName='" + imgName + '\'' +
+                '}';
+    }
+
     /**
      * 将文章的标题名称和图片路径等放入该vo类中
      * @param article

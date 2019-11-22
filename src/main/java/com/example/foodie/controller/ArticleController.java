@@ -24,7 +24,7 @@ public class ArticleController {
      * @param streetId
      * @return
      */
-    @PostMapping
+    @PostMapping("/selectByStreet.do")
     public ControllerResult selectByStreet(HttpServletRequest request,
                                           @RequestParam("streetId")String streetId){
         List<TitleAndPictureVo> list = articleService.selectByStreet(streetId);
@@ -37,7 +37,7 @@ public class ArticleController {
      * @param typeId
      * @return
      */
-    @PostMapping
+    @PostMapping("/selectByType.do")
     public ControllerResult selectByType(HttpServletRequest request,
                                          @RequestParam("typeId")String typeId){
         List<TitleAndPictureVo> list = articleService.selectByType(typeId);
@@ -50,6 +50,7 @@ public class ArticleController {
      * @param text
      * @return
      */
+    @PostMapping("/selectByText.do")
     public ControllerResult selectByText(HttpServletRequest request,
                                          @RequestParam("text")String text){
         List<TitleAndPictureVo> list = articleService.selectByText(text);
@@ -61,7 +62,7 @@ public class ArticleController {
      * @param articleId
      * @return
      */
-    @PostMapping
+    @PostMapping("/selectById.do")
     public ControllerResult selectById(HttpServletRequest request,
                                        @RequestParam("articleId")String articleId){
         ArticleVo articleVo = articleService.selectById(articleId);

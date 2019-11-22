@@ -80,7 +80,7 @@
     where img_id = #{imgId,jdbcType=VARCHAR}
   </update>
 
-  <select id="selectByArticleId" parameterType="java.lang.Integer" resultType="com.example.foodie.bean.Picture">
+  <select id="selectByArticleId" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"></include>
     from picture a inner join article_picture b
