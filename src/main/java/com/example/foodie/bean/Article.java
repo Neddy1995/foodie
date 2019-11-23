@@ -21,6 +21,17 @@ public class Article {
 
     private String typeId;
 
+    public Article(){
+
+    }
+
+    public Article(String articleTitle, String articleText, String tagging, String articlePlace) {
+        this.articleTitle = articleTitle;
+        this.articleText = articleText;
+        this.tagging = tagging;
+        this.articlePlace = articlePlace;
+    }
+
     public String getArticleId() {
         return articleId;
     }

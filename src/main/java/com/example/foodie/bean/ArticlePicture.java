@@ -7,6 +7,15 @@ public class ArticlePicture {
 
     private String pictureId;
 
+    public ArticlePicture(){
+
+    }
+
+    public ArticlePicture(String articleId, String pictureId) {
+        this.articleId=articleId;
+        this.pictureId=pictureId;
+    }
+
     public String getArticlePictureId() {
         return articlePictureId;
     }

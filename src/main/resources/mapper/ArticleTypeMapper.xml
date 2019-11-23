@@ -20,12 +20,18 @@
     where type_id = #{typeId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.ArticleType" >
+    <selectKey resultType="java.lang.String" keyProperty="typeId" order="BEFORE" >
+      select uuid_short()
+    </selectKey>
     insert into article_type (type_id, type1, type2
       )
     values (#{typeId,jdbcType=VARCHAR}, #{type1,jdbcType=VARCHAR}, #{type2,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.ArticleType" >
+    <selectKey resultType="java.lang.String" keyProperty="typeId" order="BEFORE" >
+      select uuid_short()
+    </selectKey>
     insert into article_type
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="typeId != null" >
@@ -68,4 +74,10 @@
       type2 = #{type2,jdbcType=VARCHAR}
     where type_id = #{typeId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByName" parameterType="com.example.foodie.bean.ArticleType" resultType="java.lang.String">
+    select type_id as typeId
+    from article_type
+    where type1 = #{type1,jdbcType=VARCHAR} and type2 = #{type2,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -14,4 +14,6 @@ public interface ArticlePictureMapper {
     int updateByPrimaryKeySelective(ArticlePicture record);
 
     int updateByPrimaryKey(ArticlePicture record);
+
+    void deleteByaArticleId(String articleId);
 }

@@ -14,4 +14,6 @@ public interface ArticleTypeMapper {
     int updateByPrimaryKeySelective(ArticleType record);
 
     int updateByPrimaryKey(ArticleType record);
+
+    String selectByName(ArticleType articleType);
 }

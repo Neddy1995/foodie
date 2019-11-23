@@ -37,6 +37,9 @@
     where article_id = #{articleId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.Article" >
+<selectKey resultType="java.lang.String" keyProperty="articleId" order="BEFORE">
+  select uuid_short()
+</selectKey>
     insert into article (article_id, article_title, article_text, 
       author, create_time, tagging, 
       article_place, state, type_id
@@ -47,6 +50,9 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.Article" >
+    <selectKey resultType="java.lang.String" keyProperty="articleId" order="BEFORE">
+      select uuid_short()
+    </selectKey>
     insert into article
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="articleId != null" >

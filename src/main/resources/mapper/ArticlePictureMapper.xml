@@ -20,12 +20,18 @@
     where article_picture_id = #{articlePictureId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.ArticlePicture" >
+    <selectKey resultType="java.lang.String" keyProperty="articlePictureId" order="BEFORE" >
+        select uuid_short()
+    </selectKey>
     insert into article_picture (article_picture_id, article_id, picture_id
       )
     values (#{articlePictureId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{pictureId,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.ArticlePicture" >
+    <selectKey resultType="java.lang.String" keyProperty="articlePictureId" order="BEFORE" >
+      select uuid_short()
+    </selectKey>
     insert into article_picture
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="articlePictureId != null" >
@@ -68,4 +74,9 @@
       picture_id = #{pictureId,jdbcType=VARCHAR}
     where article_picture_id = #{articlePictureId,jdbcType=VARCHAR}
   </update>
+
+  <delete id="deleteByaArticleId" parameterType="java.lang.String">
+    delete from article_picture
+    where article_id = #{articleId,jdbcType=VARCHAR}
+  </delete>
 </mapper>

@@ -1,17 +1,15 @@
 package com.example.foodie.controller;
 
-import com.example.foodie.service.ArticleService;
-import com.example.foodie.service.CommentService;
-import com.example.foodie.service.LikeService;
+import com.example.foodie.bean.Article;
+import com.example.foodie.bean.ArticleType;
+import com.example.foodie.service.*;
 import com.example.foodie.util.ControllerResult;
 import com.example.foodie.util.SessionKeyValue;
+import com.example.foodie.vo.ArticleTypePictureVo;
 import com.example.foodie.vo.ArticleVo;
 import com.example.foodie.vo.TitleAndPictureVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,10 +22,16 @@ public class ArticleController {
     private ArticleService articleService;
 
     @Autowired
+    private ArticleTypeService articleTypeService;
+
+    @Autowired
     private CommentService commentService;
 
     @Autowired
     private LikeService likeService;
+
+    @Autowired
+    private ArticlePictureService articlePictureService;
 
     /**
      * 根据街道ID查询文章标题和图片路径
@@ -86,10 +90,10 @@ public class ArticleController {
     }
 
     /**
-     * 根据用户id查询评论的文章标题和图片路径
+     * 根据用户id查询收藏的文章标题和图片路径
      * @return
      */
-    @GetMapping("selectByComment.do")
+    @GetMapping("selectByLike.do")
     public ControllerResult selectByLike(HttpServletRequest request){
         HttpSession session = request.getSession();
 //        查询评论
@@ -113,5 +117,81 @@ public class ArticleController {
                                        @RequestParam("articleId")String articleId){
         ArticleVo articleVo = articleService.selectById(articleId);
         return ControllerResult.createSuccess("查询成功",articleVo);
+    }
+
+    /**
+     * 新增一篇文章
+     * @param request
+     * @param articleTypePictureVo
+     * @return
+     */
+    @PostMapping("/insertArticle.do")
+    public ControllerResult insertArticle(HttpServletRequest request,
+                                          @RequestBody ArticleTypePictureVo articleTypePictureVo){
+
+        HttpSession session = request.getSession();
+
+        Article article =articleTypePictureVo.getArticle();
+        ArticleType articleType = articleTypePictureVo.getArticleType();
+        List<String> list = articleTypePictureVo.getList();
+
+//        查询是否存在该类型的文章，不存在则创建
+        String typeId= articleTypeService.selectOrInsert(articleType);
+
+//        插入一条数据
+//        article.setAuthor((String) session.getAttribute(SessionKeyValue.USER_ID));
+        article.setTypeId(typeId);
+        String articleId = articleService.insertArticle(article);
+
+//        插入图片
+        articlePictureService.insertArticlePicture(articleId,list);
+
+        return ControllerResult.createSuccess("创建文章成功");
+    }
+
+    /**
+     * 删除一篇文章
+     * @param request
+     * @param articleId
+     * @return
+     */
+    @PostMapping("/deleteArticle.do")
+    public ControllerResult deleteArticle(HttpServletRequest request,
+                                          @RequestParam("articleId")String articleId){
+//        删除文章
+        boolean i = articleService.deleteArticle(articleId);
+        if (i){
+//            删除图片
+            articlePictureService.deleteArticlePicture(articleId);
+            return ControllerResult.createSuccess("删除文章成功");
+        }
+        return ControllerResult.createFail("删除文章失败：不存在该文章");
+    }
+
+    /**
+     * 修改一篇文章
+     * @param request
+     * @param articleTypePictureVo
+     * @return
+     */
+    @PostMapping("/updateArticle.do")
+    public ControllerResult updateArticle(HttpServletRequest request,
+                                          @RequestBody ArticleTypePictureVo articleTypePictureVo){
+
+        Article article =articleTypePictureVo.getArticle();
+        ArticleType articleType = articleTypePictureVo.getArticleType();
+        List<String> list = articleTypePictureVo.getList();
+
+//        修改类型
+        String typeId = articleTypeService.updateType(articleType);
+
+//        修改文章
+        article.setTypeId(typeId);
+        articleService.updateArticle(article);
+
+//        修改图片
+        articlePictureService.updateArticlePicture(article.getArticleId(),list);
+
+        return ControllerResult.createSuccess("修改成功");
     }
 }

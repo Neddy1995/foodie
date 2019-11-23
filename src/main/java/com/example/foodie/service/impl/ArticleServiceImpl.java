@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -63,6 +64,31 @@ public class ArticleServiceImpl implements ArticleService {
         BeanUtils.copyProperties(article,articleVo); //拷贝内容
         articleVo.setList(list);
         return articleVo;
+    }
+
+    @Override
+    public String insertArticle(Article article) {
+        article.setCreateTime(new Date());
+        article.setState(0);
+        articleMapper.insertSelective(article);
+        return article.getArticleId();
+    }
+
+    @Override
+    public boolean deleteArticle(String articleId) {
+//        先查询是否存在
+        Article article = articleMapper.selectByPrimaryKey(articleId);
+//        存在才删除
+        if(article != null){
+            articleMapper.deleteByPrimaryKey(articleId);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void updateArticle(Article article) {
+        articleMapper.updateByPrimaryKeySelective(article);
     }
 
     /**

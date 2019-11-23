@@ -1,5 +1,6 @@
 package com.example.foodie.service;
 
+import com.example.foodie.bean.Article;
 import com.example.foodie.vo.ArticleVo;
 import com.example.foodie.vo.TitleAndPictureVo;
 
@@ -44,5 +45,24 @@ public interface ArticleService {
      */
     ArticleVo selectById(String articleId);
 
+    /**
+     * 新增一篇文章
+     * @param article
+     */
+    String insertArticle(Article article);
 
+    /**
+     * 删除一篇文章
+     * @param articleId
+     * @return
+     */
+    boolean deleteArticle(String articleId);
+
+
+    /**
+     * 修改一篇文章
+     * @param article
+     * @return
+     */
+    void updateArticle(Article article);
 }

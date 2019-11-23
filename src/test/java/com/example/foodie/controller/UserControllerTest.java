@@ -44,7 +44,6 @@ class UserControllerTest {
     public void setup() throws Exception {
 //        初始化MockMvc对象
         mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
-        System.out.println("开始测试");
     }
 
     @Test
