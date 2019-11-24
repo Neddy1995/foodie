@@ -30,12 +30,18 @@
     where comment_id = #{commentId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.Comment" >
+    <selectKey resultType="java.lang.String" keyProperty="commentId" order="BEFORE">
+      select uuid_short()
+    </selectKey>
     insert into comment (comment_id, article_id, user_id, 
       comment_text, comment_time)
     values (#{commentId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
       #{commentText,jdbcType=VARCHAR}, #{commentTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.Comment" >
+    <selectKey resultType="java.lang.String" keyProperty="commentId" order="BEFORE">
+      select uuid_short()
+    </selectKey>
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="commentId != null" >
@@ -104,5 +110,12 @@
     <include refid="Comment_id_List"></include>
     from comment
     where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByArticleId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from comment
+    where article_id = #{articleId,jdbcType=VARCHAR}
   </select>
 </mapper>

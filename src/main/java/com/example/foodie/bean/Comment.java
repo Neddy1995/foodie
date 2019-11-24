@@ -12,6 +12,22 @@ public class Comment {
     private String commentText;
 
     private Date commentTime;
+    public Comment(){
+
+    }
+
+    public Comment(String articleId, String userId, String commentText) {
+        this.articleId = articleId;
+        this.userId = userId;
+        this.commentText = commentText;
+    }
+
+    public Comment(String commentId, String articleId, String userId, String commentText) {
+        this.commentId = commentId;
+        this.articleId = articleId;
+        this.userId = userId;
+        this.commentText = commentText;
+    }
 
     public String getCommentId() {
         return commentId;
@@ -51,5 +67,16 @@ public class Comment {
 
     public void setCommentTime(Date commentTime) {
         this.commentTime = commentTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "commentId='" + commentId + '\'' +
+                ", articleId='" + articleId + '\'' +
+                ", userId='" + userId + '\'' +
+                ", commentText='" + commentText + '\'' +
+                ", commentTime=" + commentTime +
+                '}';
     }
 }
