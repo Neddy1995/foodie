@@ -14,4 +14,8 @@ public interface FollowMapper {
     int updateByPrimaryKeySelective(Follow record);
 
     int updateByPrimaryKey(Follow record);
+
+    int selectFollowNum(String articleId);
+
+    void deleteFollow(Follow follow);
 }

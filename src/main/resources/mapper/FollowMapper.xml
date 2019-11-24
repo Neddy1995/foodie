@@ -21,12 +21,18 @@
     where follow_id = #{followId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.Follow" >
+    <selectKey resultType="java.lang.String" keyProperty="followId" order="BEFORE">
+      select uuid_short()
+    </selectKey>
     insert into follow (follow_id, article_id, user_id, 
       follow_time)
     values (#{followId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
       #{followTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.Follow" >
+    <selectKey resultType="java.lang.String" keyProperty="followId" order="BEFORE">
+      select uuid_short()
+    </selectKey>
     insert into follow
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="followId != null" >
@@ -79,4 +85,15 @@
       follow_time = #{followTime,jdbcType=TIMESTAMP}
     where follow_id = #{followId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectFollowNum" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select count(follow_id)
+    from follow
+    where article_id = #{articleId,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteFollow" parameterType="com.example.foodie.bean.Follow">
+    delete from follow
+    where article_id = #{articleId,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
 </mapper>

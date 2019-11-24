@@ -11,6 +11,15 @@ public class Follow {
 
     private Date followTime;
 
+    public Follow() {
+    }
+
+    public Follow(String articleId, String userId, Date followTime) {
+        this.articleId = articleId;
+        this.userId = userId;
+        this.followTime = followTime;
+    }
+
     public String getFollowId() {
         return followId;
     }
