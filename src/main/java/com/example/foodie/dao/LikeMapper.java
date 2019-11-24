@@ -18,4 +18,8 @@ public interface LikeMapper {
     int updateByPrimaryKey(Like record);
 
     List<String> selectByUserId(String userId);
+
+    int selectLikeNum(String articleId);
+
+    void deleteLike(Like like);
 }

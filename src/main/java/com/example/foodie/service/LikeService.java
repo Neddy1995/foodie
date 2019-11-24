@@ -10,4 +10,25 @@ public interface LikeService {
      * @return
      */
     List<String> selectByUserId(String userId);
+
+    /**
+     * 插入一条记录
+     * @param userId
+     * @param articleId
+     */
+    void insertLike(String userId, String articleId);
+
+    /**
+     * 查询文章的点赞数
+     * @param articleId
+     * @return
+     */
+    int selectLikeNum(String articleId);
+
+    /**
+     * 删除一条记录
+     * @param userId
+     * @param articleId
+     */
+    void deleteLike(String userId, String articleId);
 }

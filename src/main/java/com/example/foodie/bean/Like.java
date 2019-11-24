@@ -11,6 +11,15 @@ public class Like {
 
     private Date likeTime;
 
+    public Like() {
+    }
+
+    public Like(String articleId, String userId, Date likeTime) {
+        this.articleId = articleId;
+        this.userId = userId;
+        this.likeTime = likeTime;
+    }
+
     public String getLikeId() {
         return likeId;
     }

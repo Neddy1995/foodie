@@ -20,21 +20,27 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
-    from like
+    from article_like
     where like_id = #{likeId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from like
+    delete from article_like
     where like_id = #{likeId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.Like" >
-    insert into like (like_id, article_id, user_id, 
+    <selectKey resultType="java.lang.String" keyProperty="likeId" order="BEFORE">
+      select uuid_short()
+    </selectKey>
+    insert into article_like (like_id, article_id, user_id,
       like_time)
     values (#{likeId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
       #{likeTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.Like" >
-    insert into like
+    <selectKey resultType="java.lang.String" keyProperty="likeId" order="BEFORE">
+      select uuid_short()
+    </selectKey>
+    insert into article_like
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="likeId != null" >
         like_id,
@@ -65,7 +71,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.example.foodie.bean.Like" >
-    update like
+    update article_like
     <set >
       <if test="articleId != null" >
         article_id = #{articleId,jdbcType=VARCHAR},
@@ -80,7 +86,7 @@
     where like_id = #{likeId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.Like" >
-    update like
+    update article_like
     set article_id = #{articleId,jdbcType=VARCHAR},
       user_id = #{userId,jdbcType=VARCHAR},
       like_time = #{likeTime,jdbcType=TIMESTAMP}
@@ -90,7 +96,19 @@
   <select id="selectByUserId" parameterType="java.lang.String" resultMap="LikeResultMap">
     select
     <include refid="Like_List"></include>
-    from like
+    from article_like
     where user_id = #{userId,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectLikeNum" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select
+    count(like_id) as i
+    from article_like
+    where article_id = #{articleId,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteLike" parameterType="com.example.foodie.bean.Like">
+    delete from article_like
+    where article_id = #{articleId,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
 </mapper>
