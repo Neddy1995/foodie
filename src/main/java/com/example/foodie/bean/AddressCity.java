@@ -30,4 +30,13 @@ public class AddressCity {
     public void setCity(String city) {
         this.city = city == null ? null : city.trim();
     }
+
+    @Override
+    public String toString() {
+        return "AddressCity{" +
+                "cityId='" + cityId + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

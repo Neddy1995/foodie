@@ -68,4 +68,10 @@
       city = #{city,jdbcType=VARCHAR}
     where city_id = #{cityId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectAllCity" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from address_city
+  </select>
 </mapper>

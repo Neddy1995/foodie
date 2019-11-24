@@ -68,4 +68,11 @@
       stree_name = #{streeName,jdbcType=VARCHAR}
     where street_id = #{streetId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectByCityId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from address_street
+    where city_id = #{cityId.,jdbcType=VARCHAR}
+  </select>
 </mapper>

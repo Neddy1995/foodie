@@ -1,5 +1,7 @@
 package com.example.foodie.bean;
 
+import java.util.List;
+
 public class AddressStreet {
     private String streetId;
 
@@ -29,5 +31,14 @@ public class AddressStreet {
 
     public void setStreeName(String streeName) {
         this.streeName = streeName == null ? null : streeName.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "AddressStreet{" +
+                "streetId='" + streetId + '\'' +
+                ", cityId='" + cityId + '\'' +
+                ", streeName='" + streeName + '\'' +
+                '}';
     }
 }
