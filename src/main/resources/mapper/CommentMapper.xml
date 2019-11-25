@@ -13,6 +13,12 @@
     <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
   </resultMap>
 
+  <resultMap id="NumResultMap" type="com.example.foodie.bean.DataBean">
+    <result column="type" property="type" jdbcType="INTEGER"/>
+    <result column="dates" property="dates" jdbcType="TIMESTAMP"/>
+    <result column="num" property="num" jdbcType="INTEGER"/>
+  </resultMap>
+
   <sql id="Comment_id_List">
     comment_id
   </sql>
@@ -117,5 +123,17 @@
     <include refid="Base_Column_List"></include>
     from comment
     where article_id = #{articleId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectCommentNumByDay" parameterType="java.util.Date" resultMap="NumResultMap">
+    select 1 as type,count(article_id) as num
+    from article_like
+--     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  </select>
+
+  <select id="selectCommentNumByMonth" parameterType="java.util.Date" resultMap="NumResultMap">
+    select 1 as type,count(article_id) as num
+    from article_like
+--     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
   </select>
 </mapper>

@@ -1,7 +1,9 @@
 package com.example.foodie.dao;
 
 import com.example.foodie.bean.Article;
+import com.example.foodie.bean.DataBean;
 
+import java.util.Date;
 import java.util.List;
 
 public interface ArticleMapper {
@@ -24,4 +26,8 @@ public interface ArticleMapper {
     List<Article> selectByText(String text);
 
     List<Article> selectByComment(List<String> listComment);
+
+    List<DataBean> selectArticleNumByDay(Date dateDay);
+
+    List<DataBean> selectArticleNumByMonth(Date dateDay);
 }

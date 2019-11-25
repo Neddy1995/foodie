@@ -1,6 +1,10 @@
 package com.example.foodie.dao;
 
 import com.example.foodie.bean.AuditArticle;
+import com.example.foodie.bean.DataBean;
+
+import java.util.Date;
+import java.util.List;
 
 public interface AuditArticleMapper {
     int deleteByPrimaryKey(String auditArticleId);
@@ -14,4 +18,14 @@ public interface AuditArticleMapper {
     int updateByPrimaryKeySelective(AuditArticle record);
 
     int updateByPrimaryKey(AuditArticle record);
+
+    List<DataBean> selectPassNumByDay(Date dateDay);
+
+    List<DataBean> selectPassNumByMonth(Date dateDay);
+
+    List<DataBean> selectAuditNumByDay(Date dateDay);
+
+    List<DataBean> selectAuditNumByMonth(Date dateDay);
+
+
 }

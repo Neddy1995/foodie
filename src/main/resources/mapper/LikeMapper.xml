@@ -11,6 +11,13 @@
   <resultMap id="LikeResultMap" type="com.example.foodie.bean.Like">
     <id column="like_id" property="likeId" jdbcType="VARCHAR" />
   </resultMap>
+
+  <resultMap id="NumResultMap" type="com.example.foodie.bean.DataBean">
+    <result column="type" property="type" jdbcType="INTEGER"/>
+    <result column="dates" property="dates" jdbcType="DATE"/>
+    <result column="num" property="num" jdbcType="INTEGER"/>
+  </resultMap>
+
   <sql id="Base_Column_List" >
     like_id, article_id, user_id, like_time
   </sql>
@@ -111,4 +118,20 @@
     delete from article_like
     where article_id = #{articleId,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=VARCHAR}
   </delete>
+
+  <select id="selectLikeNumByDay" parameterType="java.sql.Date" resultMap="NumResultMap">
+select 1 as type,time,count(time) as num
+from (select hour(like_time) as time
+from article_like
+where like_time = #{dateDay,jdbcType=DATE}) x
+ group by time
+  </select>
+
+  <select id="selectLikeNumByMonth" parameterType="java.lang.String" resultMap="NumResultMap">
+select 1 as type,time,count(time) as num
+from (select hour(like_time) as time
+from article_like
+where DATE(like_time) = (#{dateDay,jdbcType=VARCHAR},"%Y-%m-%d")) x
+ group by time
+  </select>
 </mapper>

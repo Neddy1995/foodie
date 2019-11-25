@@ -1,7 +1,9 @@
 package com.example.foodie.dao;
 
 import com.example.foodie.bean.Comment;
+import com.example.foodie.bean.DataBean;
 
+import java.util.Date;
 import java.util.List;
 
 public interface CommentMapper {
@@ -20,4 +22,8 @@ public interface CommentMapper {
     List<String> selectByUserId(String userId);
 
     List<Comment> selectByArticleId(String articleId);
+
+    List<DataBean> selectCommentNumByDay(Date dateDay);
+
+    List<DataBean> selectCommentNumByMonth(Date dateDay);
 }

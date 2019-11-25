@@ -8,6 +8,14 @@
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
     <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
   </resultMap>
+
+  <resultMap id="NumResultMap" type="com.example.foodie.bean.DataBean">
+    <result column="type" property="type" jdbcType="INTEGER"/>
+    <result column="dates" property="dates" jdbcType="TIMESTAMP"/>
+    <result column="num" property="num" jdbcType="INTEGER"/>
+  </resultMap>
+
+
   <sql id="Base_Column_List" >
     audit_article_id, article_id, audit_text, user_id, audit_time
   </sql>
@@ -90,4 +98,28 @@
       audit_time = #{auditTime,jdbcType=TIMESTAMP}
     where audit_article_id = #{auditArticleId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectPassNumByDay" parameterType="java.util.Date" resultMap="NumResultMap">
+    select 1 as type,count(article_id) as num
+    from article_like
+--     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  </select>
+
+  <select id="selectPassNumByMonth" parameterType="java.util.Date" resultMap="NumResultMap">
+    select 1 as type,count(article_id) as num
+    from article_like
+--     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  </select>
+
+  <select id="selectAuditNumByDay" parameterType="java.util.Date" resultMap="NumResultMap">
+    select 1 as type,count(article_id) as num
+    from article_like
+--     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  </select>
+
+  <select id="selectAuditNumByMonth" parameterType="java.util.Date" resultMap="NumResultMap">
+    select 1 as type,count(article_id) as num
+    from article_like
+--     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  </select>
 </mapper>

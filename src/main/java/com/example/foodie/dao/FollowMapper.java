@@ -1,6 +1,10 @@
 package com.example.foodie.dao;
 
+import com.example.foodie.bean.DataBean;
 import com.example.foodie.bean.Follow;
+
+import java.util.Date;
+import java.util.List;
 
 public interface FollowMapper {
     int deleteByPrimaryKey(String followId);
@@ -18,4 +22,8 @@ public interface FollowMapper {
     int selectFollowNum(String articleId);
 
     void deleteFollow(Follow follow);
+
+    List<DataBean> selectFollowNumByDay(Date dateDay);
+
+    List<DataBean> selectFollowNumByMonth(Date dateDay);
 }

@@ -1,7 +1,9 @@
 package com.example.foodie.dao;
 
+import com.example.foodie.bean.DataBean;
 import com.example.foodie.bean.Like;
 
+import java.util.Date;
 import java.util.List;
 
 public interface LikeMapper {
@@ -22,4 +24,8 @@ public interface LikeMapper {
     int selectLikeNum(String articleId);
 
     void deleteLike(Like like);
+
+    List<DataBean> selectLikeNumByDay(String dateDay);
+
+    List<DataBean> selectLikeNumByMonth(Date dateDay);
 }
