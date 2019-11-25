@@ -30,12 +30,18 @@
     where audit_article_id = #{auditArticleId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.AuditArticle" >
+    <selectKey resultType="java.lang.String" keyProperty="auditArticleId" order="BEFORE">
+      select uuid_short()
+    </selectKey>
     insert into audit_article (audit_article_id, article_id, audit_text, 
       user_id, audit_time)
     values (#{auditArticleId,jdbcType=VARCHAR}, #{articleId,jdbcType=VARCHAR}, #{auditText,jdbcType=VARCHAR}, 
       #{userId,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.AuditArticle" >
+    <selectKey resultType="java.lang.String" keyProperty="auditArticleId" order="BEFORE">
+      select uuid_short()
+    </selectKey>
     insert into audit_article
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="auditArticleId != null" >
@@ -121,5 +127,11 @@
     select 1 as type,count(article_id) as num
     from article_like
 --     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  </select>
+
+  <select id="selectPassArticle" parameterType="java.lang.String" resultType="java.lang.String">
+    select article_id as articleId
+    from audit_article
+    where user_id = #{user_id,jdbcType=VARCHAR}
   </select>
 </mapper>

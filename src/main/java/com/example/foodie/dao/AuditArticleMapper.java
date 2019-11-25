@@ -27,5 +27,5 @@ public interface AuditArticleMapper {
 
     List<DataBean> selectAuditNumByMonth(Date dateDay);
 
-
+    List<String> selectPassArticle(String userId);
 }

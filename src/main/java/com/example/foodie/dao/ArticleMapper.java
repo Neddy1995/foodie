@@ -30,4 +30,8 @@ public interface ArticleMapper {
     List<DataBean> selectArticleNumByDay(Date dateDay);
 
     List<DataBean> selectArticleNumByMonth(Date dateDay);
+
+    List selectAuditArticle();
+
+    List<Article> selectPassArticle(List<String> listArticleId);
 }
