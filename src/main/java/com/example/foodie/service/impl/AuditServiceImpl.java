@@ -47,6 +47,8 @@ public class AuditServiceImpl implements AuditService {
     public void insertAuditArticle(AuditArticle auditArticle) {
         auditArticle.setAuditTime(new Date());
         auditArticleMapper.insertSelective(auditArticle);
+        Article article = new Article(auditArticle.getArticleId(),1);
+        articleMapper.updateByPrimaryKeySelective(article);
     }
 
     /**

@@ -22,7 +22,11 @@ public class Article {
     private String typeId;
 
     public Article(){
+    }
 
+    public Article(String articleId, Integer state) {
+        this.articleId = articleId;
+        this.state = state;
     }
 
     public Article(String articleTitle, String articleText, String tagging, String articlePlace) {

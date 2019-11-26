@@ -233,7 +233,7 @@
     <include refid="Title_Column_List"/>
     from article
     where article_id in
-    <foreach collection="listArticleId" item="item" open="(" close=")" separator=",">
+    <foreach collection="list" item="item" open="(" close=")" separator=",">
       #{item,jdbcType=VARCHAR}
     </foreach>
   </select>

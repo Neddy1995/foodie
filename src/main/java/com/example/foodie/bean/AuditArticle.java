@@ -13,6 +13,15 @@ public class AuditArticle {
 
     private Date auditTime;
 
+    public AuditArticle() {
+    }
+
+    public AuditArticle(String articleId, String auditText, String userId) {
+        this.articleId = articleId;
+        this.auditText = auditText;
+        this.userId = userId;
+    }
+
     public String getAuditArticleId() {
         return auditArticleId;
     }

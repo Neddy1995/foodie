@@ -31,7 +31,7 @@ public interface ArticleMapper {
 
     List<DataBean> selectArticleNumByMonth(Date dateDay);
 
-    List selectAuditArticle();
+    List<Article> selectAuditArticle();
 
     List<Article> selectPassArticle(List<String> listArticleId);
 }

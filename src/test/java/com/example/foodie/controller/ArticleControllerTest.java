@@ -8,6 +8,7 @@ import com.example.foodie.bean.ArticleType;
 import com.example.foodie.service.ArticleService;
 import com.example.foodie.vo.ArticleTypePictureVo;
 import org.junit.Before;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,7 @@ class ArticleControllerTest {
     }
 
     @Test
+    @DisplayName("测试ArticleController的insertArticle方法")
     void insertArticle() throws Exception {
         Article article = new Article("2","2","2","026032202723");
         article.setAuthor("12");
@@ -70,6 +72,7 @@ class ArticleControllerTest {
     }
 
     @Test
+    @DisplayName("测试ArticleController的deleteArticle方法")
     void deleteArticle() throws Exception {
         MvcResult mvcResult = mockMvc.perform(
                 post("deleteArticle.do")
@@ -80,6 +83,7 @@ class ArticleControllerTest {
     }
 
     @Test
+    @DisplayName("测试ArticleController的updateArticle方法")
     void updateArticle() throws Exception {
         Article article = new Article("2","2","2","026032202723");
         article.setArticleId("2");
