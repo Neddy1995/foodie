@@ -19,24 +19,27 @@ class CommentServiceTest {
     private CommentService commentService;
 
     @Test
-    @DisplayName("测试CommentService的insertComment方法")
+    @DisplayName("测试CommentService的新增评论insertComment方法")
     void insertComment() {
         Comment comment = new Comment("1","12","1234");
         commentService.insertComment(comment);
     }
 
     @Test
+    @DisplayName("测试CommentService的根据文章id查询评论selectByArticleId方法")
     void selectByArticleId() {
         List<Comment> list = commentService.selectByArticleId("1");
         System.out.println("返回的JSON" + list.toString());
     }
 
     @Test
+    @DisplayName("测试CommentService的删除评论deleteComment方法")
     void deleteComment() {
         commentService.deleteComment("26407398717521933");
     }
 
     @Test
+    @DisplayName("测试CommentService的修改评论updateComment方法")
     void updateComment() {
         Comment comment = new Comment("26407398717521933","1","12","abcd");
         commentService.updateComment(comment);

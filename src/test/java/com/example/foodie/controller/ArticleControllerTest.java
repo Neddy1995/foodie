@@ -52,7 +52,7 @@ class ArticleControllerTest {
     }
 
     @Test
-    @DisplayName("测试ArticleController的insertArticle方法")
+    @DisplayName("测试ArticleController的插入一条文章的insertArticle方法")
     void insertArticle() throws Exception {
         Article article = new Article("2","2","2","026032202723");
         article.setAuthor("12");
@@ -72,7 +72,7 @@ class ArticleControllerTest {
     }
 
     @Test
-    @DisplayName("测试ArticleController的deleteArticle方法")
+    @DisplayName("测试ArticleController的删除一篇文章的deleteArticle方法")
     void deleteArticle() throws Exception {
         MvcResult mvcResult = mockMvc.perform(
                 post("deleteArticle.do")
@@ -83,7 +83,7 @@ class ArticleControllerTest {
     }
 
     @Test
-    @DisplayName("测试ArticleController的updateArticle方法")
+    @DisplayName("测试ArticleController的修改一篇文章的updateArticle方法")
     void updateArticle() throws Exception {
         Article article = new Article("2","2","2","026032202723");
         article.setArticleId("2");

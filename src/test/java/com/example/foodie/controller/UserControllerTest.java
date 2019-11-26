@@ -47,7 +47,7 @@ class UserControllerTest {
     }
 
     @Test
-    @DisplayName("测试UserController的login方法")
+    @DisplayName("测试UserController的登陆login方法")
     void login() throws Exception {
         MultiValueMap map = new LinkedMultiValueMap();
         map.add("userName","12");
@@ -62,7 +62,7 @@ class UserControllerTest {
     }
 
     @Test
-    @DisplayName("测试UserController的register方法")
+    @DisplayName("测试UserController的注册register方法")
     void register() throws Exception {
         User user = new User("12","11",1);
         MvcResult mvcResult = mockMvc.perform(
@@ -75,7 +75,7 @@ class UserControllerTest {
     }
 
     @Test
-    @DisplayName("测试UserController的selectUser方法")
+    @DisplayName("测试UserController的查询用户selectUser方法")
     void selectUser() throws Exception {
         login();
         MvcResult mvcResult = mockMvc.perform(
@@ -86,7 +86,7 @@ class UserControllerTest {
     }
 
     @Test
-    @DisplayName("测试UserController的updateUser方法")
+    @DisplayName("测试UserController的修改用户updateUser方法")
     void updateUser() throws Exception {
         User user = new User();
         user.setUserProfile("2");
@@ -99,7 +99,7 @@ class UserControllerTest {
     }
 
     @Test
-    @DisplayName("测试UserController的updatePassword方法")
+    @DisplayName("测试UserController的修改密码updatePassword方法")
     void updatePassword() throws Exception {
         MultiValueMap map = new LinkedMultiValueMap();
         map.add("password","1");
@@ -113,7 +113,7 @@ class UserControllerTest {
     }
 
     @Test
-    @DisplayName("测试UserController的logout方法")
+    @DisplayName("测试UserController的登出logout方法")
     void logout() throws Exception {
         MvcResult mvcResult = mockMvc.perform(
                 get("/logout.do")
