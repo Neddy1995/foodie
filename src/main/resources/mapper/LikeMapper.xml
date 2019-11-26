@@ -119,19 +119,19 @@
     where article_id = #{articleId,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=VARCHAR}
   </delete>
 
-  <select id="selectLikeNumByDay" parameterType="java.sql.Date" resultMap="NumResultMap">
+  <select id="selectLikeNumByDay" parameterType="java.lang.String" resultMap="NumResultMap">
 select 1 as type,time,count(time) as num
 from (select hour(like_time) as time
 from article_like
-where like_time = #{dateDay,jdbcType=DATE}) x
+where date_format(like_time,"%Y-%m-%d") = #{dateDay,jdbcType=VARCHAR}) x
  group by time
   </select>
 
   <select id="selectLikeNumByMonth" parameterType="java.lang.String" resultMap="NumResultMap">
 select 1 as type,time,count(time) as num
-from (select hour(like_time) as time
+from (select day(like_time) as time
 from article_like
-where DATE(like_time) = (#{dateDay,jdbcType=VARCHAR},"%Y-%m-%d")) x
+where date_format(like_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x
  group by time
   </select>
 </mapper>

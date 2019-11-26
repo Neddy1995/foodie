@@ -105,28 +105,36 @@
     where audit_article_id = #{auditArticleId,jdbcType=VARCHAR}
   </update>
 
-  <select id="selectPassNumByDay" parameterType="java.util.Date" resultMap="NumResultMap">
-    select 1 as type,count(article_id) as num
-    from article_like
---     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  <select id="selectPassNumByDay" parameterType="java.lang.String" resultMap="NumResultMap">
+select 5 as type,time,count(time) as num
+from (select hour(audit_time) as time
+from audit_article
+where date_format(audit_time,"%Y-%m-%d") = #{dateDay,jdbcType=VARCHAR}) x
+ group by time
   </select>
 
-  <select id="selectPassNumByMonth" parameterType="java.util.Date" resultMap="NumResultMap">
-    select 1 as type,count(article_id) as num
-    from article_like
---     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  <select id="selectPassNumByMonth" parameterType="java.lang.String" resultMap="NumResultMap">
+select 5 as type,time,count(time) as num
+from (select day(audit_time) as time
+from audit_article
+where date_format(audit_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x
+ group by time
   </select>
 
-  <select id="selectAuditNumByDay" parameterType="java.util.Date" resultMap="NumResultMap">
-    select 1 as type,count(article_id) as num
-    from article_like
---     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  <select id="selectAuditNumByDay" parameterType="java.lang.String" resultMap="NumResultMap">
+select 6 as type,time,count(time) as num
+from (select hour(audit_time) as time
+from audit_article
+where date_format(audit_time,"%Y-%m-%d") = #{dateDay,jdbcType=VARCHAR}) x
+ group by time
   </select>
 
-  <select id="selectAuditNumByMonth" parameterType="java.util.Date" resultMap="NumResultMap">
-    select 1 as type,count(article_id) as num
-    from article_like
---     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  <select id="selectAuditNumByMonth" parameterType="java.lang.String" resultMap="NumResultMap">
+select 6 as type,time,count(time) as num
+from (select day(audit_time) as time
+from audit_article
+where date_format(audit_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x
+ group by time
   </select>
 
   <select id="selectPassArticle" parameterType="java.lang.String" resultType="java.lang.String">

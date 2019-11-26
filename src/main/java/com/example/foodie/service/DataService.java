@@ -58,36 +58,36 @@ public interface DataService {
 
     /**
      * 按月查询评论数
-     * @param dateDay
+     * @param dateMonth
      * @return
      */
-    List<DataBean> selectCommentNumByMonth(Date dateDay);
+    List<DataBean> selectCommentNumByMonth(Date dateMonth);
 
     /**
      * 按月查询关注数
-     * @param dateDay
+     * @param dateMonth
      * @return
      */
-    List<DataBean> selectFollowNumByMonth(Date dateDay);
+    List<DataBean> selectFollowNumByMonth(Date dateMonth);
 
     /**
      * 按月查询文章创建数
-     * @param dateDay
+     * @param dateMonth
      * @return
      */
-    List<DataBean> selectArticleNumByMonth(Date dateDay);
+    List<DataBean> selectArticleNumByMonth(Date dateMonth);
 
     /**
      * 按月查询文章审核通过数
-     * @param dateDay
+     * @param dateMonth
      * @return
      */
-    List<DataBean> selectPassNumByMonth(Date dateDay);
+    List<DataBean> selectPassNumByMonth(Date dateMonth);
 
     /**
      * 按月查询文章审核数
-     * @param dateDay
+     * @param dateMonth
      * @return
      */
-    List<DataBean> selectAuditNumByMonth(Date dateDay);
+    List<DataBean> selectAuditNumByMonth(Date dateMonth);
 }

@@ -19,13 +19,13 @@ public interface AuditArticleMapper {
 
     int updateByPrimaryKey(AuditArticle record);
 
-    List<DataBean> selectPassNumByDay(Date dateDay);
+    List<DataBean> selectPassNumByDay(String dateDay);
 
-    List<DataBean> selectPassNumByMonth(Date dateDay);
+    List<DataBean> selectPassNumByMonth(String dateMonth);
 
-    List<DataBean> selectAuditNumByDay(Date dateDay);
+    List<DataBean> selectAuditNumByDay(String dateDay);
 
-    List<DataBean> selectAuditNumByMonth(Date dateDay);
+    List<DataBean> selectAuditNumByMonth(String dateMonth);
 
     List<String> selectPassArticle(String userId);
 }

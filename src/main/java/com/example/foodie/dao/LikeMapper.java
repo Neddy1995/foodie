@@ -27,5 +27,5 @@ public interface LikeMapper {
 
     List<DataBean> selectLikeNumByDay(String dateDay);
 
-    List<DataBean> selectLikeNumByMonth(Date dateDay);
+    List<DataBean> selectLikeNumByMonth(String dateMonth);
 }

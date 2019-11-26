@@ -37,56 +37,78 @@ public class DataServiceImpl implements DataService {
 
     @Override
     public List<DataBean> selectCommentNumByDay(Date dateDay) {
-        return commentMapper.selectCommentNumByDay(dateDay);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(dateDay);
+        return commentMapper.selectCommentNumByDay(date);
     }
 
     @Override
     public List<DataBean> selectFollowNumByDay(Date dateDay) {
-        return followMapper.selectFollowNumByDay(dateDay);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(dateDay);
+        return followMapper.selectFollowNumByDay(date);
     }
 
     @Override
     public List<DataBean> selectArticleNumByDay(Date dateDay) {
-        return articleMapper.selectArticleNumByDay(dateDay);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(dateDay);
+        return articleMapper.selectArticleNumByDay(date);
     }
 
     @Override
     public List<DataBean> selectPassNumByDay(Date dateDay) {
-        return auditArticleMapper.selectPassNumByDay(dateDay);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(dateDay);
+        return auditArticleMapper.selectPassNumByDay(date);
     }
 
     @Override
     public List<DataBean> selectAuditNumByDay(Date dateDay) {
-        return auditArticleMapper.selectAuditNumByDay(dateDay);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(dateDay);
+        return auditArticleMapper.selectAuditNumByDay(date);
     }
 
     @Override
-    public List<DataBean> selectLikeNumByMonth(Date dateDay) {
-        return likeMapper.selectLikeNumByMonth(dateDay);
+    public List<DataBean> selectLikeNumByMonth(Date dateMonth) {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");
+        String date = sdf.format(dateMonth);
+        return likeMapper.selectLikeNumByMonth(date);
     }
 
     @Override
-    public List<DataBean> selectCommentNumByMonth(Date dateDay) {
-        return commentMapper.selectCommentNumByMonth(dateDay);
+    public List<DataBean> selectCommentNumByMonth(Date dateMonth) {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");
+        String date = sdf.format(dateMonth);
+        return commentMapper.selectCommentNumByMonth(date);
     }
 
     @Override
-    public List<DataBean> selectFollowNumByMonth(Date dateDay) {
-        return followMapper.selectFollowNumByMonth(dateDay);
+    public List<DataBean> selectFollowNumByMonth(Date dateMonth) {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");
+        String date = sdf.format(dateMonth);
+        return followMapper.selectFollowNumByMonth(date);
     }
 
     @Override
-    public List<DataBean> selectArticleNumByMonth(Date dateDay) {
-        return articleMapper.selectArticleNumByMonth(dateDay);
+    public List<DataBean> selectArticleNumByMonth(Date dateMonth) {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");
+        String date = sdf.format(dateMonth);
+        return articleMapper.selectArticleNumByMonth(date);
     }
 
     @Override
-    public List<DataBean> selectPassNumByMonth(Date dateDay) {
-        return auditArticleMapper.selectPassNumByMonth(dateDay);
+    public List<DataBean> selectPassNumByMonth(Date dateMonth) {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");
+        String date = sdf.format(dateMonth);
+        return auditArticleMapper.selectPassNumByMonth(date);
     }
 
     @Override
-    public List<DataBean> selectAuditNumByMonth(Date dateDay) {
-        return auditArticleMapper.selectAuditNumByMonth(dateDay);
+    public List<DataBean> selectAuditNumByMonth(Date dateMonth) {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");
+        String date = sdf.format(dateMonth);
+        return auditArticleMapper.selectAuditNumByMonth(date);
     }
 }

@@ -104,15 +104,19 @@
     where article_id = #{articleId,jdbcType=VARCHAR} and user_id = #{userId,jdbcType=VARCHAR}
   </delete>
 
-  <select id="selectFollowNumByDay" parameterType="java.util.Date" resultMap="NumResultMap">
-    select 1 as type,count(article_id) as num
-    from article_like
---     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  <select id="selectFollowNumByDay" parameterType="java.lang.String" resultMap="NumResultMap">
+select 3 as type,time,count(time) as num
+from (select hour(follow_time) as time
+from follow
+where date_format(follow_time,"%Y-%m-%d") = #{dateDay,jdbcType=VARCHAR}) x
+ group by time
   </select>
 
-  <select id="selectFollowNumByMonth" parameterType="java.util.Date" resultMap="NumResultMap">
-    select 1 as type,count(article_id) as num
-    from article_like
---     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  <select id="selectFollowNumByMonth" parameterType="java.lang.String" resultMap="NumResultMap">
+select 3 as type,time,count(time) as num
+from (select day(follow_time) as time
+from follow
+where date_format(follow_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x
+ group by time
   </select>
 </mapper>

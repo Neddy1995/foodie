@@ -23,7 +23,7 @@ public interface FollowMapper {
 
     void deleteFollow(Follow follow);
 
-    List<DataBean> selectFollowNumByDay(Date dateDay);
+    List<DataBean> selectFollowNumByDay(String dateDay);
 
-    List<DataBean> selectFollowNumByMonth(Date dateDay);
+    List<DataBean> selectFollowNumByMonth(String dateMonth);
 }

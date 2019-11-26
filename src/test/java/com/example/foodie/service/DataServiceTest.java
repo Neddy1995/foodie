@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -53,7 +55,12 @@ class DataServiceTest {
 
     @Test
     @DisplayName("测试DataService的查询当月各小时的点赞数selectLikeNumByMonth方法")
-    void selectLikeNumByMonth() {
+    void selectLikeNumByMonth() throws ParseException {
+        String s = "2019-11";
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM");
+        Date date = sdf.parse(s);
+        List<DataBean> list = dataService.selectLikeNumByMonth(date);
+        System.out.println(""+list.toString());
     }
 
     @Test

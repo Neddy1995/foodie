@@ -125,15 +125,19 @@
     where article_id = #{articleId,jdbcType=VARCHAR}
   </select>
 
-  <select id="selectCommentNumByDay" parameterType="java.util.Date" resultMap="NumResultMap">
-    select 1 as type,count(article_id) as num
-    from article_like
---     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  <select id="selectCommentNumByDay" parameterType="java.lang.String" resultMap="NumResultMap">
+select 2 as type,time,count(time) as num
+from (select hour(comment_time) as time
+from comment
+where date_format(comment_time,"%Y-%m-%d") = #{dateDay,jdbcType=VARCHAR}) x
+ group by time
   </select>
 
-  <select id="selectCommentNumByMonth" parameterType="java.util.Date" resultMap="NumResultMap">
-    select 1 as type,count(article_id) as num
-    from article_like
---     where concat(year(like_time),"-",month(like_time),"-",day(like_time))= #{dateDay,jdbcType=TIMESTAMP}
+  <select id="selectCommentNumByMonth" parameterType="java.lang.String" resultMap="NumResultMap">
+select 2 as type,time,count(time) as num
+from (select day(comment_time) as time
+from comment
+where date_format(comment_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x
+ group by time
   </select>
 </mapper>

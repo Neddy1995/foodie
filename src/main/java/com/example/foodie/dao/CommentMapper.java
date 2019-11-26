@@ -23,7 +23,7 @@ public interface CommentMapper {
 
     List<Comment> selectByArticleId(String articleId);
 
-    List<DataBean> selectCommentNumByDay(Date dateDay);
+    List<DataBean> selectCommentNumByDay(String dateDay);
 
-    List<DataBean> selectCommentNumByMonth(Date dateDay);
+    List<DataBean> selectCommentNumByMonth(String dateMonth);
 }

@@ -27,9 +27,9 @@ public interface ArticleMapper {
 
     List<Article> selectByComment(List<String> listComment);
 
-    List<DataBean> selectArticleNumByDay(Date dateDay);
+    List<DataBean> selectArticleNumByDay(String dateDay);
 
-    List<DataBean> selectArticleNumByMonth(Date dateDay);
+    List<DataBean> selectArticleNumByMonth(String dateMonth);
 
     List<Article> selectAuditArticle();
 
