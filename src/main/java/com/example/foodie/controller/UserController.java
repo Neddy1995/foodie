@@ -132,7 +132,7 @@ public class UserController {
      * @param user
      * @return
      */
-    @PostMapping(value = "updateUser.do")
+    @PostMapping(value = "/updateUser.do")
     public ControllerResult updateUser(HttpServletRequest request,
                                        @RequestBody User user){
         HttpSession session = request.getSession();
@@ -162,7 +162,7 @@ public class UserController {
      * @param password
      * @return
      */
-    @PostMapping
+    @PostMapping(value = "/updatePassword.do")
     public ControllerResult updatePassword(HttpServletRequest request,
                                            HttpServletResponse response,
                                            @RequestParam("password")String password,
@@ -191,7 +191,7 @@ public class UserController {
      * @param response
      * @return
      */
-    @GetMapping
+    @GetMapping(value = "/logout.do")
     public ControllerResult logout(HttpServletRequest request,
                                    HttpServletResponse response){
         HttpSession session = request.getSession();

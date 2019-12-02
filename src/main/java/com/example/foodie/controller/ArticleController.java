@@ -76,7 +76,7 @@ public class ArticleController {
      * 根据用户id查询评论的文章标题和图片路径
      * @return
      */
-    @GetMapping("selectByComment.do")
+    @GetMapping("/selectByComment.do")
     public ControllerResult selectByComment(HttpServletRequest request){
         HttpSession session = request.getSession();
 //        查询评论
@@ -93,7 +93,7 @@ public class ArticleController {
      * 根据用户id查询收藏的文章标题和图片路径
      * @return
      */
-    @GetMapping("selectByLike.do")
+    @GetMapping("/selectByLike.do")
     public ControllerResult selectByLike(HttpServletRequest request){
         HttpSession session = request.getSession();
 //        查询评论

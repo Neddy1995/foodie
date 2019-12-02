@@ -46,12 +46,22 @@ public class CommentController {
         return ControllerResult.createSuccess("查询评论成功",comment);
     }
 
+    /**
+     * 删除文章的评论
+     * @param commentId
+     * @return
+     */
     @PostMapping("/deleteComment.do")
     public ControllerResult deleteComment(@RequestParam("commentId")String commentId){
         commentService.deleteComment(commentId);
         return ControllerResult.createSuccess("删除评论成功");
     }
 
+    /**
+     * 修改文章的评论
+     * @param comment
+     * @return
+     */
     @PostMapping("/updateComment.do")
     public ControllerResult updateComment(@RequestBody Comment comment){
         commentService.updateComment(comment);

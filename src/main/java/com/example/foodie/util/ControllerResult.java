@@ -15,7 +15,7 @@ public class ControllerResult {
     public static final String RESULT_CODE_ERROR = "error";
 
 
-//     success 或者 fail 或者 error
+    //     success 或者 fail 或者 error
     private String resultCode;
 
 //     返回的附带信息
