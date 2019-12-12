@@ -200,4 +200,22 @@ public class UserController {
         return ControllerResult.createSuccess("退出成功");
     }
 
+    /**
+     * 判断session
+     * @param request
+     * @param response
+     * @return
+     */
+    @GetMapping(value = "/getSession")
+    public ControllerResult getSession(HttpServletRequest request,HttpServletResponse response){
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute(SessionKeyValue.USER_KEY);
+        if (user!=null) {
+            return ControllerResult.createSuccess("用户已登录", user);
+        }
+        else{
+            return ControllerResult.createFail("用户未登陆");
+        }
+    }
+
 }
