@@ -13,16 +13,16 @@ $(document).ready(function () {
         var paramCode = $.trim($("#paramCode").val());
 
         if(userName == ""){
-            showAlterMsg('用户名为空');
+            showAlterMsg('请输入用户名');
             return;
         }
 
         if (password == ""){
-            showAlterMsg('密码为空');
+            showAlterMsg('请输入密码为空');
             return;
         }
         if (paramCode == ""){
-            showAlterMsg('验证码为空');
+            showAlterMsg('请输入验证码');
             return;
         }
 
@@ -53,6 +53,7 @@ function login(userName,password,paramCode) {
             }
         },
         error:function (data) {
+            showAlterMsg("登陆失败");
             console.log(data);
         }
     })

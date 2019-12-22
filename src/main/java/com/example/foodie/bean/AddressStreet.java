@@ -7,7 +7,7 @@ public class AddressStreet {
 
     private String cityId;
 
-    private String streeName;
+    private String streetName;
 
     public String getStreetId() {
         return streetId;
@@ -25,12 +25,12 @@ public class AddressStreet {
         this.cityId = cityId == null ? null : cityId.trim();
     }
 
-    public String getStreeName() {
-        return streeName;
+    public String getstreetName() {
+        return streetName;
     }
 
-    public void setStreeName(String streeName) {
-        this.streeName = streeName == null ? null : streeName.trim();
+    public void setstreetName(String streetName) {
+        this.streetName = streetName == null ? null : streetName.trim();
     }
 
     @Override
@@ -38,7 +38,7 @@ public class AddressStreet {
         return "AddressStreet{" +
                 "streetId='" + streetId + '\'' +
                 ", cityId='" + cityId + '\'' +
-                ", streeName='" + streeName + '\'' +
+                ", streetName='" + streetName + '\'' +
                 '}';
     }
 }

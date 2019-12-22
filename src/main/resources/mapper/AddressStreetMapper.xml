@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.example.foodie.bean.AddressStreet" >
     <id column="street_id" property="streetId" jdbcType="VARCHAR" />
     <result column="city_id" property="cityId" jdbcType="VARCHAR" />
-    <result column="stree_name" property="streeName" jdbcType="VARCHAR" />
+    <result column="street_name" property="streetName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    street_id, city_id, stree_name
+    street_id, city_id, street_name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -20,9 +20,9 @@
     where street_id = #{streetId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.AddressStreet" >
-    insert into address_street (street_id, city_id, stree_name
+    insert into address_street (street_id, city_id, street_name
       )
-    values (#{streetId,jdbcType=VARCHAR}, #{cityId,jdbcType=VARCHAR}, #{streeName,jdbcType=VARCHAR}
+    values (#{streetId,jdbcType=VARCHAR}, #{cityId,jdbcType=VARCHAR}, #{streetName,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.foodie.bean.AddressStreet" >
@@ -34,8 +34,8 @@
       <if test="cityId != null" >
         city_id,
       </if>
-      <if test="streeName != null" >
-        stree_name,
+      <if test="streetName != null" >
+        street_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -45,8 +45,8 @@
       <if test="cityId != null" >
         #{cityId,jdbcType=VARCHAR},
       </if>
-      <if test="streeName != null" >
-        #{streeName,jdbcType=VARCHAR},
+      <if test="streetName != null" >
+        #{streetName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -56,8 +56,8 @@
       <if test="cityId != null" >
         city_id = #{cityId,jdbcType=VARCHAR},
       </if>
-      <if test="streeName != null" >
-        stree_name = #{streeName,jdbcType=VARCHAR},
+      <if test="streetName != null" >
+        street_name = #{streetName,jdbcType=VARCHAR},
       </if>
     </set>
     where street_id = #{streetId,jdbcType=VARCHAR}
@@ -65,7 +65,7 @@
   <update id="updateByPrimaryKey" parameterType="com.example.foodie.bean.AddressStreet" >
     update address_street
     set city_id = #{cityId,jdbcType=VARCHAR},
-      stree_name = #{streeName,jdbcType=VARCHAR}
+      street_name = #{streetName,jdbcType=VARCHAR}
     where street_id = #{streetId,jdbcType=VARCHAR}
   </update>
 
