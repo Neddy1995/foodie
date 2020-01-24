@@ -3,34 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>吃货聚集地</title>
-    <link rel="stylesheet" type="text/css" href="./static/plugins/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/plugins/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/search.css"/>
 </head>
 <body>
 
 <!--导航栏-->
 <div class="mapTitle"></div>
 
-<!--搜索-->
-<div class="search">
-    <input id="search-box" type="text"/>
-    <button class="search-btn layui-icon">&#xe615;</button>
+<div class="all-body">
+    <!--搜索-->
+    <div class="search"></div>
+
+    <div class="index-body">
+        <!--轮播图-->
+        <div class="layui-carousel  index-" id="slideshow">
+            <div carousel-item>
+                <div>条目1</div>
+                <div>条目2</div>
+                <div>条目3</div>
+                <div>条目4</div>
+                <div>条目5</div>
+            </div>
+        </div>
+
+        <!--列表-->
+        <div class="something">
+            <div class="goods-item">
+                <img class="goods-item-img" src=""/>
+                <div class="goods-item-title"></div>
+                <div class="goods-item-price">￥11.5</div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div id="index-body">
-    <!--轮播图-->
-    <div id="slideshow">
+    <script type="text/javascript" src="../static/plugins/jquery/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="../static/plugins/layui/layui.js"></script>
 
-    </div>
-    <!--列表-->
-    <div id="something">
-
-    </div>
-</div>
-
-    <script type="text/javascript" src="./static/plugins/jquery/jquery-3.4.1.js"></script>
-    <script type="text/javascript" src="./static/plugins/layui/layui.all.js"></script>
-
-    <script type="text/javascript" src="./static/js/index.js"></script>
-
+    <script type="text/javascript" src="../static/js/index.js"></script>
 </body>
 </html>

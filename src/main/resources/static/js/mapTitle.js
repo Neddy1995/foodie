@@ -1,4 +1,11 @@
 $(document).ready(function () {
+
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function(){
+        var element = layui.element;
+        //…
+    });
+
     /**
      * 获取后台的session，加载按钮
      * 存在session则显示个人信息和退出
@@ -19,7 +26,7 @@ $(document).ready(function () {
                 $("#register").hide();
                 $("#user").show();
                 $("#logout").show();
-                $("#user").text(user.userName);
+                // $("#user").text(user.userName);
             }
             else{
                 $("#login").show();
@@ -39,15 +46,18 @@ $(document).ready(function () {
 
     $("#logout").click(function () {
         $.ajax({
-            type:"",
-            url:"",
+            type:"get",
+            url:"logout.do",
             success:function (data) {
                 var resultCode = data.resultCode;
                 var message = data.message;
                 console.log(message);
-                showAlertMsg("退出成功！");
-                window.location.href='index.h';
+                if (resultCode == "success") {
+                    showAlterMsg("退出成功！");
+                    window.location.href = 'index.h';
+                }
             }
         })
-    })
+    });
+
 });

@@ -1,0 +1,23 @@
+.search-body{
+    width: 408px;
+    height: 38px;
+    border-style: solid;
+    border-width:2px 0 2px 2px;
+    border-color: #FF0036;
+}
+
+.search-box{
+    font-size: 14px;
+    width: 276px;
+    height: 34px;
+    border: none;
+    margin-left: 3px;
+}
+
+.search-btn{
+    width: 125px;
+    height: 38px;
+    color: #fff9ec;
+    border: none;
+    background-color: #FF0036;
+}
