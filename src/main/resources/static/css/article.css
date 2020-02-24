@@ -1,0 +1,81 @@
+.article-index{
+    width: 1080px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/*文字*/
+.article-text{
+    font-weight: 400;
+    font-size: 14px;
+    color: #333;
+    margin: 20px 5px;
+}
+
+/*点赞，评论，收藏数*/
+.article-number{
+    margin: 30px 20px;
+    overflow:hidden;
+    float: left;
+}
+.article-number-item{
+    float: left;
+    width: 40px;
+}
+
+/*发布时间*/
+.article-time{
+    margin: 30px 20px;
+    float: right;
+}
+
+
+/*评论*/
+.article-comment{
+    clear: both;
+    margin-top: 20px;
+}
+.remain{
+    float: left;
+    width: 5px;
+    height: 21px;
+    display: inline-block;
+    background: #ff2442;
+    vertical-align: middle;
+    margin: 0 7px 0 0;
+}
+
+/*单条评论*/
+.comment-item{
+    padding: 20px 0;
+    margin-left: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.comment-head{
+    overflow: hidden;
+}
+
+.comment-head-picture{
+    float: left;
+}
+.comment-head-name{
+    float: left;
+    overflow: hidden;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.head-name{
+    color: #333333;
+}
+.comment-time{
+    margin-top: 5px;
+    color: #999999;
+}
+
+.comment-content{
+    clear: both;
+    margin: 10px 0 0 40px;
+    font-size: 14px;
+}

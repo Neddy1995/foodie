@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class ControllerResult {
 
-    public static final String RESULT_CODE_SUCCESS = "success";
-    public static final String RESULT_CODE_FAIL = "fail";
-    public static final String RESULT_CODE_ERROR = "error";
+    public static final String RESULT_CODE_SUCCESS = "success";//成功
+    public static final String RESULT_CODE_FAIL = "fail";//失败
+    public static final String RESULT_CODE_ERROR = "error";//错误
 
 
     //     success 或者 fail 或者 error

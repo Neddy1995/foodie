@@ -42,9 +42,9 @@ public class PageJumpController {
      * 跳转到甜品界面
      * @return
      */
-    @RequestMapping("/dessert.h")
+    @RequestMapping("/sweetmeats.h")
     public String dessert(){
-        return "dessert";
+        return "sweetmeats";
     }
 
     /**

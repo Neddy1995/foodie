@@ -3,8 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>个人信息</title>
+    <link rel="stylesheet" type="text/css" href="../static/plugins/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/information.css"/>
 </head>
 <body>
+<div class="information-head">
+<!--    头像，昵称-->
+    <div class="picture-name">
+        <img class="head-picture" src="../static/img/头像.png" />
+        <h2 class="head-username">昵称</h2>
+        <h2 class="head-sex">男</h2>
+    </div>
+<!--    个人信息-->
+    <div class="user-inform">
+        <button class="layui-btn update-inform">编辑资料</button>
+        <button class="layui-btn create-article">创作</button>
+        <p class="city">城市</p>
+        <p class="birthday">生日</p>
+        <p class="profile">个人简介</p>
+    </div>
+</div>
+<!--作品信息-->
+<div class="information-body layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">作品</li>
+        <li>关注</li>
+        <li>评论</li>
+    </ul>
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">内容1</div>
+        <div class="layui-tab-item">内容2</div>
+        <div class="layui-tab-item">内容3</div>
+    </div>
+</div>
 
+<script type="text/javascript" src="../static/plugins/jquery/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="../static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="../static/js/information.js"></script>
 </body>
 </html>

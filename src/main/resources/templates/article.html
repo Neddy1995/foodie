@@ -3,8 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>文章</title>
+    <link rel="stylesheet" type="text/css" href="../static/plugins/layui/css/layui.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/article.css">
 </head>
 <body>
+<!--导航栏-->
+<div class="mapTitle"></div>
 
+<div class="article-index">
+    <!--滚动图片-->
+    <div class="layui-carousel " id="slideshow">
+        <div carousel-item>
+            <div>条目1</div>
+            <div>条目2</div>
+            <div>条目3</div>
+            <div>条目4</div>
+            <div>条目5</div>
+        </div>
+    </div>
+
+    <!--内容-->
+    <div class="article-text">
+        测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容
+        测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容
+        测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容
+        测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容
+    </div>
+
+    <!--喜欢，评论，点赞，收藏数-->
+    <div class="article-number">
+        <!-- 点赞-->
+        <div class="article-number-item">
+            <i class="layui-icon">&#xe6c6;</i>
+            <span class="number-item" id="like">10</span>
+        </div>
+        <!--评论-->
+        <div class="article-number-item">
+            <i class="layui-icon">&#xe63a;</i>
+            <span class="number-item" id="comment">10</span>
+        </div>
+        <!--收藏-->
+        <div class="article-number-item">
+            <i class="layui-icon">&#xe600;</i>
+            <span class="number-item" id="star">10</span>
+        </div>
+    </div>
+
+    <!--发布时间-->
+    <div class="article-time">
+        <span>发布于</span>
+        <span id="time">2020-01-13 16:20</span>
+    </div>
+
+
+    <!--评论-->
+    <div class="article-comment">
+        <i class="remain"></i>
+        <h3>笔记评论</h3>
+
+<!--        单条评论-->
+        <div class="comment-item">
+<!--            头像-->
+            <div class="comment-head">
+                <div class="comment-head-picture">
+                    <img src="../static/img/头像.png" width="32px" height="32px"/>
+                </div>
+                <div class="comment-head-name">
+                    <h4 class="head-name">12345</h4>
+                    <div class="comment-time">
+                        <span>2019-12-12</span>
+                    </div>
+                </div>
+            </div>
+<!--            内容-->
+            <div class="comment-content">
+                <p class="content">good good</p>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/plugins/jquery/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="../static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="../static/js/article.js"></script>
 </body>
 </html>

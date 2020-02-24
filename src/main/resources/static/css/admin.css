@@ -1,0 +1,44 @@
+/*头部*/
+.admin-head{
+    overflow: hidden;
+    margin: 10px 20px ;
+    background: #f5f5f5;
+}
+.admin-logo{
+    margin: 20px 0;
+    float: left;
+}
+
+.layui-icon{
+    margin: 15px 0;
+    float: right;
+    font-size: 43px;
+}
+.admin-user{
+    float: right;
+    text-align: center;
+}
+.admin-img{
+    width: 60px;
+    height: 60px;
+}
+.admin-username{
+    text-align: center;
+}
+
+/*内容*/
+.admin-body{
+    margin: 20px 20px 0;
+    overflow: hidden;
+}
+.admin-navigation{
+    float: left;
+}
+.admin-card{
+    float: left;
+    width:1600px;
+    height:800px;
+    background: #8D8D8D;
+    margin: 0 5px;
+
+}
