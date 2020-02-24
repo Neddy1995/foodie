@@ -2,15 +2,14 @@ package com.example.foodie.controller;
 
 import com.example.foodie.bean.AddressCity;
 import com.example.foodie.bean.AddressStreet;
+import com.example.foodie.bean.Province;
 import com.example.foodie.service.AddressService;
 import com.example.foodie.util.ControllerResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 public class AddressController {
@@ -19,13 +18,20 @@ public class AddressController {
     private AddressService addressService;
 
     /**
-     * 查询城市
+     * 查询省份
      * @return
      */
-    @GetMapping("/selectCity.do")
-    public ControllerResult selectCity(){
-        List<AddressCity> addressCity = addressService.selectCity();
-        return ControllerResult.createSuccess("查询城市成功",addressCity);
+    @GetMapping("/selectProvince.do")
+    public ControllerResult selectProvince(){
+        List<Province> provinces = addressService.selectProvince();
+        return ControllerResult.createSuccess("查询省份成功",provinces);
+    }
+
+    @PostMapping("/selectCity.do")
+    public ControllerResult selectCity(@RequestParam("provinceId")String provinceId){
+        List<AddressCity> addressCities = addressService.selectCity(provinceId);
+        System.out.println(""+provinceId);
+        return ControllerResult.createSuccess("查询城市成功",addressCities);
     }
 
     /**

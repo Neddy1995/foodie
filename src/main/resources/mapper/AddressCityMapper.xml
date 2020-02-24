@@ -6,9 +6,11 @@
     <result column="province" property="province" jdbcType="VARCHAR" />
     <result column="city" property="city" jdbcType="VARCHAR" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     city_id, province, city
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -73,5 +75,12 @@
     select
     <include refid="Base_Column_List"></include>
     from address_city
+  </select>
+
+  <select id="selectCity" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from address_city
+    where city_id like CONCAT(#{provinceId},'%')
   </select>
 </mapper>

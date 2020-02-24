@@ -10,7 +10,7 @@
     <div><img src=""/></div>
     <div><h1>吃货聚集地</h1></div>
 </div>
-<form class="layui-form layui-form-pane" action="register.do">
+<form class="layui-form layui-form-pane" lay-filter="registerForm">
     <div class="layui-form-item">
         <label class="layui-form-label">用户名：</label>
         <div class="layui-input-block">
@@ -27,7 +27,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">确认密码：</label>
         <div class="layui-input-inline">
-            <input type="password" name="password" required lay-verify="required" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
+            <input type="password" name="pwd" required lay-verify="required" placeholder="请再次输入密码" autocomplete="off" class="layui-input">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -42,62 +42,27 @@
     <div class="layui-form-item">
         <label class="layui-form-label">城市：</label>
         <div class="layui-input-block">
-            <select name="province" lay-verify="required">
-                <option value="">选择省份</option>
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">广州</option>
-                <option value="3">深圳</option>
-                <option value="4">杭州</option>
-            </select>
+            <select name="province" lay-verify="required" lay-filter="province"></select>
         </div>
         <div class="layui-input-block">
-            <select name="city" lay-verify="required">
-                <option value="">选择城市</option>
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">广州</option>
-                <option value="3">深圳</option>
-                <option value="4">杭州</option>
-            </select>
+            <select name="city" lay-verify="required"  lay-filter="city"></select>
         </div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">生日：</label>
         <div class="layui-input-block">
-            <select name="year" lay-verify="required">
-                <option value="">年</option>
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">广州</option>
-                <option value="3">深圳</option>
-                <option value="4">杭州</option>
-            </select>
+            <select name="year" lay-verify="required"></select>
         </div>
         <div class="layui-input-block">
-            <select name="month" lay-verify="required">
-                <option value="">月</option>
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">广州</option>
-                <option value="3">深圳</option>
-                <option value="4">杭州</option>
-            </select>
+            <select name="month" lay-verify="required"></select>
         </div>
         <div class="layui-input-block">
-            <select name="day" lay-verify="required">
-                <option value="">日</option>
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">广州</option>
-                <option value="3">深圳</option>
-                <option value="4">杭州</option>
-            </select>
+            <select name="day" lay-verify="required"></select>
         </div>
     </div>
     <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="register">注册</button>
+            <button id="register" class="layui-btn" lay-submit lay-filter="register">注册</button>
         </div>
     </div>
 </form>

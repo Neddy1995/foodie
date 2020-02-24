@@ -16,9 +16,15 @@ class AddressServiceTest {
     private AddressService addressService;
 
     @Test
+    @DisplayName("测试AddressService的查询省份信息selectProvince方法")
+    void selectProvince(){
+        System.out.println(""+addressService.selectProvince().toString());
+    }
+
+    @Test
     @DisplayName("测试AddressService的查询城市信息selectCity方法")
     void selectCity() {
-        System.out.println(""+addressService.selectCity().toString());
+        System.out.println(""+addressService.selectCity("002").toString());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package com.example.foodie.dao;
 
 import com.example.foodie.bean.AddressCity;
+import com.example.foodie.bean.Province;
 
 import java.util.List;
 
@@ -18,4 +19,8 @@ public interface AddressCityMapper {
     int updateByPrimaryKey(AddressCity record);
 
     List<AddressCity> selectAllCity();
+
+//    List<Province> selectProvince();
+
+    List<AddressCity> selectCity(String provinceId);
 }
