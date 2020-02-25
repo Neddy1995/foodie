@@ -19,28 +19,6 @@ $(document).ready(function () {
         $(this).attr("src","code?timestamp=" + timestamp);
     });
 
-    $(".login-btn").click(function () {
-
-        var userName = $.trim($("#userName").val());
-        var password = $.trim($("#password").val());
-        var paramCode = $.trim($("#paramCode").val());
-
-        if(userName == ""){
-            showAlterMsg('请输入用户名');
-            return;
-        }
-
-        if (password == ""){
-            showAlterMsg('请输入密码为空');
-            return;
-        }
-        if (paramCode == ""){
-            showAlterMsg('请输入验证码');
-            return;
-        }
-
-        login(userName,password,paramCode);
-    });
 });
 
 function login(userName,password,paramCode) {

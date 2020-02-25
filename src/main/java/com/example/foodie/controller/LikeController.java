@@ -1,6 +1,5 @@
 package com.example.foodie.controller;
 
-import com.example.foodie.bean.Like;
 import com.example.foodie.service.LikeService;
 import com.example.foodie.util.ControllerResult;
 import com.example.foodie.util.SessionKeyValue;

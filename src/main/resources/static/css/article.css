@@ -4,6 +4,17 @@
     margin: 0 auto;
 }
 
+/*标题*/
+.articleTitle{
+    text-align: center;
+    margin: 10px;
+}
+
+.author{
+    text-align: center;
+
+}
+
 /*文字*/
 .article-text{
     font-weight: 400;

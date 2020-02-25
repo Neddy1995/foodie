@@ -69,6 +69,9 @@ public class ArticleController {
     public ControllerResult selectByText(HttpServletRequest request,
                                          @RequestParam("text")String text){
         List<TitleAndPictureVo> list = articleService.selectByText(text);
+        if(list.size()==0){
+            return ControllerResult.createFail("查询失败,没有相关数据");
+        }
         return ControllerResult.createSuccess("查询成功",list);
     }
 
