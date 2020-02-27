@@ -31,6 +31,7 @@ layui.use('form', function() {
         data1['birthday']=new Date(birthday.replace(/-/g,"/"));
         console.log(data1);
         register(data1);
+        return false;
     });
 });
 
@@ -76,6 +77,7 @@ function selectProvince() {
     $.ajax({
         type:"get",
         url:"selectProvince.do",
+        async:false,//同步
         success:function (data) {
             var resultCode = data.resultCode;
             if(resultCode=="success"){

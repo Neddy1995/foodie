@@ -35,19 +35,19 @@
     <!--喜欢，评论，点赞，收藏数-->
     <div class="article-number">
         <!-- 点赞-->
-        <div class="article-number-item">
-            <i class="layui-icon">&#xe6c6;</i>
-            <span class="number-item" id="like">10</span>
+        <div id="likeItem" class="article-number-item" state="0">
+            <i id="likeBtn" class="layui-icon">&#xe6c6;</i>
+            <span class="number-item" id="like"></span>
         </div>
         <!--评论-->
-        <div class="article-number-item">
+        <div id="commentItem" class="article-number-item" state="0">
             <i class="layui-icon">&#xe63a;</i>
-            <span class="number-item" id="comment">10</span>
+            <span class="number-item" id="comment"></span>
         </div>
         <!--收藏-->
-        <div class="article-number-item">
-            <i class="layui-icon">&#xe600;</i>
-            <span class="number-item" id="star">10</span>
+        <div id="FollowItem" class="article-number-item" state="0">
+            <i id="starBtn" class="layui-icon">&#xe600;</i>
+            <span class="number-item" id="star"></span>
         </div>
     </div>
 
@@ -86,6 +86,7 @@
 </div>
 <script type="text/javascript" src="../static/plugins/jquery/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="../static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="../static/js/public.js"></script>
 <script type="text/javascript" src="../static/js/article.js"></script>
 </body>
 </html>

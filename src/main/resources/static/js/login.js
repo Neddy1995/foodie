@@ -8,6 +8,7 @@ layui.use('form', function() {
         var password = data1.password;
         var paramCode = data1.paramCode;
         login(userName,password,paramCode);
+        return false;
     });
 });
 
@@ -21,10 +22,17 @@ $(document).ready(function () {
 
 });
 
+/**
+ * 登录
+ * @param userName
+ * @param password
+ * @param paramCode
+ */
 function login(userName,password,paramCode) {
     $.ajax({
         type:"post",
         url:"login.do",
+        async:false,//同步
         data:{
             "userName": userName,
             "password": password,

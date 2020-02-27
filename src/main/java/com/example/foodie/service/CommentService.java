@@ -37,4 +37,11 @@ public interface CommentService {
      * @param comment
      */
     void updateComment(Comment comment);
+
+    /**
+     * 查询评论数
+     * @param articleId
+     * @return
+     */
+    int selectCommentNum(String articleId);
 }

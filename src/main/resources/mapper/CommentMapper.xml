@@ -140,4 +140,10 @@ from comment
 where date_format(comment_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x
  group by time
   </select>
+
+  <select id="selectCommentNum" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select count(comment_id) as num
+    from comment
+    where article_id = #{articleId,jdbcType=VARCHAR}
+  </select>
 </mapper>

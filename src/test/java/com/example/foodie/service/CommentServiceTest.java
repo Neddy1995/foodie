@@ -44,4 +44,10 @@ class CommentServiceTest {
         Comment comment = new Comment("26407398717521933","1","12","abcd");
         commentService.updateComment(comment);
     }
+
+    @Test
+    @DisplayName("测试CommentService的查询评论数selectCommentNum方法")
+    void selectCommentNum(){
+        System.out.println(""+commentService.selectCommentNum("1"));
+    }
 }

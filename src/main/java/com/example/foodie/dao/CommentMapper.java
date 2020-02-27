@@ -26,4 +26,6 @@ public interface CommentMapper {
     List<DataBean> selectCommentNumByDay(String dateDay);
 
     List<DataBean> selectCommentNumByMonth(String dateMonth);
+
+    int selectCommentNum(String articleId);
 }

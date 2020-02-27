@@ -43,4 +43,9 @@ public class CommentServiceImpl implements CommentService {
         comment.setCommentTime(new Date());
         commentMapper.updateByPrimaryKeySelective(comment);
     }
+
+    @Override
+    public int selectCommentNum(String articleId) {
+        return commentMapper.selectCommentNum(articleId);
+    }
 }

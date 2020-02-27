@@ -1,6 +1,6 @@
 #配置端口
 server:
-  port: 8091
+  port: 8080
   servlet:
     session:
       timeout: 86400s
@@ -29,7 +29,7 @@ mybatis:
     #mybatis扫描配置
     mapper-locations: classpath:mapper/*.xml
     #开启sql日志
-    configuration:
-      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    configuration:
+#      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 

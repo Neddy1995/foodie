@@ -35,6 +35,12 @@ public class CommentController {
         return ControllerResult.createSuccess("评论成功");
     }
 
+    @PostMapping("/selectCommentNum.do")
+    public ControllerResult selectCommentNum(HttpServletRequest request,
+                                             @RequestParam("articleId")String articleId){
+        return ControllerResult.createSuccess("查询评论数成功",commentService.selectCommentNum(articleId));
+    }
+
     /**
      * 查询文章的所有评论
      * @param articleId

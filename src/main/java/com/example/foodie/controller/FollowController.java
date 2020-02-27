@@ -36,8 +36,8 @@ public class FollowController {
      * @param articleId
      * @return
      */
-    @PostMapping("selectFollow.do")
-    public ControllerResult selectFollow(@RequestParam("articleId")String articleId){
+    @PostMapping("selectFollowNum.do")
+    public ControllerResult selectFollowNum(@RequestParam("articleId")String articleId){
         int i = followService.selectFollowNum(articleId);
         return ControllerResult.createSuccess("查询收藏数成功",i);
     }

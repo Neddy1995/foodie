@@ -36,10 +36,10 @@ public class LikeController {
      * @param articleId
      * @return
      */
-    @PostMapping("selectLike.do")
-    public ControllerResult selectLike(@RequestParam("artilceId")String articleId){
+    @PostMapping("selectLikeNum.do")
+    public ControllerResult selectLikeNum(@RequestParam("articleId")String articleId){
         int i = likeService.selectLikeNum(articleId);
-        return ControllerResult.createSuccess("查询成功",i);
+        return ControllerResult.createSuccess("查询点赞数成功",i);
     }
 
     /**
