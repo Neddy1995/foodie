@@ -1,5 +1,6 @@
+#配置端口
 server:
-  port: 8080
+  port: 8091
   servlet:
     session:
       timeout: 86400s
@@ -19,9 +20,9 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       #charaterEncoding设置编码格式
       #serverTimezone设置时区
-      url: jdbc:mysql://localhost:3306/foodie?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      url: jdbc:mysql://118.122.117.57:3306/foodie?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       username: root
-      password: 123456
+      password: 1qaz!QAZ
 
 
 mybatis:
