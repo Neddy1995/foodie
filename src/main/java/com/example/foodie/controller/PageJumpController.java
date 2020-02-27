@@ -51,9 +51,9 @@ public class PageJumpController {
      * 跳转到用户界面
      * @return
      */
-    @RequestMapping("/user.h")
+    @RequestMapping("/information.h")
     public String user(){
-        return "user";
+        return "information";
     }
     /**
      * 跳转到登陆页面

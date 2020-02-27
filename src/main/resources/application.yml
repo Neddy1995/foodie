@@ -29,7 +29,7 @@ mybatis:
     #mybatis扫描配置
     mapper-locations: classpath:mapper/*.xml
     #开启sql日志
-#    configuration:
-#      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 

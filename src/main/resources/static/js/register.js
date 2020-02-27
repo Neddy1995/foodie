@@ -106,7 +106,7 @@ function selectProvince() {
 function selectCity(id) {
     $.ajax({
         type:"post",
-        url:"selectCity.do",
+        url:"selectCityByProvince.do",
         async:false,//同步
         data:{
             "provinceId":id

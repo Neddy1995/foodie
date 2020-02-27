@@ -43,12 +43,17 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<AddressCity> selectCity(String provinceId) {
+    public List<AddressCity> selectCityByProvince(String provinceId) {
         return addressCityMapper.selectCity(provinceId);
     }
 
     @Override
     public List<AddressStreet> selectStreet(String cityId) {
         return addressStreetMapper.selectByCityId(cityId);
+    }
+
+    @Override
+    public AddressCity selectCity(String cityId) {
+        return addressCityMapper.selectByPrimaryKey(cityId);
     }
 }

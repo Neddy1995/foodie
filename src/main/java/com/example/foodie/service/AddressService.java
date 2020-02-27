@@ -16,10 +16,12 @@ public interface AddressService {
     List<Province> selectProvince();
 
     /**
-     * 查询城市
+     * 根据省份查询城市
      * @return
      */
-    List<AddressCity> selectCity(String provinceId);
+    List<AddressCity> selectCityByProvince(String provinceId);
+
+
 
     /**
      * 查询区县
@@ -28,4 +30,10 @@ public interface AddressService {
      */
     List<AddressStreet> selectStreet(String cityId);
 
+    /**
+     * 查询城市
+     * @param cityId
+     * @return
+     */
+    AddressCity selectCity(String cityId);
 }

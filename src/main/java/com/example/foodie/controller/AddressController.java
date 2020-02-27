@@ -27,11 +27,27 @@ public class AddressController {
         return ControllerResult.createSuccess("查询省份成功",provinces);
     }
 
-    @PostMapping("/selectCity.do")
-    public ControllerResult selectCity(@RequestParam("provinceId")String provinceId){
-        List<AddressCity> addressCities = addressService.selectCity(provinceId);
+    /**
+     * 根据省份查询城市
+     * @param provinceId
+     * @return
+     */
+    @PostMapping("/selectCityByProvince.do")
+    public ControllerResult selectCityByProvince(@RequestParam("provinceId")String provinceId){
+        List<AddressCity> addressCities = addressService.selectCityByProvince(provinceId);
         System.out.println(""+provinceId);
         return ControllerResult.createSuccess("查询城市成功",addressCities);
+    }
+
+    /**
+     * 查询城市
+     * @param cityId
+     * @return
+     */
+    @PostMapping("/selectCity.do")
+    public ControllerResult selectCity(@RequestParam("cityId")String cityId){
+        AddressCity addressCity = addressService.selectCity(cityId);
+        return ControllerResult.createSuccess("查询城市成功",addressCity);
     }
 
     /**

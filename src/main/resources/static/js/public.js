@@ -22,3 +22,29 @@ function getUrlParam(name) {
     }
     return null; //返回参数值
 }
+
+/**
+ * 将时间转化为字符串
+ * @param date
+ * @returns {string}
+ */
+function dateToSting(date) {
+    var year = date.getFullYear().toString();
+    var month = date.getMonth();
+    var day = date.getDay();
+    var hour = date.getHours();
+    var minute =date.getMinutes();
+    if (month < 10) {
+        month ="0" + month;
+    }
+    if (day < 10) {
+        day ="0" + day;
+    }
+    if (hour < 10){
+        hour ="0" + hour;
+    }
+    if (minute < 10){
+        minute ="0" + minute;
+    }
+    return year +"-" + month + "-" + day + " " + hour + ":" +minute;
+}
