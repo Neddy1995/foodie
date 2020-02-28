@@ -123,7 +123,7 @@ function selectCity(id) {
                     html+='<option value="'+list[i].cityId+'">'+list[i].city+'</option>';
                 }
                 console.log(html);
-                $('select[name=city]').html(html);
+                $('select[name=userCity]').html(html);
             }
         },
         error:function (data) {

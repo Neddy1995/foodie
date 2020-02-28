@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User login(String userName,String password) {
 //        密码加密
-//        password = MD5Util.MD5EncodeUtf8(password);
+        password = MD5Util.MD5EncodeUtf8(password);
         User user = new User(userName,password);
 //        System.out.println("username:"+userName+",password:"+password);
         User userResult=userMapper.login(user);
