@@ -1,12 +1,21 @@
-var city = '';
+var city;
+var useId;
+
 layui.use('element', function(){
     var element = layui.element;
 });
 $(document).ready(function () {
     //查询用户信息
     selectUser();
+
+    $('.update-inform').click(function () {
+
+    });
 });
 
+/**
+ * 查询用户信息
+ */
 function selectUser() {
     $.ajax({
         type:'get',
@@ -18,6 +27,7 @@ function selectUser() {
                 var message = data.message;
                 var user = data.data;
                 console.log(message,user);
+                userId = user.userId;
                 var userName = user.userName;
                 var sex = user.sex;
                 var birthday = new Date(user.birthday);
