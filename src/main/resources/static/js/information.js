@@ -1,5 +1,5 @@
 var city;
-var useId;
+var userId;
 
 layui.use('element', function(){
     var element = layui.element;
@@ -8,8 +8,15 @@ $(document).ready(function () {
     //查询用户信息
     selectUser();
 
+    //修改信息按钮监听事件
     $('.update-inform').click(function () {
+        var url = 'editInformation.html?userId='+userId;
+        window.open(encodeURI(url));
+    });
 
+    //创作作品按钮监听事件
+    $('.create-article').click(function () {
+        window.location.href='createArticle.h';
     });
 });
 

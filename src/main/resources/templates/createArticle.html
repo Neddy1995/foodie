@@ -5,17 +5,67 @@
     <title>创作作品</title>
     <link type="text/css" rel="stylesheet" href="../static/plugins/layui/css/layui.css"/>
 </head>
-<body>
-<div class="load-img"></div>
-<!--简介-->
-<div class="article-synopsis">
-    <input placeholder="输入简介让更多人了解你的作品哦"/>
-</div>
-<div class="article-text">
-    <input placeholder="文章正文"/>
-</div>
-<div class="article-btn">
-    <button class="layui-btn">提交</button>
-</div>
+<body style="width: 1080px;margin: 20px auto;">
+<form class="layui-form layui-form-pane" lay-filter="createArticle">
+    <div class="layui-form-item">
+        <label class="layui-form-label">上传图片</label>
+        <div class="layui-input-block">
+            <button type="button" class="layui-btn" id="load-img-btn">
+                <i class="layui-icon">&#xe67c;</i>上传图片
+            </button>
+        </div>
+    </div>
+
+<!--    <div class="layui-form-item">-->
+<!--        <label class="layui-form-label">图片</label>-->
+<!--        <div class="layui-input-block"></div>-->
+<!--    </div>-->
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+            <input type="text" name="articleTitle" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">文章简介</label>
+        <div class="layui-input-block">
+            <textarea name="tagging" placeholder="输入简介让更多人了解你的作品哦" class="layui-textarea"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">文章正文</label>
+        <div class="layui-input-block">
+            <textarea name="articleText" placeholder="输入文章介绍，让大家更了解你" class="layui-textarea"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">地点标注</label>
+        <div class="layui-input-block">
+            <select name="province" lay-verify="required" lay-filter="province"></select>
+        </div>
+        <div class="layui-input-block">
+            <select name="city" lay-verify="required"  lay-filter="city"></select>
+        </div>
+        <div class="layui-input-block">
+            <select name="streetId" lay-verify="required"  lay-filter="street"></select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="createArticleBtn">提交</button>
+        </div>
+    </div>
+
+</form>
+<script type="text/javascript" src="../static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="../static/plugins/jquery/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="../static/js/public.js"></script>
+<script type="text/javascript" src="../static/js/createArticle.js"></script>
+
 </body>
 </html>

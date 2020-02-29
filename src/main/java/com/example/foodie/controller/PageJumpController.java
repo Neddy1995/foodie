@@ -74,4 +74,12 @@ public class PageJumpController {
         return "register";
     }
 
+    /**
+     * 跳转到创建文章界面
+     * @return
+     */
+    public String createArticle(){
+        return "createArticle";
+    }
+
 }
