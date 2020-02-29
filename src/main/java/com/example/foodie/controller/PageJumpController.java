@@ -78,6 +78,7 @@ public class PageJumpController {
      * 跳转到创建文章界面
      * @return
      */
+    @RequestMapping("/createArticle.h")
     public String createArticle(){
         return "createArticle";
     }

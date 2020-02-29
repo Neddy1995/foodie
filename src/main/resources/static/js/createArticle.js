@@ -17,7 +17,15 @@ layui.use('form',function () {
     //监听提交按钮
     form.on('submit(createArticleBtn)',function (data) {
         var data1 = form.val("createArticle");
+        delete data1.province;
+        delete data1.city;
+        data1['articlePlace']=data1.streetId;
+        data1['type1']=data.articleType;
+        data1['type2']=data.articleType;
+        delete data1.streetId;
+        delete data1.articleType;
         console.log(data1);
+        createArticle(data1);
         return false;
     });
 
@@ -138,4 +146,12 @@ function selectStreet(id) {
             console.log(data);
         }
     });
+}
+
+/**
+ * 创建文章
+ * @param data
+ */
+function createArticle(data) {
+    
 }

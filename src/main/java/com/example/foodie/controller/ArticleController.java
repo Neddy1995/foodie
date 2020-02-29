@@ -142,7 +142,7 @@ public class ArticleController {
         String typeId= articleTypeService.selectOrInsert(articleType);
 
 //        插入一条数据
-//        article.setAuthor((String) session.getAttribute(SessionKeyValue.USER_ID));
+        article.setAuthor((String) session.getAttribute(SessionKeyValue.USER_ID));
         article.setTypeId(typeId);
         String articleId = articleService.insertArticle(article);
 
