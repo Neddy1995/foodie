@@ -17,15 +17,23 @@ layui.use('form',function () {
     //监听提交按钮
     form.on('submit(createArticleBtn)',function (data) {
         var data1 = form.val("createArticle");
-        delete data1.province;
-        delete data1.city;
-        data1['articlePlace']=data1.streetId;
-        data1['type1']=data.articleType;
-        data1['type2']=data.articleType;
-        delete data1.streetId;
-        delete data1.articleType;
-        console.log(data1);
-        createArticle(data1);
+        var articleTypePictureVo = new Object();
+        var article = new Object();
+        var articleType = new Object();
+
+        article['articleTitle'] = data1.articleTitle;
+        article['tagging'] = data1.tagging;
+        article['articleText'] = data1.articleText;
+        article['articlePlace'] = data1.streetId;
+
+        articleType['type1'] = data1.articleType;
+        articleType['type2'] = data1.articleType;
+
+        articleTypePictureVo['article'] = article;
+        articleTypePictureVo['articleType'] = articleType;
+
+        console.log(articleTypePictureVo);
+        createArticle(articleTypePictureVo);
         return false;
     });
 
@@ -153,5 +161,23 @@ function selectStreet(id) {
  * @param data
  */
 function createArticle(data) {
-    
+    $.ajax({
+        type:'post',
+        url:'insertArticle.do',
+        dataType:"json",
+        contentType:"application/json;charset=utf-8",
+        data:JSON.stringify(data),
+        success:function (data) {
+            var resultCode = data.resultCode;
+            if(resultCode == 'success'){
+                var message = data.message;
+                console.log(message);
+                showAlterMsg(message);
+                window.location.href='information.h';
+            }
+        },
+        error:function (data) {
+            console.log(data);
+        }
+    })
 }

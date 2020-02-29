@@ -70,6 +70,7 @@ public class ArticleServiceImpl implements ArticleService {
     public String insertArticle(Article article) {
         article.setCreateTime(new Date());
         article.setState(0);
+        System.out.println(""+article.toString());
         articleMapper.insertSelective(article);
         return article.getArticleId();
     }

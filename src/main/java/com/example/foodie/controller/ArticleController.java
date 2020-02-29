@@ -147,8 +147,9 @@ public class ArticleController {
         String articleId = articleService.insertArticle(article);
 
 //        插入图片
-        articlePictureService.insertArticlePicture(articleId,list);
-
+        if (list!=null) {
+            articlePictureService.insertArticlePicture(articleId, list);
+        }
         return ControllerResult.createSuccess("创建文章成功");
     }
 
