@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
     public void updatePassword(String userId, String passwordNow) {
         User user = new User();
         user.setUserId(userId);
-        user.setPassword(passwordNow);
+        user.setPassword(MD5Util.MD5EncodeUtf8(passwordNow));
         userMapper.updatePassword(user);
     }
 
