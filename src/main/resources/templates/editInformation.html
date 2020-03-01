@@ -5,30 +5,65 @@
     <title>修改个人信息</title>
     <link type="text/css" rel="stylesheet" href="../static/plugins/layui/css/layui.css"/>
 </head>
-<body>
-<div class="head-img">
-    <h1>头像：</h1>
-    <input/>
-</div>
-<div class="username">
-    <h1>昵称：</h1>
-    <input/>
-</div>
-<div class="user-sex">
-    <h1>性别：</h1>
-    <input/>
-</div>
-<div class="user-birthday">
-    <h1>生日：</h1>
-    <input/>
-</div>
-<div class="user-city">
-    <h1>城市：</h1>
-    <input/>
-</div>
-<div class="user-btn">
-    <button class="layui-btn">修改密码</button>
-    <button class="layui-btn">提交修改</button>
-</div>
+<body style="width: 1080px;margin: 10px auto;">
+<form class="layui-form layui-form-pane" lay-filter="editInformation">
+    <div class="layui-form-item">
+        <label class="layui-form-label">头像：</label>
+        <div id="profilePicture" class="layui-input-block">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名：</label>
+        <div class="layui-input-block">
+            <input type="text" name="userName" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">性别:</label>
+        <div class="layui-input-block">
+            <input type="radio" name="sex" value="1" title="男">
+            <input type="radio" name="sex" value="0" title="女" checked>
+            <input type="radio" name="sex" value="2" title="保密">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">生日：</label>
+        <div class="layui-input-block">
+            <select name="year" lay-verify="required"></select>
+        </div>
+        <div class="layui-input-block">
+            <select name="month" lay-verify="required"></select>
+        </div>
+        <div class="layui-input-block">
+            <select name="day" lay-verify="required"></select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">城市：</label>
+        <div class="layui-input-block">
+            <select name="province" lay-verify="required" lay-filter="province"></select>
+        </div>
+        <div class="layui-input-block">
+            <select name="userCity" lay-verify="required"  lay-filter="userCity"></select>
+        </div>
+    </div>
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">简介</label>
+        <div class="layui-input-block">
+            <textarea name="userProfile" placeholder="介绍自己让更多人了解你" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button id="updatePassword" class="layui-btn" lay-submit lay-filter="updatePassword">修改密码</button>
+            <button id="updateUser" class="layui-btn" lay-submit lay-filter="updateUser">修改信息</button>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript" src="../static/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="../static/plugins/jquery/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="../static/js/public.js"></script>
+<script type="text/javascript" src="../static/js/editInformation.js"></script>
 </body>
 </html>

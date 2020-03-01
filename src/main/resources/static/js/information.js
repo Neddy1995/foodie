@@ -10,8 +10,7 @@ $(document).ready(function () {
 
     //修改信息按钮监听事件
     $('.update-inform').click(function () {
-        var url = 'editInformation.html?userId='+userId;
-        window.open(encodeURI(url));
+        window.location.href='editInformation.h';
     });
 
     //创作作品按钮监听事件

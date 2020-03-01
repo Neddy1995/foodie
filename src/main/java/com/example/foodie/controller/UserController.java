@@ -139,6 +139,7 @@ public class UserController {
 
 //      对比数据是否相同
         User oldUser = (User) session.getAttribute(SessionKeyValue.USER_KEY);
+
         if(!like(user,oldUser)){
             return ControllerResult.createFail("未修改数据");
         }
@@ -147,11 +148,11 @@ public class UserController {
         userService.updateUser(user);
 
 //        重新加载用户数据
-        User userResult = userService.selectById(user.getUserId());
+        User userResult = userService.selectById(oldUser.getUserId());
         session.setAttribute(SessionKeyValue.USER_KEY,userResult);
         session.setAttribute(SessionKeyValue.USER_ID,userResult.getUserId());
 
-        return ControllerResult.createSuccess("修改成功",userResult);
+        return ControllerResult.createSuccess("修改成功");
     }
 
     /**

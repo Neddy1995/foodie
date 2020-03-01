@@ -83,4 +83,22 @@ public class PageJumpController {
         return "createArticle";
     }
 
+    /**
+     * 跳转到修改信息界面
+     * @return
+     */
+    @RequestMapping("/editInformation.h")
+    public String editInformation(){
+        return "editInformation";
+    }
+
+    /**
+     * 跳转到修改密码界面
+     * @return
+     */
+    @RequestMapping("/editPassword.h")
+    public String editPassword(){
+        return "editPassword";
+    }
+
 }
