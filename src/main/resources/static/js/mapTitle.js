@@ -21,7 +21,7 @@ $(document).ready(function () {
             var message = data.message;
             console.log(message);
             if (resultCode == "success"){
-                var user = data.data;
+                user = data.data;
                 $("#login").hide();
                 $("#register").hide();
                 $("#user").show();

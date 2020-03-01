@@ -168,7 +168,7 @@
     select
     <include refid="Title_Column_List"></include>
     from article
-    where article_place = #{streetId,jdbcType=VARCHAR}
+    where article_place like  concat(#{streetId,jdbcType=VARCHAR},"%")
   </select>
 
   <select id="selectByTypeId" parameterType="java.lang.String" resultMap="TitleMap"

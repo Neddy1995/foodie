@@ -103,9 +103,12 @@ public class ArticleServiceImpl implements ArticleService {
 
         for (Article article : articleList) {
             TitleAndPictureVo titleAndPictureVo = new TitleAndPictureVo();
-            Picture picture = pictureMapper.selectByArticleId(article.getArticleId()).get(0);
+            List<Picture> pictureList = pictureMapper.selectByArticleId(article.getArticleId());
+            Picture picture = new Picture();
+            if (pictureList.size()!=0){
+                picture =pictureList.get(0);
+            }
             titleAndPictureVo.setArticleAndPicture(article, picture);
-
             list.add(titleAndPictureVo);
         }
         return list;
