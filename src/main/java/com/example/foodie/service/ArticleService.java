@@ -39,6 +39,13 @@ public interface ArticleService {
     List<TitleAndPictureVo> selectByArticleList(List<String> articleIdList);
 
     /**
+     * 根据用户id查询文章的标题和图片的路径
+     * @param userId
+     * @return
+     */
+    List<TitleAndPictureVo> selectByUserId(String userId);
+
+    /**
      * 根据id查询文章内容
      * @param articleId
      * @return

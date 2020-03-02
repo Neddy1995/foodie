@@ -79,6 +79,21 @@ public class ArticleController {
      * 根据用户id查询评论的文章标题和图片路径
      * @return
      */
+    @GetMapping("/selectByUserId.do")
+    public ControllerResult selectByUserId(HttpServletRequest request){
+        HttpSession session = request.getSession();
+//        查询用户作品
+        List<TitleAndPictureVo> articleIdList = articleService.selectByUserId((String) session.getAttribute(SessionKeyValue.USER_ID));
+        if(articleIdList.size()==0){
+            return ControllerResult.createFail("没有创建文章");
+        }
+        return ControllerResult.createSuccess("查询成功",articleIdList);
+    }
+
+    /**
+     * 根据用户id查询评论的文章标题和图片路径
+     * @return
+     */
     @GetMapping("/selectByComment.do")
     public ControllerResult selectByComment(HttpServletRequest request){
         HttpSession session = request.getSession();

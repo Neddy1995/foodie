@@ -78,3 +78,23 @@ body{
 /*作品信息*/
 .information-body{
 }
+
+.layui-tab-item{
+    overflow: hidden;
+    margin: 10px;
+}
+/*商品*/
+.something{
+    width: 982px;
+    height: 665px;
+    margin:49px auto 0 auto;
+}
+
+.goods-item{
+    width: 234px;
+    height: 300px;
+    border: 1px solid #FF0036;
+    float: left;
+    margin-left: 68px;
+    border-bottom: 15px solid #f5f5f5;
+}

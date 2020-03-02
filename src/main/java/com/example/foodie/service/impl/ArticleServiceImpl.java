@@ -53,6 +53,13 @@ public class ArticleServiceImpl implements ArticleService {
         return list;
     }
 
+    @Override
+    public List<TitleAndPictureVo> selectByUserId(String userId) {
+        List<Article> articleList = articleMapper.selectByUserId(userId);
+        List<TitleAndPictureVo> list = getTitleAndPictureVos(articleList);
+        return list;
+    }
+
 
     @Override
     public ArticleVo selectById(String articleId) {
@@ -61,7 +68,8 @@ public class ArticleServiceImpl implements ArticleService {
         Article article = articleMapper.selectByPrimaryKey(articleId);
         List<Picture> list = pictureMapper.selectByArticleId(articleId);
 
-        BeanUtils.copyProperties(article,articleVo); //拷贝内容
+        //拷贝内容
+        BeanUtils.copyProperties(article,articleVo);
         articleVo.setList(list);
         return articleVo;
     }

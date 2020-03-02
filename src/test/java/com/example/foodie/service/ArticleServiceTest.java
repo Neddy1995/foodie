@@ -52,6 +52,13 @@ class ArticleServiceTest {
     }
 
     @Test
+    @DisplayName("测试ArticleService的搜索查询文章的标题和图片selectByUserId方法")
+    void selectByUserId() {
+        String userId = "1";
+        System.out.println("返回的对象"+articleService.selectByUserId(userId).toString());
+    }
+
+    @Test
     @DisplayName("测试ArticleService的根据文章id查询文章内容selectById方法")
     void selectById() {
         String articleId = "1";
