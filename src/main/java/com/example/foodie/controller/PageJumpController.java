@@ -101,4 +101,13 @@ public class PageJumpController {
         return "editPassword";
     }
 
+    /**
+     * 跳转到管理员界面
+     * @return
+     */
+    @RequestMapping("/admin.h")
+    public String admin(){
+        return "admin";
+    }
+
 }

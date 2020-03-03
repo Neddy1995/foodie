@@ -47,8 +47,13 @@ function login(userName,password,paramCode) {
 
             if(resultCode == "fail"){
                 showAlterMsg(message);
-            }else {
-                window.location.href = "index.h"
+            }else if(resultCode == 'success'){
+                var user = data.data;
+                if (user.userPower == '1'){
+                    window.location.href = "index.h";
+                }else if (user.userPower == '0'){
+                    window.location.href = "admin.h";
+                }
             }
         },
         error:function (data) {

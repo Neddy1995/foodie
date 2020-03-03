@@ -22,13 +22,13 @@
         <ul class="layui-nav layui-nav-tree" lay-filter="test">
             <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
             <li class="layui-nav-item">
-                <a href="">数据图示</a>
+                <a href="javascript:analysis()">数据图示</a>
             </li>
             <li class="layui-nav-item layui-nav-itemed">
                 <a href="javascript:;">文章审核</a>
                 <dl class="layui-nav-child">
-                    <dd><a href="">待审核</a></dd>
-                    <dd><a href="">已审核</a></dd>
+                    <dd><a href="javascript:auditArticle()">待审核</a></dd>
+                    <dd><a href="javascript:auditedArticle()">已审核</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item layui-nav-itemed">
@@ -46,13 +46,8 @@
 
 <script type="text/javascript" src="../static/plugins/layui/layui.js"></script>
 <script type="text/javascript" src="../static/plugins/jquery/jquery-3.4.1.js"></script>
-
-<script>
-    //注意：导航 依赖 element 模块，否则无法进行功能性操作
-    layui.use('element', function(){
-        var element = layui.element;
-
-    });
-</script>
+<script type="text/javascript" src="../static/plugins/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="../static/js/public.js"></script>
+<script type="text/javascript" src="../static/js/admin.js"></script>
 </body>
 </html>
