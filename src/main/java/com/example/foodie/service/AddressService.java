@@ -36,4 +36,6 @@ public interface AddressService {
      * @return
      */
     AddressCity selectCity(String cityId);
+
+    String selectAllByStreet(String streetId);
 }

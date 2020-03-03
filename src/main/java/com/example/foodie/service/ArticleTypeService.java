@@ -17,4 +17,6 @@ public interface ArticleTypeService {
      * @return
      */
     String updateType(ArticleType articleType);
+
+    ArticleType selectType(String typeId);
 }

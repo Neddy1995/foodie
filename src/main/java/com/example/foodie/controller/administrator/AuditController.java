@@ -1,5 +1,6 @@
 package com.example.foodie.controller.administrator;
 
+import com.example.foodie.bean.Article;
 import com.example.foodie.bean.AuditArticle;
 import com.example.foodie.service.AuditService;
 import com.example.foodie.util.ControllerResult;
@@ -28,35 +29,40 @@ public class AuditController {
      */
     @GetMapping("/selectAuditArticle.do")
     public ControllerResult selectAuditArticle(){
-        List list = auditService.selectAuditArticle();
+        List<Article> list = auditService.selectAuditArticle();
         return ControllerResult.createSuccess("查询需要审核的内容成功",list);
     }
 
     /**
-     * 查询该管理员以审核的内容
+     * 查询该管理员已审核的内容
      * @param request
      * @return
      */
     @GetMapping("/selectPassArticle.do")
     public ControllerResult selectPassArticle(HttpServletRequest request){
         HttpSession session = request.getSession();
-        List<TitleAndPictureVo> list = auditService.selectPassArticle((String)session.getAttribute(SessionKeyValue.USER_ID));
+        List<Article> list = auditService.selectPassArticle((String)session.getAttribute(SessionKeyValue.USER_ID));
         return ControllerResult.createSuccess("查询该管理员已审核内容成功",list);
     }
 
     /**
      * 提交审核
      * @param request
-     * @param auditArticle
+     * @param articleId
+     * @param state
      * @return
      */
     @PostMapping("/insertAuditArticle.do")
     public ControllerResult insertAuditArticle(HttpServletRequest request,
-                                               @RequestParam AuditArticle auditArticle){
+                                               @RequestParam String articleId,
+                                               @RequestParam String state){
         HttpSession session = request.getSession();
+        AuditArticle auditArticle = new AuditArticle();
         auditArticle.setUserId((String) session.getAttribute(SessionKeyValue.USER_ID));
-        auditService.insertAuditArticle(auditArticle);
+        auditArticle.setArticleId(articleId);
+        auditService.insertAuditArticle(auditArticle,state);
         return ControllerResult.createSuccess("审核成功");
     }
+
 
 }

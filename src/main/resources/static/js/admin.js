@@ -4,7 +4,8 @@ layui.use('element', function(){
 });
 
 $(document).ready(function () {
-    $('.admin-card').load("../static/html/analysis.html");
+    $('.admin-card').load("../static/html/auditArticleAdmin.html");
+
 
 });
 
@@ -12,8 +13,9 @@ function analysis() {
     $('.admin-card').load("../static/html/analysis.html");
 }
 function auditArticle() {
-    $('.admin-card').load("../static/html/auditArticle.html")
+    $('.admin-card').load("../static/html/auditArticleAdmin.html")
 }
 function auditedArticle() {
-    $('.admin-card').load("../static/html/auditedArticle.html")
+    $('.admin-card').load("../static/html/passArticleAdmin.html")
 }
+

@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
 
 @RestController
 public class AddressController {
@@ -59,6 +58,17 @@ public class AddressController {
     public ControllerResult selectStreet(@RequestParam("cityId")String cityId){
         List<AddressStreet> addressStreet = addressService.selectStreet(cityId);
         return ControllerResult.createSuccess("查询区县成功",addressStreet);
+    }
+
+    /**
+     * 查询包含省份城市区县的字符串
+     * @param streetId
+     * @return
+     */
+    @PostMapping("/selectAllByStreet.do")
+    public ControllerResult selectAllByStreet(@RequestParam("streetId")String streetId){
+        String cityAndStreet = addressService.selectAllByStreet(streetId);
+        return ControllerResult.createSuccess("查询成功",cityAndStreet);
     }
 
 }

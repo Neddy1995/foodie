@@ -36,6 +36,6 @@ class AuditServiceTest {
     @DisplayName("测试AuditService的审核通过insertAuditArticle方法")
     void insertAuditArticle() {
         AuditArticle auditArticle = new AuditArticle("26407398717521929","通过","1");
-        auditService.insertAuditArticle(auditArticle);
+        auditService.insertAuditArticle(auditArticle,"1");
     }
 }

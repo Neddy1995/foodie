@@ -56,4 +56,12 @@ public class AddressServiceImpl implements AddressService {
     public AddressCity selectCity(String cityId) {
         return addressCityMapper.selectByPrimaryKey(cityId);
     }
+
+    @Override
+    public String selectAllByStreet(String streetId) {
+        AddressCity addressCity = addressCityMapper.selectByPrimaryKey(streetId.substring(0,7));
+        AddressStreet addressStreet = addressStreetMapper.selectByPrimaryKey(streetId);
+        String cityAndStreet = addressCity.getProvince()+addressCity.getCity()+addressStreet.getstreetName();
+        return cityAndStreet;
+    }
 }

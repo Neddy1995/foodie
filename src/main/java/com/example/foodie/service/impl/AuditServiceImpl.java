@@ -29,26 +29,34 @@ public class AuditServiceImpl implements AuditService {
     private AuditArticleMapper auditArticleMapper;
 
     @Override
-    public List<TitleAndPictureVo> selectAuditArticle() {
+    public List<Article> selectAuditArticle() {
         List<Article> articleList = articleMapper.selectAuditArticle();
-        List<TitleAndPictureVo> list = getTitleAndPictureVos(articleList);
-        return list;
+        return articleList;
     }
 
     @Override
-    public List selectPassArticle(String userId) {
+    public List<Article> selectPassArticle(String userId) {
         List<String> listArticleId = auditArticleMapper.selectPassArticle(userId);
-        List<Article> articleList = articleMapper.selectPassArticle(listArticleId);
-        List<TitleAndPictureVo> list = getTitleAndPictureVos(articleList);
-        return list;
+        if(listArticleId.size()!=0){
+            List<Article> articleList = articleMapper.selectPassArticle(listArticleId);
+            return articleList;
+        }
+        return null;
     }
 
     @Override
-    public void insertAuditArticle(AuditArticle auditArticle) {
+    public void insertAuditArticle(AuditArticle auditArticle,String state) {
         auditArticle.setAuditTime(new Date());
+        if("1".equals(state)){
+            auditArticle.setAuditText("SUCCESS");
+            Article article = new Article(auditArticle.getArticleId(),1);
+            articleMapper.updateByPrimaryKeySelective(article);
+        }else{
+            auditArticle.setAuditText("FAIL");
+            Article article = new Article(auditArticle.getArticleId(),2);
+            articleMapper.updateByPrimaryKeySelective(article);
+        }
         auditArticleMapper.insertSelective(auditArticle);
-        Article article = new Article(auditArticle.getArticleId(),1);
-        articleMapper.updateByPrimaryKeySelective(article);
     }
 
     /**

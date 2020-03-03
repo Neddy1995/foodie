@@ -68,10 +68,13 @@ public class ArticleServiceImpl implements ArticleService {
         Article article = articleMapper.selectByPrimaryKey(articleId);
         List<Picture> list = pictureMapper.selectByArticleId(articleId);
 
-        //拷贝内容
-        BeanUtils.copyProperties(article,articleVo);
-        articleVo.setList(list);
-        return articleVo;
+        if(article != null){
+            //拷贝内容
+            BeanUtils.copyProperties(article,articleVo);
+            articleVo.setList(list);
+            return articleVo;
+        }
+        return null;
     }
 
     @Override

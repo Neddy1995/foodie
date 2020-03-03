@@ -27,4 +27,10 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
     public String updateType(ArticleType articleType) {
         return articleTypeMapper.selectByName(articleType);
     }
+
+    @Override
+    public ArticleType selectType(String typeId) {
+        ArticleType articleType = articleTypeMapper.selectByPrimaryKey(typeId);
+        return articleType;
+    }
 }
