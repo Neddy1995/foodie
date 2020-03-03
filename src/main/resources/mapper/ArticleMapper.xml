@@ -241,4 +241,11 @@ where date_format(create_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x
       #{item,jdbcType=VARCHAR}
     </foreach>
   </select>
+
+  <select id="selectByUserId" parameterType="java.lang.String" resultMap="TitleMap">
+    select
+    <include refid="Title_Column_List"></include>
+    from article
+    where author = #{userId,jdbcType=VARCHAR}
+  </select>
 </mapper>

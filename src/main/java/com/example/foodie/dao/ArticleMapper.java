@@ -34,4 +34,6 @@ public interface ArticleMapper {
     List<Article> selectAuditArticle();
 
     List<Article> selectPassArticle(List<String> listArticleId);
+
+    List<Article> selectByUserId(String userId);
 }
