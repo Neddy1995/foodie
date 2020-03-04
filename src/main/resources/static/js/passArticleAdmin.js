@@ -22,9 +22,11 @@ $(document).ready(function () {
         html += '<td class="type">'+ typeName+'</td>';
         html += '<td class="tagging">'+ list[i].tagging +'</td>';
         html += '<td class="articleText">'+ list[i].articleText +'</td>';
-        html += '<td class="td-buttons">';
-        html += '<button class="layui-btn pass">修改</button>';
-        html += '</td>';
+        if(list[i].state == '1'){
+            html += '<td class="td-buttons">SUCCESS</td>';
+        }
+        else if (list[i].state == '2')
+            html +='<td class="td-buttons">FAIL</td>';
         html +='</tr>';
     }
     $('.layui-table-body').html(html);
