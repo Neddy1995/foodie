@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class DataBean {
     private int type; //1,点赞表；2，评论表；3，关注表；4，文章表创建数；5，文章表通过审核数；6，文章表审核数
-    private Date dates;
+    private String dates;
     private int num;
 
 
@@ -16,12 +16,12 @@ public class DataBean {
         this.type = type;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return dates;
     }
 
-    public void setDate(Date date) {
-        this.dates = date;
+    public void setDate(String dates) {
+        this.dates = dates;
     }
 
     public int getNum() {

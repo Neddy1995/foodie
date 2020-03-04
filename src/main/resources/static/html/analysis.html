@@ -3,12 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>图示</title>
+    <link rel="stylesheet" href="../css/analysis.css"/>
 </head>
-<body style="width:1600px;height: 800px">
-这是数据图示
+<body style="width:1600px;height: 800px;margin: 10px">
+<div style="margin: 10px">
+    <div style="float: left">时间选择：</div>
+    <div  style="float: left">
+        <input type="text" class="layui-input" id="selectTime">
+    </div>
+    <form class="layui-form" lay-filter="myType" style="float: left">
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择查看类型</label>
+            <div class="layui-input-block">
+                <select name="type" lay-verify="type">
+                    <option value="1">点赞数</option>
+                    <option value="2">评论数</option>
+                    <option value="3">关注数</option>
+                    <option value="4">文章表创建数</option>
+                    <option value="5">文章表通过审核数</option>
+                    <option value="6">文章表审核数</option>
+                </select>
+            </div>
+        </div>
+    </form>
+</div>
 
-<script type="text/javascript" src="../static/plugins/layui/layui.js"></script>
-<script type="text/javascript" src="../static/plugins/jquery/jquery-3.4.1.js"></script>
-<script type="text/javascript" src="../static/plugins/echarts/echarts.min.js"></script>
+<table  class="layui-table">
+    <colgroup>
+        <col width="150">
+        <col width="200">
+    </colgroup>
+    <thead>
+    <tr>
+        <th>名称</th>
+        <th>数量</th>
+    </tr>
+    </thead>
+    <tbody class="analysis-tbody">
+    <tr>
+        <th></th>
+        <th></th>
+    </tr>
+    </tbody>
+</table>
+
+<script type="text/javascript" src="../plugins/jquery/jquery-3.4.1.js"></script>
+<script type="text/javascript" src="../plugins/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="../js/analysis.js"></script>
 </body>
 </html>

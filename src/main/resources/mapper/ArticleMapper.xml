@@ -211,7 +211,7 @@
   </select>
 
   <select id="selectArticleNumByDay" parameterType="java.lang.String" resultMap="NumResultMap">
-    select 4 as type,time,count(time) as num
+    select 4 as type,time as dates,count(time) as num
   from (select hour(create_time) as time
   from article
   where date_format(create_time,"%Y-%m-%d") = #{dateDay,jdbcType=VARCHAR}) x
@@ -219,7 +219,7 @@
   </select>
 
   <select id="selectArticleNumByMonth" parameterType="java.lang.String" resultMap="NumResultMap">
-select 4 as type,time,count(time) as num
+select 4 as type,time as dates,count(time) as num
 from (select day(create_time) as time
 from article
 where date_format(create_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x

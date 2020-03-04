@@ -120,7 +120,7 @@
   </delete>
 
   <select id="selectLikeNumByDay" parameterType="java.lang.String" resultMap="NumResultMap">
-select 1 as type,time,count(time) as num
+select 1 as type,time as dates,count(time) as num
 from (select hour(like_time) as time
 from article_like
 where date_format(like_time,"%Y-%m-%d") = #{dateDay,jdbcType=VARCHAR}) x
@@ -128,7 +128,7 @@ where date_format(like_time,"%Y-%m-%d") = #{dateDay,jdbcType=VARCHAR}) x
   </select>
 
   <select id="selectLikeNumByMonth" parameterType="java.lang.String" resultMap="NumResultMap">
-select 1 as type,time,count(time) as num
+select 1 as type,time as dates,count(time) as num
 from (select day(like_time) as time
 from article_like
 where date_format(like_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x

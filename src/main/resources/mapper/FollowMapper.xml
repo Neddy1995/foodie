@@ -105,7 +105,7 @@
   </delete>
 
   <select id="selectFollowNumByDay" parameterType="java.lang.String" resultMap="NumResultMap">
-select 3 as type,time,count(time) as num
+select 3 as type,time as dates,count(time) as num
 from (select hour(follow_time) as time
 from follow
 where date_format(follow_time,"%Y-%m-%d") = #{dateDay,jdbcType=VARCHAR}) x
@@ -113,7 +113,7 @@ where date_format(follow_time,"%Y-%m-%d") = #{dateDay,jdbcType=VARCHAR}) x
   </select>
 
   <select id="selectFollowNumByMonth" parameterType="java.lang.String" resultMap="NumResultMap">
-select 3 as type,time,count(time) as num
+select 3 as type,time as dates,count(time) as num
 from (select day(follow_time) as time
 from follow
 where date_format(follow_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x
