@@ -1,5 +1,6 @@
 var list = new Array();
-
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('echartsAnalysis'));;
 layui.use('laydate', function(){
     var laydate = layui.laydate;
 
@@ -12,6 +13,7 @@ layui.use('laydate', function(){
         done:function (value,data,endDate) {
             console.log(value);
             selectAnalysis(new Date(value));
+            echartsAnalysis(list[0]);
         }
     });
 });
@@ -19,10 +21,19 @@ layui.use('laydate', function(){
 //下拉框
 layui.use('form',function () {
     var form = layui.form;
+
+    form.on('select(typeSelect)',function (data) {
+        var i = Number(data.value)-1;
+        console.log(data.elem[data.elem.selectedIndex].text);
+        echartsAnalysis(list[i],data.elem[data.elem.selectedIndex].text);
+    });
 });
+
+
 $(document).ready(function () {
     var date = new Date();
     selectAnalysis(date);
+    echartsAnalysis(list[0],'点赞数');
 });
 
 /**
@@ -85,11 +96,48 @@ function selectAnalysis(date) {
                 break;
         }
     }
-    console.log(list);
-    console.log(numList);
     var html = '';
     for(var i=0;i<numList.length;i++){
         html +='<tr><td>'+numList[i].type+'</td><td>'+numList[i].num+'</td></tr>';
     }
     $('.analysis-tbody').html(html);
 }
+
+/**
+ * 填充图标数据
+ * @param list
+ */
+function echartsAnalysis(list,text){
+    var dataList =new Array();
+    for(var i=0;i<24;i++){
+        dataList.push(0);
+        for(var j=0;j<list.length;j++){
+            if(Number(list[j].date) == i){
+                dataList[i]=list[j].num;
+            }
+        }
+    }
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: text
+        },
+        xAxis: {
+            name:'时间',
+            type: 'category',
+            data: ['0','1', '2', '3', '4', '5', '6', '7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23']
+        },
+        yAxis: {
+            name:'数量',
+            type: 'value', //设置类型
+            minInterval:1 //设置值为整数
+        },
+        series: [{
+            data: dataList,
+            type: 'line'
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+}
+

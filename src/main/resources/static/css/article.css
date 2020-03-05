@@ -21,6 +21,7 @@
     font-size: 14px;
     color: #333;
     margin: 20px 5px;
+    white-space:pre-wrap;
 }
 
 /*点赞，评论，收藏数*/

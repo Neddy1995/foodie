@@ -1,3 +1,6 @@
+//指定图片服务器地址
+var imgsPath= 'http://localhost:8080/imgs/';
+
 /**
  * 弹出预警信息
  * @param str

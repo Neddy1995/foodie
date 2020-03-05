@@ -11,11 +11,10 @@
     <div  style="float: left">
         <input type="text" class="layui-input" id="selectTime">
     </div>
-    <form class="layui-form" lay-filter="myType" style="float: left">
-        <div class="layui-form-item">
-            <label class="layui-form-label">选择查看类型</label>
+    <form class="layui-form" lay-filter="typeForm" style="float: left">
+            <label class="layui-form-label">选择类型</label>
             <div class="layui-input-block">
-                <select name="type" lay-verify="type">
+                <select name="typeSelect" lay-verify="required" lay-filter="typeSelect">
                     <option value="1">点赞数</option>
                     <option value="2">评论数</option>
                     <option value="3">关注数</option>
@@ -24,7 +23,6 @@
                     <option value="6">文章表审核数</option>
                 </select>
             </div>
-        </div>
     </form>
 </div>
 
@@ -46,6 +44,8 @@
     </tr>
     </tbody>
 </table>
+
+<div id="echartsAnalysis" style="width: 1500px;height: 430px"></div>
 
 <script type="text/javascript" src="../plugins/jquery/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="../plugins/echarts/echarts.min.js"></script>
