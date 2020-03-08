@@ -17,7 +17,8 @@ $(document).ready(function () {
         //建造实例
         carousel.render({
             elem: '#slideshow'
-            ,width: '100%' //设置容器宽度
+            ,width: '960px'//设置容器宽度
+            ,height:'1280px'
             ,arrow: 'always' //始终显示箭头
             //,anim: 'updown' //切换动画方式
         });
@@ -122,7 +123,7 @@ function selectById(articleId){
                     var imgId = list[i].imgId;
                     var imgName = list[i].imgName;
                     var imgPath = list[i].imgPath;
-                    html+='<div id="'+imgId+'"><img src="'+imgPath+'" title="'+imgName+'"/></div>';
+                    html+='<div id="'+imgId+'"><img src="'+ imgsPath + imgPath+'" title="'+imgName+'"/></div>';
                 }
                 result1=html;
             }

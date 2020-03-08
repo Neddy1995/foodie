@@ -20,6 +20,7 @@ layui.use('form',function () {
         var articleTypePictureVo = new Object();
         var article = new Object();
         var articleType = new Object();
+        console.log(data1);
 
         article['articleTitle'] = data1.articleTitle;
         article['tagging'] = data1.tagging;
@@ -29,8 +30,12 @@ layui.use('form',function () {
         articleType['type1'] = data1.articleType;
         articleType['type2'] = data1.articleType;
 
+        var list = new Array();
+        list.push(data1.imgPath);
+
         articleTypePictureVo['article'] = article;
         articleTypePictureVo['articleType'] = articleType;
+        articleTypePictureVo['list'] = list;
 
         console.log(articleTypePictureVo);
         createArticle(articleTypePictureVo);
@@ -39,7 +44,7 @@ layui.use('form',function () {
 
 });
 
-//上传图片
+//上传图片并将数据保存到数据库中
 layui.use('upload', function(){
     var upload = layui.upload;
 
@@ -47,11 +52,36 @@ layui.use('upload', function(){
     var uploadInst = upload.render({
         elem: '#load-img-btn' //绑定元素
         ,url: '/upload/' //上传接口
+        ,multiple: true //开启多文件上传
+        ,accept:'images' //只允许上传图片
+        ,before: function(obj){
+            obj.preview(function(index, file, result){
+                $('#imgPathShow').attr('src', result);
+                $('#imgPathShow').attr("style","width: 96px;height: 128px");
+            });
+        }
         ,done: function(res){
             //上传完毕回调
+            var resultCode = res.resultCode;
+            console.log(res);
+            if(resultCode == 'success'){
+                var message = res.message;
+                var picture = res.data;
+                //上传成功
+                var uploadMessage = $('#uploadMessage');
+                uploadMessage.html('<span style="color: #4cae4c;">'+message+'</span>');
+
+                var imgPath = $('.imgPath');
+                imgPath.attr("value",picture.imgId);
+            }
         }
         ,error: function(){
-            //请求异常回调
+            //失败状态，并实现重传
+            var uploadMessage = $('#uploadMessage');
+            uploadMessage.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs upload-reload">重试</a>');
+            uploadMessage.find('.upload-reload').on('click', function(){
+                uploadInst.upload();
+            });
         }
     });
 });
@@ -173,7 +203,7 @@ function createArticle(data) {
                 var message = data.message;
                 console.log(message);
                 showAlterMsg(message);
-                window.location.href='information.h';
+                // window.location.href='information.h';
             }
         },
         error:function (data) {

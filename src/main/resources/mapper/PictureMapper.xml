@@ -21,6 +21,9 @@
     where img_id = #{imgId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.example.foodie.bean.Picture" >
+    <selectKey resultType="java.lang.String" keyProperty="imgId" order="BEFORE" >
+      select uuid_short()
+    </selectKey>
     insert into picture (img_id, img_path, img_name, 
       img_user)
     values (#{imgId,jdbcType=VARCHAR}, #{imgPath,jdbcType=VARCHAR}, #{imgName,jdbcType=VARCHAR}, 

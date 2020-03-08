@@ -12,6 +12,10 @@ spring:
       charset: utf-8
       enabled: true
       force: true
+    multipart:
+      max-request-size: 100MB  #设置单个文件大小
+      max-file-size: 10MB #设置总文件大小
+      enabled: true
   thymeleaf:
     cache: false
 
