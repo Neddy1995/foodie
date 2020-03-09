@@ -153,6 +153,8 @@ public class ArticleController {
         ArticleType articleType = articleTypePictureVo.getArticleType();
         List<String> list = articleTypePictureVo.getList();
 
+        System.out.println(""+list.toString());
+
 //        查询是否存在该类型的文章，不存在则创建
         String typeId= articleTypeService.selectOrInsert(articleType);
 

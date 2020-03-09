@@ -120,8 +120,9 @@ function selectArticleById() {
                     var imgId = list[i].imgId;
                     var imgPath = list[i].imgPath;
                     var imgName = list[i].imgName;
+                    console.log(imgsPath+imgPath);
                     html+='<div class="goods-item" id="'+articleId+'">';
-                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgPath+'" title="'+imgName+'" alt=""/>';
+                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgsPath+imgPath+'" title="'+imgName+'" alt=""/>';
                     html+='<div class="goods-item-title">'+articleTitle+'</div>';
                     html+='<div class="goods-item-tagging">tagging</div>';
                     html+='</div>';
@@ -170,7 +171,7 @@ function selectFollowById() {
                     var imgPath = list[i].imgPath;
                     var imgName = list[i].imgName;
                     html+='<div class="goods-item" id="'+articleId+'">';
-                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgPath+'" title="'+imgName+'" alt=""/>';
+                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgsPath+imgPath+'" title="'+imgName+'" alt=""/>';
                     html+='<div class="goods-item-title">'+articleTitle+'</div>';
                     html+='<div class="goods-item-tagging">tagging</div>';
                     html+='</div>';
@@ -217,8 +218,9 @@ function selectCommentById() {
                     var imgId = list[i].imgId;
                     var imgPath = list[i].imgPath;
                     var imgName = list[i].imgName;
+                    console.log(imgsPath+imgPath);
                     html+='<div class="goods-item" id="'+articleId+'">';
-                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgPath+'" title="'+imgName+'" alt=""/>';
+                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgsPath+imgPath+'" title="'+imgName+'" alt=""/>';
                     html+='<div class="goods-item-title">'+articleTitle+'</div>';
                     html+='<div class="goods-item-tagging">tagging</div>';
                     html+='</div>';

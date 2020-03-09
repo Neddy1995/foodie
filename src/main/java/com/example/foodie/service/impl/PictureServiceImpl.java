@@ -34,7 +34,7 @@ public class PictureServiceImpl implements PictureService {
                 prefix=originalName.substring(originalName.lastIndexOf(".")+1);
                 fileStr=originalName.substring(0,originalName.lastIndexOf(".")+1);
                 String uuid = UUID.randomUUID()+"";
-                String filepath = "E:\\apache-tomcat-9.0.8\\webapps\\imgs\\"+uuid+"." + prefix;
+                String filepath = "D:\\apache-tomcat-9.0.8\\webapps\\imgs\\"+uuid+"." + prefix;
 
                 File files=new File(filepath);
                 //打印查看上传路径

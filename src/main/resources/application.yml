@@ -13,8 +13,8 @@ spring:
       enabled: true
       force: true
     multipart:
-      max-request-size: 100MB  #设置单个文件大小
-      max-file-size: 10MB #设置总文件大小
+      max-request-size: 100MB  #设置上传单个文件大小
+      max-file-size: 10MB #设置上传总文件大小
       enabled: true
   thymeleaf:
     cache: false
@@ -26,7 +26,7 @@ spring:
       #serverTimezone设置时区
       url: jdbc:mysql://localhost:3306/foodie?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       username: root
-      password: 123456
+      password: 1qaz!QAZ
 
 
 mybatis:

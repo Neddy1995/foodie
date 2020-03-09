@@ -1,3 +1,4 @@
+var list = new Array();
 layui.use('form',function () {
     var form = layui.form;
     form.render();
@@ -20,7 +21,7 @@ layui.use('form',function () {
         var articleTypePictureVo = new Object();
         var article = new Object();
         var articleType = new Object();
-        console.log(data1);
+
 
         article['articleTitle'] = data1.articleTitle;
         article['tagging'] = data1.tagging;
@@ -31,7 +32,8 @@ layui.use('form',function () {
         articleType['type2'] = data1.articleType;
 
         var list = new Array();
-        list.push(data1.imgPath);
+        list = data1.imgPath.split(',');
+        console.log(list);
 
         articleTypePictureVo['article'] = article;
         articleTypePictureVo['articleType'] = articleType;
@@ -56,8 +58,9 @@ layui.use('upload', function(){
         ,accept:'images' //只允许上传图片
         ,before: function(obj){
             obj.preview(function(index, file, result){
-                $('#imgPathShow').attr('src', result);
-                $('#imgPathShow').attr("style","width: 96px;height: 128px");
+                var html='';
+                html +='<img src="'+result+'" style="width: 96px;height: 128px"/>';
+                $('#uploadMessage').before(html);
             });
         }
         ,done: function(res){
@@ -72,7 +75,8 @@ layui.use('upload', function(){
                 uploadMessage.html('<span style="color: #4cae4c;">'+message+'</span>');
 
                 var imgPath = $('.imgPath');
-                imgPath.attr("value",picture.imgId);
+                list.push(picture.imgId);
+                imgPath.attr("value",list);
             }
         }
         ,error: function(){
@@ -203,7 +207,7 @@ function createArticle(data) {
                 var message = data.message;
                 console.log(message);
                 showAlterMsg(message);
-                // window.location.href='information.h';
+                window.location.href='information.h';
             }
         },
         error:function (data) {
