@@ -269,14 +269,11 @@ function selectPicture(imgId) {
             if(resultCode == 'success'){
                 var message = data.message;
                 var picture = data.data;
-                console.log(message,picture);
-                console.log(imgsPath+picture.imgPath);
                 $('.head-picture').attr('src',imgsPath+picture.imgPath);
             }
             if(resultCode == 'fail'){
                 $('.head-picture').attr('src','../static/img/头像.png');
             }
         }
-    })
-
+    });
 }

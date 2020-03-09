@@ -23,16 +23,16 @@ public class PictureServiceImpl implements PictureService {
 
     @Override
     public ControllerResult insertPicture(MultipartFile file,String userId) {
-        String prefix=""; //指定文件类型
-        String fileStr="";//指定文件名
         //保存上传
         OutputStream out = null;
         InputStream fileInput=null;
         try{
             if(file!=null){
                 String originalName = file.getOriginalFilename();
-                prefix=originalName.substring(originalName.lastIndexOf(".")+1);
-                fileStr=originalName.substring(0,originalName.lastIndexOf(".")+1);
+                //文件类型
+                String prefix = originalName.substring(originalName.lastIndexOf(".") + 1);
+                //文件名
+                String fileStr=originalName.substring(0,originalName.lastIndexOf("."));
                 String uuid = UUID.randomUUID()+"";
                 String filepath = "D:\\apache-tomcat-9.0.8\\webapps\\imgs\\"+uuid+"." + prefix;
 

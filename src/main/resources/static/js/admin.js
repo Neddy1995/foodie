@@ -9,7 +9,6 @@ $(document).ready(function () {
 
     selectUser();
 
-
 });
 
 /**
@@ -39,6 +38,7 @@ function selectUser() {
                 var message = data.message;
                 user = data.data;
                 console.log(message,user);
+                selectPicture(user.profilePicture);
                 $('.admin-username').html(user.userName);
             }
         },
@@ -48,7 +48,55 @@ function selectUser() {
     });
 }
 
+/**
+ * 跳转到修改密码界面
+ */
 function updateUser() {
     window.location.href='editPassword.h';
+}
+
+/**
+ * 查询图片
+ * @param imgId
+ */
+function selectPicture(imgId) {
+    $.ajax({
+        type:'post',
+        url:'selectPicture.do',
+        async:false,
+        data:{
+            'imgId':imgId
+        },
+        success:function (data) {
+            var resultCode = data.resultCode;
+            if(resultCode == 'success'){
+                var message = data.message;
+                var picture = data.data;
+                $('.admin-img').attr('src',imgsPath+picture.imgPath);
+            }
+            if(resultCode == 'fail'){
+                $('.admin-img').attr('src','../static/img/头像.png');
+            }
+        }
+    });
+}
+
+/**
+ * 退出
+ */
+function logout() {
+    $.ajax({
+        type:"get",
+        url:"logout.do",
+        success:function (data) {
+            var resultCode = data.resultCode;
+            var message = data.message;
+            console.log(message);
+            if (resultCode == "success") {
+                showAlterMsg("退出成功！");
+                window.location.href = 'index.h';
+            }
+        }
+    });
 }
 
