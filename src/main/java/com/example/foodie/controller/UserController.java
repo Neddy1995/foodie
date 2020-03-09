@@ -144,6 +144,7 @@ public class UserController {
             return ControllerResult.createFail("未修改数据");
         }
 
+        user.setUserId((String) session.getAttribute(SessionKeyValue.USER_ID));
 //        修改
         userService.updateUser(user);
 

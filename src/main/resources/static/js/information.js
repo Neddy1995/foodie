@@ -11,11 +11,11 @@ $(document).ready(function () {
     selectUser();
 
     //加载相关作品
-    selectArticleById();
+    // selectArticleById();
     //加载关注作品
-    selectFollowById();
+    // selectFollowById();
     //加载评论作品
-    selectCommentById();
+    // selectCommentById();
 
     //修改信息按钮监听事件
     $('.update-inform').click(function () {
@@ -47,13 +47,19 @@ function selectUser() {
                 var sex = user.sex;
                 var birthday = new Date(user.birthday);
                 var userCity = user.userCity;
-                var picture = user.profilePicture;
                 var userProfile = user.userProfile;
+                var profilePicture = user.profilePicture;
+                selectPicture(profilePicture);
                 selectCity(userCity);
                 birthday = dateToSting(birthday);
-                $('.head-picture').attr("src",picture);
                 $('.head-username').html(userName);
-                $('.head-sex').html(sex);
+                if(sex=='1'){
+                    $('.head-sex').html('男');
+                }else if(sex=='0'){
+                    $('.head-sex').html('女');
+                }else{
+                    $('.head-sex').html('保密');
+                }
                 $('.city').html(city);
                 $('.birthday').html(birthday);
                 if (!userProfile){
@@ -244,4 +250,33 @@ function selectCommentById() {
             console.log(data);
         }
     });
+}
+
+/**
+ * 查询图片
+ * @param imgId
+ */
+function selectPicture(imgId) {
+    $.ajax({
+        type:'post',
+        url:'selectPicture.do',
+        async:false,
+        data:{
+            'imgId':imgId
+        },
+        success:function (data) {
+            var resultCode = data.resultCode;
+            if(resultCode == 'success'){
+                var message = data.message;
+                var picture = data.data;
+                console.log(message,picture);
+                console.log(imgsPath+picture.imgPath);
+                $('.head-picture').attr('src',imgsPath+picture.imgPath);
+            }
+            if(resultCode == 'fail'){
+                $('.head-picture').attr('src','../static/img/头像.png');
+            }
+        }
+    })
+
 }

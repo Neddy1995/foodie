@@ -1,5 +1,6 @@
 package com.example.foodie.controller;
 
+import com.example.foodie.bean.Picture;
 import com.example.foodie.service.PictureService;
 import com.example.foodie.util.ControllerResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +31,20 @@ public class PictureController {
         String userId = (String) session.getAttribute("userId");
         return pictureService.insertPicture(file,userId);
 
+    }
+
+
+    /**
+     * 查询成功
+     * @param imgId
+     * @return
+     */
+    @RequestMapping("/selectPicture.do")
+    public ControllerResult selectPicture(String imgId){
+        Picture picture = pictureService.selectPicture(imgId);
+        if (picture!=null) {
+            return ControllerResult.createSuccess("查询成功", picture);
+        }
+        return ControllerResult.createFail("查询失败");
     }
 }

@@ -7,9 +7,12 @@
 </head>
 <body style="width: 1080px;margin: 10px auto;">
 <form class="layui-form layui-form-pane" lay-filter="editInformation">
+    <input type="hidden" name="profilePicture" id="imgProfile"/>
     <div class="layui-form-item">
         <label class="layui-form-label">头像：</label>
-        <div id="profilePicture" class="layui-input-block">
+        <div id="profilePictureDiv" class="layui-input-block">
+            <img name="profilePicture" id="profilePicture" style="width: 45px;height: 45px"/>
+            <p id="imgMessage"></p>
         </div>
     </div>
     <div class="layui-form-item">

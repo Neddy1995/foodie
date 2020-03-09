@@ -37,12 +37,47 @@ layui.use('form',function () {
         delete data1.month;
         delete data1.day;
         delete data1.province;
+        delete data1.file;
         console.log(data1);
         updateUser(data1);
         return false;
     });
 });
 
+layui.use('upload', function() {
+    var upload = layui.upload;
+
+    var uploadInst = upload.render({
+        elem : '#profilePicture'
+        ,url: '/upload/'
+        ,before:function (obj) {
+            obj.preview(function(index, file, result) {
+               $('#profilePicture').attr("src",result);
+            });
+        }
+        ,done: function(res) {
+            //上传完毕回调
+            var resultCode = res.resultCode;
+            if(resultCode == 'success'){
+                var message = res.message;
+                var data = res.data;
+                $('#imgProfile').attr('value',data.imgId);
+                var imgMessage = $('#imgMessage');
+                imgMessage.html('<span style="color: #4cae4c;">'+message+'</span>');
+            }
+        },
+        error:function () {
+            //失败状态，并实现重传
+            var imgMessage = $('#imgMessage');
+            imgMessage.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs upload-reload">重试</a>');
+            imgMessage.find('.upload-reload').on('click', function(){
+                uploadInst.upload();
+            });
+        }
+    });
+
+
+});
 $(document).ready(function () {
     selectProvince();
     updateDate();
@@ -69,7 +104,6 @@ function selectUser() {
                 //处理图片
                 selectPicture(profilePicture);
 
-
                 selectCity(user.userCity.substring(0,3));
 
 
@@ -86,11 +120,28 @@ function selectUser() {
  * 查询图片
  * @param profilePicture
  */
-function selectPicture(profilePicture) {
-    var data =new Object();
-
-    $.post("",{'imgId':profilePicture},function (data) {
-        
+function selectPicture(imgId) {
+    $.ajax({
+        type:'post',
+        url:'selectPicture.do',
+        async:false,
+        data:{
+            "imgId":imgId
+        },
+        success:function (data) {
+            var resultCode = data.resultCode;
+            if(resultCode == 'success'){
+                var message = data.message;
+                var picture = data.data;
+                console.log(message,picture);
+                $('#profilePicture').attr('src',picture.imgPath);
+            }
+            else if(resultCode == 'fail'){
+                var message = data.message;
+                console.log(message);
+                $('#profilePicture').attr('src','../static/img/头像.png');
+            }
+        }
     });
 }
 
@@ -181,6 +232,11 @@ function updateDate() {
     $('select[name=day]').html(day);
 }
 
+
+/**
+ * 修改用户信息
+ * @param data
+ */
 function updateUser(data) {
     $.ajax({
         type:'post',

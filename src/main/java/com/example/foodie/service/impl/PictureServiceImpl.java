@@ -67,4 +67,9 @@ public class PictureServiceImpl implements PictureService {
         }
         return ControllerResult.createFail("上传失败");
     }
+
+    @Override
+    public Picture selectPicture(String imgId) {
+        return pictureMapper.selectByPrimaryKey(imgId);
+    }
 }
