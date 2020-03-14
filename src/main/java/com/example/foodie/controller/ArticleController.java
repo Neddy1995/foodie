@@ -28,7 +28,7 @@ public class ArticleController {
     private CommentService commentService;
 
     @Autowired
-    private LikeService likeService;
+    private FollowService followService;
 
     @Autowired
     private ArticlePictureService articlePictureService;
@@ -111,11 +111,11 @@ public class ArticleController {
      * 根据用户id查询收藏的文章标题和图片路径
      * @return
      */
-    @GetMapping("/selectByLike.do")
-    public ControllerResult selectByLike(HttpServletRequest request){
+    @GetMapping("/selectByFollow.do")
+    public ControllerResult selectByFollow(HttpServletRequest request){
         HttpSession session = request.getSession();
-//        查询评论
-        List<String> articleIdList = likeService.selectByUserId((String) session.getAttribute(SessionKeyValue.USER_ID));
+//        查询收藏
+        List<String> articleIdList = followService.selectByUserId((String) session.getAttribute(SessionKeyValue.USER_ID));
         if(articleIdList.isEmpty()){
             return ControllerResult.createFail("没有收藏的的文章");
         }

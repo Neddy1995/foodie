@@ -119,4 +119,11 @@ from follow
 where date_format(follow_time,"%Y-%m") = #{dateMonth,jdbcType=VARCHAR}) x
  group by time
   </select>
+
+  <select id="selectByUserId" parameterType="java.lang.String" resultType="java.lang.String">
+    select
+    article_id as articleId
+    from follow
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -13,7 +13,7 @@ $(document).ready(function () {
 });
 
 /**
- * 根据地址查询文章
+ * 根据类型查询文章
  * @param streetId
  */
 function selectByType(typeId) {
@@ -37,7 +37,7 @@ function selectByType(typeId) {
                     var imgPath = list[i].imgPath;
                     var imgName = list[i].imgName;
                     html+='<div class="goods-item" id="'+articleId+'">';
-                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgPath+'" title="'+imgName+'"/>';
+                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgsPath+imgPath+'" title="'+imgName+'"/>';
                     html+='<div class="goods-item-title">'+articleTitle+'</div>';
                     html+='<div class="goods-item-tagging">tagging</div>';
                     html+='</div>';

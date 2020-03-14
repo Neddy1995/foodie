@@ -36,7 +36,7 @@ function selectByType(typeId) {
                     var imgPath = list[i].imgPath;
                     var imgName = list[i].imgName;
                     html+='<div class="goods-item" id="'+articleId+'">';
-                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgPath+'" title="'+imgName+'"/>';
+                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgsPath+imgPath+'" title="'+imgName+'"/>';
                     html+='<div class="goods-item-title">'+articleTitle+'</div>';
                     html+='<div class="goods-item-tagging">tagging</div>';
                     html+='</div>';

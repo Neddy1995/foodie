@@ -26,4 +26,6 @@ public interface FollowMapper {
     List<DataBean> selectFollowNumByDay(String dateDay);
 
     List<DataBean> selectFollowNumByMonth(String dateMonth);
+
+    List<String> selectByUserId(String userId);
 }

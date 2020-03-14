@@ -10,12 +10,12 @@ $(document).ready(function () {
     //查询用户信息
     selectUser();
 
-    //加载相关作品
-    // selectArticleById();
-    //加载关注作品
-    // selectFollowById();
-    //加载评论作品
-    // selectCommentById();
+    // 加载相关作品
+    selectArticleById();
+    // 加载关注作品
+    selectFollowById();
+    // 加载评论作品
+    selectCommentById();
 
     //修改信息按钮监听事件
     $('.update-inform').click(function () {
@@ -162,7 +162,7 @@ function selectArticleById() {
 function selectFollowById() {
     $.ajax({
         type:'get',
-        url:'selectByLike.do',
+        url:'selectByFollow.do',
         success:function (data) {
             var resultCode = data.resultCode;
             if (resultCode == 'success'){

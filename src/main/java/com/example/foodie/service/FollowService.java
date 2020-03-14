@@ -1,5 +1,7 @@
 package com.example.foodie.service;
 
+import java.util.List;
+
 public interface FollowService {
 
     /**
@@ -22,4 +24,11 @@ public interface FollowService {
      * @param articleId
      */
     void deleteFollow(String userId,String articleId);
+
+    /**
+     * 查询收藏记录
+     * @param userId
+     * @return
+     */
+    List<String> selectByUserId(String userId);
 }
