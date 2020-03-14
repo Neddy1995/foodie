@@ -4,6 +4,7 @@ import com.example.foodie.bean.Comment;
 import com.example.foodie.service.CommentService;
 import com.example.foodie.util.ControllerResult;
 import com.example.foodie.util.SessionKeyValue;
+import com.example.foodie.vo.CommentVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,13 +24,18 @@ public class CommentController {
     /**
      * 插入一条评论
      * @param request
-     * @param comment
+     * @param articleId
+     * @param commentText
      * @return
      */
     @PostMapping("/insertComment.do")
     public ControllerResult insertComment(HttpServletRequest request,
-                                          @RequestBody Comment comment){
+                                          @RequestParam("articleId")String articleId,
+                                          @RequestParam("commentText")String commentText){
         HttpSession session = request.getSession();
+        Comment comment = new Comment();
+        comment.setArticleId(articleId);
+        comment.setCommentText(commentText);
         comment.setUserId((String) session.getAttribute(SessionKeyValue.USER_ID));
         commentService.insertComment(comment);
         return ControllerResult.createSuccess("评论成功");
@@ -48,8 +54,12 @@ public class CommentController {
      */
     @PostMapping("/selectComment.do")
     public ControllerResult selectComment(@RequestParam("articleId")String articleId){
-        List<Comment> comment = commentService.selectByArticleId(articleId);
-        return ControllerResult.createSuccess("查询评论成功",comment);
+        List<CommentVo> commentVo = commentService.selectByArticleId(articleId);
+        if(commentVo.size()==0){
+            return ControllerResult.createFail("还没有评论");
+        }
+        System.out.println("111111111111111111111111111111111111111111111111111111111111111"+commentVo.toString());
+        return ControllerResult.createSuccess("查询评论成功",commentVo);
     }
 
     /**

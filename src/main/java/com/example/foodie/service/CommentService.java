@@ -1,6 +1,7 @@
 package com.example.foodie.service;
 
 import com.example.foodie.bean.Comment;
+import com.example.foodie.vo.CommentVo;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public interface CommentService {
      * @param articleId
      * @return
      */
-    List<Comment> selectByArticleId(String articleId);
+    List<CommentVo> selectByArticleId(String articleId);
 
     /**
      * 删除评论

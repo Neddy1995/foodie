@@ -3,8 +3,10 @@ package com.example.foodie.service.impl;
 import com.example.foodie.bean.Comment;
 import com.example.foodie.dao.CommentMapper;
 import com.example.foodie.service.CommentService;
+import com.example.foodie.vo.CommentVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.model.IComment;
 
 import java.util.Date;
 import java.util.List;
@@ -28,7 +30,9 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<Comment> selectByArticleId(String articleId) {
+    public List<CommentVo> selectByArticleId(String articleId) {
+
+
         return commentMapper.selectByArticleId(articleId);
     }
 

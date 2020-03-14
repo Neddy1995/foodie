@@ -82,6 +82,12 @@ $(document).ready(function () {
         }
     });
 
+    //评论按钮点击事件
+    $('.insertComment').click(function (){
+        var commentText = $('.comment-input').val();
+        insertComment(commentText,articleId);
+    });
+
 });
 
 /**
@@ -158,15 +164,21 @@ function selectComment(articleId) {
                     var commentText = list[i].commentText;
                     var commentTime = new Date(list[i].commentTime);
                     var userId = list[i].list;
+                    var userName = list[i].userName;
+                    var imgPath = list[i].imgPath;
 
                     var time = dateToSting(commentTime);
                     html+='<div class="comment-item" id="'+commentId+'">';
                     html+='<div class="comment-head" id="'+userId+'">';
                     html+='<div class="comment-head-picture">';
-                    html+='<img src="../static/img/头像.png" width="32px" height="32px"/>';
+                    if(imgPath === null){
+                        html+='<img src="../static/img/头像.png" width="32px" height="32px"/>';
+                    }else{
+                        html+='<img src="'+imgsPath+imgPath+'" width="32px" height="32px"/>';
+                    }
                     html+='</div>';
                     html+='<div class="comment-head-name">';
-                    html+='<h4 class="head-name">评论者</h4>';
+                    html+='<h4 class="head-name">'+userName+'</h4>';
                     html+='<div class="comment-time">';
                     html+='<span>'+time+'</span>';
                     html+='</div>';
@@ -178,6 +190,10 @@ function selectComment(articleId) {
                     html+='</div>';
                 }
                 result2=html;
+            }
+            else if(resultCode == 'fail'){
+                var message=data.message;
+                result2=message + '去抢沙发吧';
             }
         },
         error:function (data) {
@@ -356,6 +372,34 @@ function deleteFollow(articleId) {
             if (resultCode == 'success'){
                 var message = data.message;
                 showAlterMsg(message);
+            }
+        },
+        error:function (data) {
+            console.log(data);
+        }
+    });
+}
+
+/**
+ * 添加评论
+ * @param commentText
+ * @param articleId
+ */
+function insertComment(commentText,articleId) {
+    $.ajax({
+       type:'post',
+        url:'insertComment.do',
+        async:false,
+        data:{
+           'articleId':articleId,
+            'commentText':commentText
+        },
+        success:function (data) {
+            var resultCode = data.resultCode;
+            if(resultCode == 'success'){
+                var message = data.message;
+                console.log(message);
+                window.location.reload(true);
             }
         },
         error:function (data) {

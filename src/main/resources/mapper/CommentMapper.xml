@@ -13,6 +13,16 @@
     <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
   </resultMap>
 
+  <resultMap id="CommentMap" type="com.example.foodie.vo.CommentVo">
+    <id column="comment_id" property="commentId" jdbcType="VARCHAR"/>
+    <result column="article_id" property="articleId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="comment_text" property="commentText" jdbcType="VARCHAR" />
+    <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+    <result column="img_path" property="imgPath" jdbcType="VARCHAR"/>
+  </resultMap>
+
   <resultMap id="NumResultMap" type="com.example.foodie.bean.DataBean">
     <result column="type" property="type" jdbcType="INTEGER"/>
     <result column="dates" property="dates" jdbcType="TIMESTAMP"/>
@@ -24,6 +34,9 @@
   </sql>
   <sql id="Base_Column_List" >
     comment_id, article_id, user_id, comment_text, comment_time
+  </sql>
+  <sql id="Comment_List">
+    comment_id, article_id, user_id, comment_text, comment_time, user_name, img_path
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -118,11 +131,14 @@
     where user_id = #{userId,jdbcType=VARCHAR}
   </select>
 
-  <select id="selectByArticleId" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByArticleId" parameterType="java.lang.String" resultMap="CommentMap">
     select
-    <include refid="Base_Column_List"></include>
-    from comment
-    where article_id = #{articleId,jdbcType=VARCHAR}
+    <include refid="Comment_List"></include>
+    from (select a.comment_id,a.article_id,a.user_id,a.comment_text,a.comment_time,b.user_name,b.profile_picture
+    from comment a left join user b
+    on a.user_id = b.user_id
+    where a.article_id= #{articleId,jdbcType=VARCHAR}) a left join picture b
+    on a.profile_picture = b.img_id
   </select>
 
   <select id="selectCommentNumByDay" parameterType="java.lang.String" resultMap="NumResultMap">

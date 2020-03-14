@@ -2,6 +2,7 @@ package com.example.foodie.dao;
 
 import com.example.foodie.bean.Comment;
 import com.example.foodie.bean.DataBean;
+import com.example.foodie.vo.CommentVo;
 
 import java.util.Date;
 import java.util.List;
@@ -21,7 +22,7 @@ public interface CommentMapper {
 
     List<String> selectByUserId(String userId);
 
-    List<Comment> selectByArticleId(String articleId);
+    List<CommentVo> selectByArticleId(String articleId);
 
     List<DataBean> selectCommentNumByDay(String dateDay);
 

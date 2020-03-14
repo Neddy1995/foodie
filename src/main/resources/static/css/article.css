@@ -48,6 +48,7 @@
 .article-comment{
     clear: both;
     margin-top: 20px;
+    height: 100px;
 }
 .remain{
     float: left;

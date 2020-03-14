@@ -2,6 +2,7 @@ package com.example.foodie.service;
 
 import com.example.foodie.FoodieApplicationTest;
 import com.example.foodie.bean.Comment;
+import com.example.foodie.vo.CommentVo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +29,7 @@ class CommentServiceTest {
     @Test
     @DisplayName("测试CommentService的根据文章id查询评论selectByArticleId方法")
     void selectByArticleId() {
-        List<Comment> list = commentService.selectByArticleId("1");
+        List<CommentVo> list = commentService.selectByArticleId("26577884424437794");
         System.out.println("返回的JSON" + list.toString());
     }
 
