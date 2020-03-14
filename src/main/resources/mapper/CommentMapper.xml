@@ -11,6 +11,7 @@
 
   <resultMap id="CommentIdMap" type="com.example.foodie.bean.Comment">
     <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
+    <result column="article_id" property="articleId" jdbcType="VARCHAR"/>
   </resultMap>
 
   <resultMap id="CommentMap" type="com.example.foodie.vo.CommentVo">
@@ -29,8 +30,8 @@
     <result column="num" property="num" jdbcType="INTEGER"/>
   </resultMap>
 
-  <sql id="Comment_id_List">
-    comment_id
+  <sql id="article_id_List">
+    article_id
   </sql>
   <sql id="Base_Column_List" >
     comment_id, article_id, user_id, comment_text, comment_time
@@ -126,7 +127,7 @@
 
   <select id="selectByUserId" parameterType="java.lang.String" resultMap="CommentIdMap">
     select
-    <include refid="Comment_id_List"></include>
+    <include refid="article_id_List"></include>
     from comment
     where user_id = #{userId,jdbcType=VARCHAR}
   </select>

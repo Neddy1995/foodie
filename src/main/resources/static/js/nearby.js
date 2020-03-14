@@ -11,9 +11,9 @@ $(document).ready(function () {
 
     selectUser();
     if(user){
-        selectByStreet(user.streetId);
+        selectByStreet(user.userCity);
     }else{
-        selectByStreet("006007600692");
+        selectByStreet("0260322");
     }
 });
 

@@ -206,7 +206,7 @@
     group by <include refid="Title_Column_List"></include>
   </select>
 
-  <select id="selectByComment" parameterType="java.util.List" resultMap="TitleMap">
+  <select id="selectByComment" parameterType="java.util.List" resultMap="BaseResultMap">
     select
     <include refid="Title_Column_List"></include>
     from article

@@ -47,7 +47,7 @@ class ArticleServiceTest {
     @DisplayName("测试ArticleService的根据多个文章id查询文章的标题和图片（评论和关注使用）selectByArticleList方法")
     void selectByArticleList() {
         List<String> list = new ArrayList<String>();
-        list.add("1");
+        list.add("26577884424437808");
         System.out.println(""+ articleService.selectByArticleList(list));
     }
 
