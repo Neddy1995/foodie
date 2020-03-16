@@ -8,7 +8,7 @@ $(document).ready(function () {
     //加载商品
     $(".goods-item").load("../static/html/good.html");
 
-    selectByType("1");
+    selectByType("2");
 });
 
 /**
@@ -36,7 +36,7 @@ function selectByType(typeId) {
                     var imgPath = list[i].imgPath;
                     var imgName = list[i].imgName;
                     html+='<div class="goods-item" id="'+articleId+'">';
-                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgsPath+imgPath+'" title="'+imgName+'"/>';
+                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+getImgPath()+imgPath+'" title="'+imgName+'"/>';
                     html+='<div class="goods-item-title">'+articleTitle+'</div>';
                     html+='<div class="goods-item-tagging">tagging</div>';
                     html+='</div>';

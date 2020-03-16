@@ -166,7 +166,7 @@ function openArticle(articleId) {
                     var imgId = list[i].imgId;
                     var imgName = list[i].imgName;
                     var imgPath = list[i].imgPath;
-                    html+='<div id="'+imgId+'"><img src="'+imgsPath+imgPath+'" title="'+imgName+'"/></div>';
+                    html+='<div id="'+imgId+'"><img src="'+getImgPath()+imgPath+'" title="'+imgName+'"/></div>';
                 }
                 html += '</div>';
                 html += '</div>';

@@ -1,5 +1,3 @@
-//指定图片服务器地址
-var imgsPath= '118.122.117.57:8080/imgs/';
 
 /**
  * 弹出预警信息
@@ -64,6 +62,14 @@ function getUrlParam(name) {
         return unescape(r[2]);
     }
     return null; //返回参数值
+}
+
+/**
+ * 获取图片路径
+ */
+function getImgPath() {
+    var imgPath= 'http://118.122.117.57:8097/imgs/';
+    return imgPath;
 }
 
 

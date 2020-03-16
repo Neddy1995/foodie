@@ -76,7 +76,7 @@ public class ArticleController {
     }
 
     /**
-     * 根据用户id查询评论的文章标题和图片路径
+     * 根据用户id查询用户创建的文章标题和图片路径
      * @return
      */
     @GetMapping("/selectByUserId.do")

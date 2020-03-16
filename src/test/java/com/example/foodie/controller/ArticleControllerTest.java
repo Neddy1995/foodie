@@ -23,6 +23,8 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,5 +103,16 @@ class ArticleControllerTest {
                         .content(JSONObject.toJSONString(articleTypePictureVo))
         ).andReturn();
         System.out.println("返回的JSON"+mvcResult.getResponse().getContentAsString());
+    }
+
+    @Test
+    @DisplayName("测试ArticleController的查询用户id查询评论的文章标题和图片路径的selectByComment方法")
+    void selectByComment() throws Exception {
+        MvcResult mvcResult = mockMvc.perform(
+                get("selectByComment.do")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+        ).andReturn();
+        System.out.println("返回的JSON"+mvcResult.getResponse().getContentAsString());
+
     }
 }

@@ -9,10 +9,6 @@
     <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
   </resultMap>
 
-  <resultMap id="CommentIdMap" type="com.example.foodie.bean.Comment">
-    <id column="comment_id" property="commentId" jdbcType="VARCHAR" />
-    <result column="article_id" property="articleId" jdbcType="VARCHAR"/>
-  </resultMap>
 
   <resultMap id="CommentMap" type="com.example.foodie.vo.CommentVo">
     <id column="comment_id" property="commentId" jdbcType="VARCHAR"/>
@@ -30,9 +26,6 @@
     <result column="num" property="num" jdbcType="INTEGER"/>
   </resultMap>
 
-  <sql id="article_id_List">
-    article_id
-  </sql>
   <sql id="Base_Column_List" >
     comment_id, article_id, user_id, comment_text, comment_time
   </sql>
@@ -125,9 +118,9 @@
     where comment_id = #{commentId,jdbcType=VARCHAR}
   </update>
 
-  <select id="selectByUserId" parameterType="java.lang.String" resultMap="CommentIdMap">
+  <select id="selectByUserId" parameterType="java.lang.String" resultType="java.lang.String">
     select
-    <include refid="article_id_List"></include>
+    article_id as articleId
     from comment
     where user_id = #{userId,jdbcType=VARCHAR}
   </select>

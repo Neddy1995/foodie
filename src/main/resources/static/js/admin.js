@@ -1,4 +1,3 @@
-var user ='';
 //注意：导航 依赖 element 模块，否则无法进行功能性操作
 layui.use('element', function(){
     var element = layui.element;
@@ -72,7 +71,7 @@ function selectPicture(imgId) {
             if(resultCode == 'success'){
                 var message = data.message;
                 var picture = data.data;
-                $('.admin-img').attr('src',imgsPath+picture.imgPath);
+                $('.admin-img').attr('src',getImgPath()+picture.imgPath);
             }
             if(resultCode == 'fail'){
                 $('.admin-img').attr('src','../static/img/头像.png');

@@ -129,7 +129,7 @@ function selectById(articleId){
                     var imgId = list[i].imgId;
                     var imgName = list[i].imgName;
                     var imgPath = list[i].imgPath;
-                    html+='<div id="'+imgId+'"><img src="'+ imgsPath + imgPath+'" title="'+imgName+'"/></div>';
+                    html+='<div id="'+imgId+'"><img src="'+ getImgPath() + imgPath+'" title="'+imgName+'"/></div>';
                 }
                 result1=html;
             }
@@ -174,7 +174,7 @@ function selectComment(articleId) {
                     if(imgPath === null){
                         html+='<img src="../static/img/头像.png" width="32px" height="32px"/>';
                     }else{
-                        html+='<img src="'+imgsPath+imgPath+'" width="32px" height="32px"/>';
+                        html+='<img src="'+getImgPath()+imgPath+'" width="32px" height="32px"/>';
                     }
                     html+='</div>';
                     html+='<div class="comment-head-name">';

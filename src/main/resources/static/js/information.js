@@ -126,9 +126,9 @@ function selectArticleById() {
                     var imgId = list[i].imgId;
                     var imgPath = list[i].imgPath;
                     var imgName = list[i].imgName;
-                    console.log(imgsPath+imgPath);
+                    console.log(getImgPath()+imgPath);
                     html+='<div class="goods-item" id="'+articleId+'">';
-                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgsPath+imgPath+'" title="'+imgName+'" alt=""/>';
+                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+getImgPath()+imgPath+'" title="'+imgName+'" alt=""/>';
                     html+='<div class="goods-item-title">'+articleTitle+'</div>';
                     html+='<div class="goods-item-tagging">tagging</div>';
                     html+='</div>';
@@ -177,7 +177,7 @@ function selectFollowById() {
                     var imgPath = list[i].imgPath;
                     var imgName = list[i].imgName;
                     html+='<div class="goods-item" id="'+articleId+'">';
-                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgsPath+imgPath+'" title="'+imgName+'" alt=""/>';
+                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+getImgPath()+imgPath+'" title="'+imgName+'" alt=""/>';
                     html+='<div class="goods-item-title">'+articleTitle+'</div>';
                     html+='<div class="goods-item-tagging">tagging</div>';
                     html+='</div>';
@@ -224,9 +224,9 @@ function selectCommentById() {
                     var imgId = list[i].imgId;
                     var imgPath = list[i].imgPath;
                     var imgName = list[i].imgName;
-                    console.log(imgsPath+imgPath);
+                    console.log(getImgPath()+imgPath);
                     html+='<div class="goods-item" id="'+articleId+'">';
-                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+imgsPath+imgPath+'" title="'+imgName+'" alt=""/>';
+                    html+='<img class="goods-item-img" id="'+imgId+'" src="'+getImgPath()+imgPath+'" title="'+imgName+'" alt=""/>';
                     html+='<div class="goods-item-title">'+articleTitle+'</div>';
                     html+='<div class="goods-item-tagging">tagging</div>';
                     html+='</div>';
@@ -269,7 +269,7 @@ function selectPicture(imgId) {
             if(resultCode == 'success'){
                 var message = data.message;
                 var picture = data.data;
-                $('.head-picture').attr('src',imgsPath+picture.imgPath);
+                $('.head-picture').attr('src',getImgPath()+picture.imgPath);
             }
             if(resultCode == 'fail'){
                 $('.head-picture').attr('src','../static/img/头像.png');
