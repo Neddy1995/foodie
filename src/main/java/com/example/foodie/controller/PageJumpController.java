@@ -110,4 +110,9 @@ public class PageJumpController {
         return "admin";
     }
 
+    @RequestMapping("/deliciousDIY.h")
+    public String deliciousDIY(){
+        return "deliciousDIY";
+    }
+
 }
