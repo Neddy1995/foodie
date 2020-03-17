@@ -8,6 +8,11 @@
     margin: 0 auto;
 }
 
+.carousel-img{
+    width: 1080px;
+    height: 560px;
+}
+
 /*搜索框*/
 .search{
     width: 410px;

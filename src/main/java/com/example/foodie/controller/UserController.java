@@ -67,13 +67,10 @@ public class UserController {
                                   @RequestParam("paramCode") String paramCode){
         HttpSession session = request.getSession();
 
-        /*
-        使用拦截器拦截
-         */
 //        验证是否登陆
-//        if(session.getAttribute(SessionKeyValue.USER_KEY)!=null){
-//            return ControllerResult.createFail("登陆失败：你已登陆");
-//        }
+        if(session.getAttribute(SessionKeyValue.USER_KEY)!=null){
+            return ControllerResult.createFail("登陆失败：你已登陆");
+        }
 
 //        验证验证码
         String sessionCode = session.getAttribute("code").toString();

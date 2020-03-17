@@ -1,7 +1,10 @@
 package com.example.foodie.config;
 
+import com.example.foodie.Interceptor.ActionInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -12,16 +15,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
-//    @Bean
-//    ActionInterceptor loginInterceptor() {
-//        return new ActionInterceptor();
-//    }
+    @Bean
+    ActionInterceptor loginInterceptor() {
+        return new ActionInterceptor();
+    }
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(loginInterceptor()).addPathPatterns("/**/*.do");
-//        super.addInterceptors(registry);
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(loginInterceptor()).addPathPatterns("/**/*.do");
+        super.addInterceptors(registry);
+    }
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

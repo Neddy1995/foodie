@@ -30,35 +30,41 @@ public class ActionInterceptor extends HandlerInterceptorAdapter {
     private static List<String> NEED_LOGIN_ACTION = new ArrayList<String>();
 
 //    添加不用过滤的请求
-//    static {
-//        UN_NEED_LOGIN_ACTION.add("selectCity.do");
-//        UN_NEED_LOGIN_ACTION.add("selectStreet.do");
+    static {
+        UN_NEED_LOGIN_ACTION.add("selectProvince.do");
+        UN_NEED_LOGIN_ACTION.add("selectCityByProvince.do");
+        UN_NEED_LOGIN_ACTION.add("selectCity.do");
+        UN_NEED_LOGIN_ACTION.add("selectStreet.do");
+        UN_NEED_LOGIN_ACTION.add("selectAllByStreet.do");
 
-//        UN_NEED_LOGIN_ACTION.add("selectByStreet.do");
-//        UN_NEED_LOGIN_ACTION.add("selectByType.do");
-//        UN_NEED_LOGIN_ACTION.add("selectByText.do");
-//        UN_NEED_LOGIN_ACTION.add("selectByComment.do");
-//        UN_NEED_LOGIN_ACTION.add("selectById.do");
+        UN_NEED_LOGIN_ACTION.add("selectByStreet.do");
+        UN_NEED_LOGIN_ACTION.add("selectByType.do");
+        UN_NEED_LOGIN_ACTION.add("selectByText.do");
+        UN_NEED_LOGIN_ACTION.add("selectById.do");
 
-//        UN_NEED_LOGIN_ACTION.add("selectComment.do");
+        UN_NEED_LOGIN_ACTION.add("selectType.do");
 
-//        UN_NEED_LOGIN_ACTION.add("selectFollow.do");
+        UN_NEED_LOGIN_ACTION.add("code");
 
-//        UN_NEED_LOGIN_ACTION.add("selectLike.do");
+        UN_NEED_LOGIN_ACTION.add("selectCommentNum.do");
+        UN_NEED_LOGIN_ACTION.add("selectComment.do");
 
-//        UN_NEED_LOGIN_ACTION.add("login.do");
-//        UN_NEED_LOGIN_ACTION.add("register.do");
-//    }
+        UN_NEED_LOGIN_ACTION.add("selectFollowNum.do");
+
+        UN_NEED_LOGIN_ACTION.add("selectLikeNum.do");
+
+        UN_NEED_LOGIN_ACTION.add("upload");
+        UN_NEED_LOGIN_ACTION.add("selectPicture.do");
+
+        UN_NEED_LOGIN_ACTION.add("login.do");
+        UN_NEED_LOGIN_ACTION.add("register.do");
+    }
 
     // 添加要过滤的请求：添加购物车、添加收藏
     static {
-        NEED_LOGIN_ACTION.add("selectAuditArticle.do");
-        NEED_LOGIN_ACTION.add("selectPassArticle.do");
-        NEED_LOGIN_ACTION.add("insertAuditArticle.do");
-        NEED_LOGIN_ACTION.add("selectLikeByDay.do");
-        NEED_LOGIN_ACTION.add("selectLikeByMonth.do");
-
-        NEED_LOGIN_ACTION.add("selectByLike.do");
+        NEED_LOGIN_ACTION.add("selectByUserId.do");
+        NEED_LOGIN_ACTION.add("selectByComment.do");
+        NEED_LOGIN_ACTION.add("selectByFollow.do");
         NEED_LOGIN_ACTION.add("insertArticle.do");
         NEED_LOGIN_ACTION.add("deleteArticle.do");
         NEED_LOGIN_ACTION.add("updateArticle.do");
@@ -77,6 +83,14 @@ public class ActionInterceptor extends HandlerInterceptorAdapter {
         NEED_LOGIN_ACTION.add("updateUser.do");
         NEED_LOGIN_ACTION.add("updatePassword.do");
         NEED_LOGIN_ACTION.add("logout.do");
+
+        NEED_LOGIN_ACTION.add("selectAuditArticle.do");
+        NEED_LOGIN_ACTION.add("selectPassArticle.do");
+        NEED_LOGIN_ACTION.add("insertAuditArticle.do");
+
+        NEED_LOGIN_ACTION.add("selectLikeByDay.do");
+        NEED_LOGIN_ACTION.add("selectLikeByMonth.do");
+
     }
 
     @Override
