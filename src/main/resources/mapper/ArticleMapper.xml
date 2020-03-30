@@ -31,7 +31,7 @@
   </sql>
 
   <sql id="Title_Column_List">
-    article_id, article_title
+    article_id, article_title,tagging
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 

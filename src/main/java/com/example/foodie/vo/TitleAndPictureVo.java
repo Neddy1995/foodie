@@ -6,9 +6,13 @@ import com.example.foodie.bean.Picture;
 public class TitleAndPictureVo {
     private String articleId;
     private String articleTitle;
+    private String tagging;
     private String imgId;
     private String imgPath;
     private String imgName;
+
+    public TitleAndPictureVo() {
+    }
 
     public String getArticleId() {
         return articleId;
@@ -24,6 +28,14 @@ public class TitleAndPictureVo {
 
     public void setArticleTitle(String articleTitle) {
         this.articleTitle = articleTitle;
+    }
+
+    public String getTagging() {
+        return tagging;
+    }
+
+    public void setTagging(String tagging) {
+        this.tagging = tagging;
     }
 
     public String getImgId() {
@@ -69,6 +81,7 @@ public class TitleAndPictureVo {
     public void setArticleAndPicture(Article article, Picture picture) {
         this.setArticleId(article.getArticleId());
         this.setArticleTitle(article.getArticleTitle());
+        this.setTagging(article.getTagging());
         this.setImgId(picture.getImgId());
         this.setImgPath(picture.getImgPath());
         this.setImgName(picture.getImgName());

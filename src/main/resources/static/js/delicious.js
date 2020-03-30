@@ -33,13 +33,14 @@ function selectByType(typeId) {
                 for(var i=0;i<list.length;i++){
                     var articleId = list[i].articleId;
                     var articleTitle = list[i].articleTitle;
+                    var tagging = list[i].tagging;
                     var imgId = list[i].imgId;
                     var imgPath = list[i].imgPath;
                     var imgName = list[i].imgName;
                     html+='<div class="goods-item" id="'+articleId+'">';
                     html+='<img class="goods-item-img" id="'+imgId+'" src="'+getImgPath()+imgPath+'" title="'+imgName+'"/>';
                     html+='<div class="goods-item-title">'+articleTitle+'</div>';
-                    html+='<div class="goods-item-tagging">tagging</div>';
+                    html+='<div class="goods-item-tagging">'+tagging+'</div>';
                     html+='</div>';
                 }
                 $('.something').html(html);

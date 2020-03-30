@@ -30,7 +30,7 @@ layui.use('form', function() {
         delete data1.day;
         data1['birthday']=new Date(birthday.replace(/-/g,"/"));
         console.log(data1);
-        register(data1);
+        // register(data1);
         return false;
     });
 });

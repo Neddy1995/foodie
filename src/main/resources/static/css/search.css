@@ -4,6 +4,8 @@
     border-style: solid;
     border-width:2px 0 2px 2px;
     border-color: #FF0036;
+    display: flex;
+    justify-content: space-between;
 }
 
 .search-box{
@@ -12,6 +14,7 @@
     height: 34px;
     border: none;
     margin-left: 3px;
+    margin-top: 1px;
 }
 
 .search-btn{
