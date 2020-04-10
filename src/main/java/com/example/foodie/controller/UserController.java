@@ -46,7 +46,7 @@ public class UserController {
      */
     @RequestMapping("/user")
     public String userTest(){
-        User user = userMapper.selectByPrimaryKey("12");
+        User user = userMapper.selectByPrimaryKey("26577884424437760");
         return "" + user.toString();
     }
 

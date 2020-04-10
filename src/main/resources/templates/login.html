@@ -5,9 +5,9 @@
     <title>登陆</title>
     <link rel="stylesheet" href="../static/plugins/layui/css/layui.css"/>
 </head>
-<body>
+<body style="background:url('../static/img/火锅背景图.jpg') no-repeat 250px 0;">
+<div style="background-color: white;width: 400px;height: 400px;margin: 300px auto;">
     <div>
-        <div><img src=""/></div>
         <h1>吃货聚集地</h1>
     </div>
     <form class="layui-form layui-form-pane" lay-filter="loginForm">
@@ -32,15 +32,13 @@
             <div class="layui-form-mid layui-word-aux"><img th:src="@{code}" class="verification-code" title="验证码图片"></div>
         </div>
         <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="login">登录</button>
+            <div class="layui-input-block" style="margin-left: 10px">
+                <button class="layui-btn" lay-submit lay-filter="login" style="width: 380px">登录</button>
             </div>
         </div>
         <p>没有帐号？前往<a href="./register.html">注册</a></p>
-
-
     </form>
-
+</div>
     <script type="text/javascript" src="plugins/jquery/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="plugins/layui/layui.all.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
